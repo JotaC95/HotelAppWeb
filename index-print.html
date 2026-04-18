@@ -1,0 +1,1987 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<title>Mintmango · Hotel logistics, without the friction</title>
+<meta name="description" content="Mintmango is the AI-powered hotel logistics platform that orchestrates housekeeping, maintenance, inventory and guests in real time. Fewer radios, more perfect stays." />
+<meta name="theme-color" content="#0b1410" />
+<meta property="og:title" content="Mintmango · Hotel logistics" />
+<meta property="og:description" content="Every floor, every room, every ticket — orchestrated in real time." />
+<meta property="og:type" content="website" />
+<meta name="robots" content="index,follow" />
+<link rel="canonical" href="https://mintmango.com/" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" />
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"SoftwareApplication",
+  "name":"Mintmango",
+  "applicationCategory":"BusinessApplication",
+  "operatingSystem":"Web, iOS, Android",
+  "description":"Real-time hotel logistics platform: housekeeping, maintenance, inventory and guests.",
+  "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}
+}
+</script>
+
+<style>
+/* ============ TOKENS ============ */
+:root {
+  --mint: #8be8c3;
+  --mint-2: #4fd3a0;
+  --mango: #ffb058;
+  --mango-2: #ff8a3d;
+  --cream: #f8f2e6;
+  --bg: #0b1410;
+  --bg-2: #0f1c17;
+  --ink: #eafaf1;
+  --ink-2: #9fb3a9;
+  --line: rgba(234,250,241,.08);
+  --line-2: rgba(234,250,241,.14);
+  --radius: 18px;
+  --radius-sm: 10px;
+  --radius-lg: 28px;
+  --shadow: 0 30px 60px -20px rgba(0,0,0,.55), 0 10px 24px -8px rgba(0,0,0,.45);
+  --font-sans: "Geist", ui-sans-serif, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --font-serif: "Instrument Serif", "Times New Roman", serif;
+  --font-mono: "Geist Mono", ui-monospace, "SF Mono", monospace;
+}
+
+html[data-theme="light"], body[data-theme="light"] {
+  --bg: #f6f3ec;
+  --bg-2: #eee7d7;
+  --ink: #0b1410;
+  --ink-2: #55685e;
+  --line: rgba(11,20,16,.08);
+  --line-2: rgba(11,20,16,.14);
+  --shadow: 0 30px 60px -20px rgba(11,20,16,.18), 0 10px 24px -8px rgba(11,20,16,.1);
+}
+body[data-theme="mint"] {
+  --bg: #062a20;
+  --bg-2: #0a3a2c;
+  --ink: #eafaf1;
+  --ink-2: #9ccfb9;
+}
+
+body[data-intensity="soft"] { --mint: #bde9d4; --mango: #ffd2a0; }
+body[data-intensity="neon"] { --mint: #5cffb5; --mango: #ffa033; }
+
+/* ============ BASE ============ */
+*,*::before,*::after { box-sizing: border-box; }
+html,body { margin:0; padding:0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  line-height: 1.45;
+  letter-spacing: -0.005em;
+}
+img,svg { display:block; max-width:100%; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; border: 0; background: none; color: inherit; }
+em { font-style: italic; font-family: var(--font-serif); font-weight: 400; letter-spacing: 0; }
+h1,h2,h3,h4 { margin:0; letter-spacing: -0.028em; font-weight: 500; }
+p { margin:0; color: var(--ink-2); }
+
+/* ============ FIELD (bg) ============ */
+.field {
+  position: fixed; inset:0; z-index:-1; overflow: hidden; pointer-events: none;
+}
+.field__blob {
+  position:absolute; border-radius: 50%; filter: blur(80px); opacity: .55;
+  mix-blend-mode: screen;
+}
+body[data-theme="light"] .field__blob { mix-blend-mode: multiply; opacity: .35; }
+.field__blob--a { width: 60vw; height: 60vw; left: -15vw; top: -10vw; background: radial-gradient(circle, var(--mint), transparent 60%); animation: blob 24s ease-in-out infinite; }
+.field__blob--b { width: 55vw; height: 55vw; right: -15vw; top: 10vw; background: radial-gradient(circle, var(--mango), transparent 60%); animation: blob 28s ease-in-out -5s infinite reverse; }
+.field__blob--c { width: 48vw; height: 48vw; left: 20vw; top: 60vw; background: radial-gradient(circle, #6aa3ff55, transparent 60%); animation: blob 32s ease-in-out -10s infinite; }
+
+@keyframes blob {
+  0%,100% { transform: translate(0,0) scale(1); }
+  33% { transform: translate(5vw,-4vw) scale(1.1); }
+  66% { transform: translate(-4vw,6vw) scale(.95); }
+}
+
+.field__grid {
+  position:absolute; inset:0;
+  background:
+    linear-gradient(var(--line) 1px, transparent 1px) 0 0/48px 48px,
+    linear-gradient(90deg, var(--line) 1px, transparent 1px) 0 0/48px 48px;
+  mask-image: radial-gradient(ellipse at 50% 30%, black 20%, transparent 75%);
+}
+.field__noise {
+  position:absolute; inset:0; opacity: .06;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='.6'/></svg>");
+}
+
+/* ============ NAV ============ */
+.nav {
+  position: sticky; top: 0; z-index: 50;
+  display: flex; align-items:center; gap: 24px;
+  padding: 18px 32px;
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  background: color-mix(in oklab, var(--bg) 70%, transparent);
+  border-bottom: 1px solid var(--line);
+  transition: padding .3s;
+}
+.nav.is-scrolled { padding: 10px 32px; }
+.nav__brand { display:flex; align-items:center; gap:10px; font-weight: 600; letter-spacing: -0.02em; }
+.nav__word { font-size: 18px; }
+.nav__tag { font-family: var(--font-mono); font-size: 10px; padding: 2px 6px; border: 1px solid var(--line-2); border-radius: 4px; color: var(--ink-2); text-transform: uppercase; }
+.nav__menu { display: flex; gap: 28px; margin: 0 auto; font-size: 14px; color: var(--ink-2); }
+.nav__menu a { transition: color .2s; position: relative; }
+.nav__menu a:hover { color: var(--ink); }
+.nav__menu a::after {
+  content: ""; position:absolute; left:0; right:0; bottom: -6px; height:1px;
+  background: var(--mint); transform: scaleX(0); transform-origin: left;
+  transition: transform .3s cubic-bezier(.2,.9,.2,1);
+}
+.nav__menu a:hover::after { transform: scaleX(1); }
+.nav__cta { display:flex; gap: 8px; }
+
+/* ============ BUTTONS ============ */
+.btn {
+  display: inline-flex; align-items:center; gap: 8px;
+  padding: 10px 16px; border-radius: 999px;
+  font-size: 14px; font-weight: 500;
+  transition: transform .15s, background .2s, color .2s, border-color .2s;
+  white-space: nowrap;
+}
+.btn:active { transform: scale(.97); }
+.btn--primary {
+  background: var(--mint); color: #062018;
+  box-shadow: 0 8px 24px -6px color-mix(in oklab, var(--mint) 60%, transparent);
+}
+.btn--primary:hover { background: var(--mint-2); }
+.btn--ghost { background: transparent; border: 1px solid var(--line-2); }
+.btn--ghost:hover { border-color: var(--ink); background: color-mix(in oklab, var(--ink) 5%, transparent); }
+.btn--link { background: transparent; padding-left: 4px; padding-right: 4px; }
+.btn--link:hover { color: var(--mint); }
+.btn--lg { padding: 14px 22px; font-size: 15px; }
+.btn--block { width: 100%; justify-content: center; }
+.play {
+  width: 18px; height: 18px; border-radius: 50%;
+  background: var(--mint);
+  position: relative;
+}
+.play::before {
+  content:""; position:absolute; top:50%; left:55%; transform:translate(-50%,-50%);
+  border: 5px solid transparent; border-left: 7px solid #062018;
+}
+
+/* ============ HERO ============ */
+.hero {
+  display: grid; grid-template-columns: 1.05fr 1.15fr; gap: 40px;
+  padding: 80px 32px 40px; align-items: center;
+  min-height: 88vh;
+  max-width: 1400px; margin: 0 auto;
+}
+.hero__eyebrow {
+  display:inline-flex; align-items:center; gap: 8px;
+  font-family: var(--font-mono); font-size: 12px; color: var(--ink-2);
+  padding: 6px 12px; border: 1px solid var(--line-2); border-radius: 999px;
+  margin-bottom: 24px;
+}
+.dot { width: 7px; height: 7px; border-radius: 50%; background: var(--mint); box-shadow: 0 0 0 0 var(--mint); animation: ping 2s infinite; }
+@keyframes ping { 0% { box-shadow: 0 0 0 0 color-mix(in oklab, var(--mint) 70%, transparent); } 80%,100% { box-shadow: 0 0 0 10px transparent; } }
+
+.hero__title {
+  font-size: clamp(44px, 6.4vw, 92px);
+  line-height: 0.95; letter-spacing: -0.04em;
+  font-weight: 500;
+}
+.hero__title em { color: var(--mango); }
+.hero__sub {
+  margin: 28px 0 36px; font-size: clamp(16px, 1.4vw, 19px);
+  max-width: 540px; color: var(--ink-2);
+}
+.hero__cta { display: flex; gap: 12px; flex-wrap: wrap; }
+.hero__trust {
+  margin-top: 56px;
+  display: flex; align-items: center; gap: 16px;
+  font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; color: var(--ink-2); letter-spacing: .06em;
+}
+.hero__trust ul { display:flex; gap: 22px; list-style:none; padding:0; margin:0; flex-wrap: wrap; color: var(--ink); }
+.hero__trust li { font-family: var(--font-sans); text-transform: none; font-size: 14px; letter-spacing: 0; opacity: .8; }
+
+/* ============ STAGE (hero right) ============ */
+.stage {
+  position: relative; height: 640px;
+  perspective: 1800px;
+}
+.stage__scene {
+  position: absolute; inset: 0;
+  transform-style: preserve-3d;
+  transform: rotateX(8deg) rotateY(-14deg) rotateZ(1deg);
+}
+.panel {
+  position: absolute;
+  background: linear-gradient(180deg, color-mix(in oklab, var(--bg-2) 85%, var(--mint) 3%), var(--bg-2));
+  border: 1px solid var(--line-2);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  backdrop-filter: blur(4px);
+}
+.panel--main {
+  width: 560px; height: 420px;
+  top: 50%; left: 50%; transform: translate(-55%, -50%);
+  animation: floaty 8s ease-in-out infinite;
+}
+.panel--ticket {
+  width: 280px; top: 2%; right: -6%;
+  padding: 16px;
+  animation: floaty 9s ease-in-out -2s infinite;
+}
+.panel--chat {
+  width: 260px; bottom: 4%; left: -8%;
+  padding: 14px;
+  animation: floaty 10s ease-in-out -3s infinite;
+}
+.panel--chart {
+  width: 240px; height: 130px; bottom: 8%; right: -4%;
+  padding: 14px;
+  animation: floaty 7s ease-in-out -1s infinite;
+}
+@keyframes floaty {
+  0%,100% { translate: 0 0; }
+  50% { translate: 0 -10px; }
+}
+.panel--main { animation-name: floaty-main; }
+@keyframes floaty-main {
+  0%,100% { transform: translate(-55%, -50%); }
+  50% { transform: translate(-55%, calc(-50% - 8px)); }
+}
+
+.panel__bar {
+  display:flex; align-items:center; gap: 8px;
+  padding: 12px 14px; border-bottom: 1px solid var(--line);
+  font-family: var(--font-mono); font-size: 11px; color: var(--ink-2);
+}
+.panel__dot { width:9px; height:9px; border-radius:50%; background: var(--line-2); }
+.panel__dot:nth-child(1) { background: #ff6b6b55; }
+.panel__dot:nth-child(2) { background: #ffb05855; }
+.panel__dot:nth-child(3) { background: #8be8c355; }
+.panel__title { margin-left: 6px; }
+.panel__pill {
+  margin-left: auto; padding: 2px 8px; border-radius: 999px;
+  background: color-mix(in oklab, var(--mint) 20%, transparent);
+  color: var(--mint); font-size: 10px;
+  position: relative;
+}
+.panel__pill::before {
+  content:""; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--mint); display: inline-block; margin-right: 4px;
+  animation: blink 1.2s infinite;
+}
+@keyframes blink { 50% { opacity: .3; } }
+
+.panel__body { padding: 18px; height: calc(100% - 42px); display: flex; flex-direction: column; gap: 18px; }
+
+.room-grid {
+  display: grid; grid-template-columns: repeat(8, 1fr); gap: 6px;
+  flex: 1;
+}
+.rm {
+  aspect-ratio: 1; border-radius: 6px;
+  background: color-mix(in oklab, var(--ink) 6%, transparent);
+  border: 1px solid var(--line);
+  font-family: var(--font-mono); font-size: 9px;
+  display:flex; align-items:center; justify-content:center;
+  color: var(--ink-2);
+  transition: background .4s, border-color .4s, color .4s;
+  position: relative;
+}
+.rm.is-clean { background: color-mix(in oklab, var(--mint) 18%, transparent); border-color: color-mix(in oklab, var(--mint) 40%, transparent); color: var(--mint); }
+.rm.is-dirty { background: color-mix(in oklab, var(--mango) 18%, transparent); border-color: color-mix(in oklab, var(--mango) 40%, transparent); color: var(--mango); }
+.rm.is-inprog { background: color-mix(in oklab, #6aa3ff 18%, transparent); border-color: color-mix(in oklab, #6aa3ff 40%, transparent); color: #6aa3ff; }
+.rm.is-inprog::after {
+  content:""; position:absolute; inset:2px; border-radius: 4px;
+  border: 1px dashed color-mix(in oklab, #6aa3ff 60%, transparent);
+  animation: spinbox 4s linear infinite;
+}
+@keyframes spinbox { to { transform: rotate(360deg); } }
+
+.panel__meta { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+.meta { display:flex; flex-direction: column; gap: 4px; }
+.meta__k { font-size: 11px; color: var(--ink-2); }
+.meta__v { font-size: 20px; font-weight: 500; }
+.meta__v b { font-weight: 500; }
+.bar { height: 3px; background: var(--line); border-radius: 2px; overflow: hidden; }
+.bar__fill { height:100%; background: var(--mint); transition: width .6s; }
+.bar__fill--mango { background: var(--mango); }
+.bar__fill--mint { background: var(--mint); }
+
+.ticket__head { display:flex; justify-content: space-between; font-family: var(--font-mono); font-size: 11px; color: var(--ink-2); }
+.ticket__tag { padding: 2px 8px; border-radius: 999px; background: color-mix(in oklab, var(--mango) 20%, transparent); color: var(--mango); }
+.ticket__title { margin: 10px 0; font-size: 15px; font-weight: 500; }
+.ticket__row { display:flex; align-items: center; gap: 6px; font-size: 12px; color: var(--ink-2); }
+.avatar { width: 24px; height: 24px; border-radius: 50%; display:grid; place-items:center; font-size: 10px; font-weight: 600; color:#062018; }
+.ticket__eta { margin-left: auto; font-family: var(--font-mono); }
+.ticket__progress { margin-top: 12px; height: 4px; background: var(--line); border-radius: 2px; overflow: hidden; }
+.ticket__progress-fill {
+  height: 100%; width: 45%;
+  background: linear-gradient(90deg, var(--mango), var(--mint));
+  animation: progress 6s ease-in-out infinite;
+}
+@keyframes progress {
+  0% { width: 10%; }
+  60% { width: 85%; }
+  100% { width: 95%; }
+}
+
+.chat__line { font-size: 10px; color: var(--ink-2); text-transform: uppercase; letter-spacing: .05em; margin: 6px 0 4px; font-family: var(--font-mono); }
+.chat__line--bot { display:flex; align-items:center; gap: 6px; }
+.chat__bot-tag { background: var(--mint); color:#062018; padding: 1px 6px; border-radius: 4px; font-size: 9px; }
+.chat__bubble {
+  background: color-mix(in oklab, var(--ink) 8%, transparent);
+  padding: 10px 12px; border-radius: 12px 12px 12px 2px;
+  font-size: 13px; max-width: 90%;
+  animation: chatIn .5s ease both;
+}
+.chat__bubble--bot {
+  background: color-mix(in oklab, var(--mint) 22%, transparent);
+  color: var(--mint);
+  border-radius: 12px 12px 2px 12px;
+  margin-left: auto;
+}
+@keyframes chatIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.chat__typing { display: flex; gap: 4px; padding: 8px 12px; width: fit-content;
+  background: color-mix(in oklab, var(--ink) 8%, transparent); border-radius: 12px; margin-top: 6px; }
+.chat__typing span { width: 5px; height: 5px; border-radius: 50%; background: var(--ink-2); animation: typing 1.2s infinite; }
+.chat__typing span:nth-child(2) { animation-delay: .15s; }
+.chat__typing span:nth-child(3) { animation-delay: .3s; }
+@keyframes typing { 0%,60%,100% { opacity: .3; transform: translateY(0); } 30% { opacity: 1; transform: translateY(-3px); } }
+
+.chart__head { display:flex; justify-content: space-between; font-family: var(--font-mono); font-size: 11px; color: var(--ink-2); margin-bottom: 6px; }
+.chart__delta { color: var(--mint); }
+.chart__svg { width: 100%; height: 72px; }
+#chart-line { stroke-dasharray: 1000; stroke-dashoffset: 1000; animation: drawLine 2.4s ease forwards; }
+@keyframes drawLine { to { stroke-dashoffset: 0; } }
+
+/* ============ MARQUEE ============ */
+.marquee {
+  overflow: hidden;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 18px 0;
+  background: color-mix(in oklab, var(--bg-2) 60%, transparent);
+}
+.marquee__track {
+  display: flex; gap: 48px; white-space: nowrap;
+  animation: marquee 40s linear infinite;
+  font-family: var(--font-mono); font-size: 13px; color: var(--ink-2);
+}
+.marquee__track span { color: var(--ink); }
+.marquee__track span::first-letter { color: var(--mango); }
+@keyframes marquee { to { transform: translateX(-50%); } }
+
+/* ============ SECTION HEAD ============ */
+.section__head {
+  max-width: 780px; padding: 0 32px; margin: 120px auto 56px;
+  text-align: left;
+}
+.kicker {
+  font-family: var(--font-mono); font-size: 12px; text-transform: uppercase; letter-spacing: .12em;
+  color: var(--mint); display: inline-flex; align-items: center; gap: 8px;
+}
+.kicker::before { content:""; width: 16px; height: 1px; background: var(--mint); display:inline-block; }
+.section__head h2 {
+  margin: 16px 0 18px;
+  font-size: clamp(36px, 4.4vw, 64px); line-height: 1.02; letter-spacing: -0.03em;
+}
+.section__head h2 em { color: var(--mango); }
+.section__head p { font-size: 18px; max-width: 640px; }
+
+/* ============ FEATURES ============ */
+.features { max-width: 1320px; margin: 0 auto; padding: 0 32px 80px; }
+.features__grid {
+  display: grid; grid-template-columns: repeat(6,1fr); gap: 20px;
+}
+.feature {
+  grid-column: span 3;
+  background: linear-gradient(180deg, color-mix(in oklab, var(--bg-2) 80%, transparent), var(--bg-2));
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  min-height: 420px;
+  display: flex; flex-direction: column;
+  transition: transform .4s cubic-bezier(.2,.9,.2,1), border-color .3s;
+}
+.feature:hover { transform: translateY(-4px); border-color: var(--line-2); }
+.feature--wide { grid-column: span 6; min-height: 380px; flex-direction: row; }
+.feature--wide .feature__vis { flex: 1.2; }
+.feature--wide .feature__body { flex: 1; border-left: 1px solid var(--line); border-top: 0; }
+.feature__vis { flex: 1; padding: 28px; position: relative; overflow: hidden; }
+.feature__body { padding: 28px; border-top: 1px solid var(--line); }
+.feature__body h3 { font-size: 28px; margin-bottom: 10px; letter-spacing: -0.02em; }
+
+/* floor plan */
+.floor { position: relative; width: 100%; height: 100%; min-height: 260px;
+  background:
+    radial-gradient(circle at 50% 50%, color-mix(in oklab,var(--mint) 8%, transparent), transparent 60%),
+    var(--bg);
+  border: 1px solid var(--line); border-radius: var(--radius-sm); overflow: hidden;
+}
+.floor__axis {
+  position:absolute; inset: 0;
+  background:
+    linear-gradient(var(--line) 1px, transparent 1px) 0 0/30px 30px,
+    linear-gradient(90deg, var(--line) 1px, transparent 1px) 0 0/30px 30px;
+  opacity: .5;
+}
+.fr {
+  position: absolute; left: var(--x); top: var(--y);
+  width: 12%; height: 26%;
+  display:grid; place-items: center;
+  font-family: var(--font-mono); font-size: 11px;
+  border-radius: 6px;
+  border: 1px solid;
+  transition: transform .3s;
+}
+.fr:hover { transform: scale(1.05); z-index: 2; }
+.fr--clean { background: color-mix(in oklab, var(--mint) 18%, transparent); border-color: color-mix(in oklab, var(--mint) 45%, transparent); color: var(--mint); }
+.fr--dirty { background: color-mix(in oklab, var(--mango) 18%, transparent); border-color: color-mix(in oklab, var(--mango) 45%, transparent); color: var(--mango); }
+.fr--inprog { background: color-mix(in oklab, #6aa3ff 18%, transparent); border-color: color-mix(in oklab, #6aa3ff 45%, transparent); color: #6aa3ff; }
+.fr--blocked { background: color-mix(in oklab, #ff6b6b 18%, transparent); border-color: color-mix(in oklab, #ff6b6b 45%, transparent); color: #ff6b6b; }
+.walker {
+  position: absolute; width: 10px; height: 10px; border-radius: 50%;
+  background: var(--mint);
+  box-shadow: 0 0 0 4px color-mix(in oklab, var(--mint) 30%, transparent);
+  animation: walk 9s ease-in-out infinite;
+}
+@keyframes walk {
+  0%   { left: 10%; top: 30%; }
+  20%  { left: 34%; top: 30%; }
+  40%  { left: 60%; top: 30%; }
+  50%  { left: 60%; top: 65%; }
+  70%  { left: 34%; top: 70%; }
+  100% { left: 10%; top: 70%; }
+}
+.floor__legend {
+  position: absolute; bottom: 10px; left: 10px; right: 10px;
+  display: flex; gap: 14px; list-style: none; padding: 0 4px; margin: 0;
+  font-family: var(--font-mono); font-size: 10px; color: var(--ink-2);
+}
+.sw { width: 8px; height: 8px; border-radius: 2px; display: inline-block; margin-right: 4px; vertical-align: middle; }
+.sw--clean { background: var(--mint); }
+.sw--dirty { background: var(--mango); }
+.sw--inprog { background: #6aa3ff; }
+.sw--blocked { background: #ff6b6b; }
+
+/* tickets stack */
+.feature__vis--tickets { display:flex; flex-direction: column; justify-content: center; gap: 12px; padding: 40px; }
+.tk {
+  display:grid; grid-template-columns: auto 1fr auto; gap: 12px; align-items: center;
+  padding: 14px 16px; border-radius: 12px;
+  background: color-mix(in oklab, var(--bg) 60%, transparent);
+  border: 1px solid var(--line-2);
+  font-family: var(--font-mono); font-size: 12px;
+  animation: tkIn .8s var(--d,0s) ease both;
+}
+.tk--1 { --d: .1s; }
+.tk--2 { --d: .3s; transform: translateX(12px); }
+.tk--3 { --d: .5s; transform: translateX(-8px); }
+.tk__tag { padding: 3px 8px; border-radius: 4px; background: color-mix(in oklab, #6aa3ff 22%, transparent); color: #6aa3ff; font-size: 10px; text-transform: uppercase; }
+.tk__tag--mint { background: color-mix(in oklab, var(--mint) 22%, transparent); color: var(--mint); }
+.tk__tag--mango { background: color-mix(in oklab, var(--mango) 22%, transparent); color: var(--mango); }
+.tk b { font-weight: 500; letter-spacing: .04em; color: var(--ink); }
+.tk__eta { color: var(--ink-2); }
+@keyframes tkIn { from { opacity: 0; transform: translateY(14px); } }
+
+/* inventory */
+.feature__vis--inv { display:flex; flex-direction: column; justify-content: center; gap: 16px; padding: 40px; }
+.inv-row {
+  display: grid; grid-template-columns: 1fr auto;
+  gap: 6px 12px; padding-bottom: 8px;
+  font-size: 14px;
+  position: relative;
+}
+.inv-row b { font-family: var(--font-mono); font-weight: 500; }
+.inv-bar {
+  grid-column: 1 / -1; height: 3px; border-radius: 2px;
+  background: linear-gradient(to right, var(--mint) var(--w,0%), var(--line) var(--w,0%));
+}
+.inv-bar--mango { background: linear-gradient(to right, var(--mango) var(--w,0%), var(--line) var(--w,0%)); }
+.inv-bar--low { background: linear-gradient(to right, #ff6b6b var(--w,0%), var(--line) var(--w,0%)); }
+
+/* guest chat feature */
+.feature__vis--guest { display: grid; grid-template-columns: 1.2fr 1fr; gap: 20px; padding: 32px; }
+.g-ch { display:flex; flex-direction: column; gap: 8px; align-self: center; }
+.g-msg { padding: 10px 14px; border-radius: 14px; font-size: 13px; max-width: 90%; }
+.g-msg--in { background: color-mix(in oklab, var(--ink) 8%, transparent); border-radius: 14px 14px 14px 2px; }
+.g-msg--out { background: color-mix(in oklab, var(--mango) 20%, transparent); color: var(--mango); border-radius: 14px 14px 2px 14px; margin-left: auto; }
+.g-side { display: flex; flex-direction: column; gap: 10px; justify-content: center; }
+.g-kpi { padding: 12px 14px; border: 1px solid var(--line); border-radius: 10px; }
+.g-kpi span { font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; color: var(--ink-2); letter-spacing: .06em; }
+.g-kpi b { display:block; font-size: 22px; font-weight: 500; margin-top: 4px; }
+.g-kpi em { font-style: normal; font-family: var(--font-mono); font-size: 12px; color: var(--ink-2); margin-left: 2px; }
+
+/* ============ AI AGENT ============ */
+.agent { max-width: 1320px; margin: 0 auto; padding: 0 32px 80px; }
+.agent__wrap { display: grid; grid-template-columns: 1fr 1.1fr; gap: 40px; align-items: stretch; }
+.agent__copy { padding: 20px 0; }
+.agent__copy .kicker { margin-bottom: 18px; display: inline-flex; }
+.agent__copy h2 { font-size: clamp(36px, 4vw, 58px); line-height: 1; letter-spacing: -0.03em; margin-bottom: 20px; }
+.agent__copy h2 em { color: var(--mango); }
+.agent__copy p { font-size: 17px; max-width: 520px; margin-bottom: 24px; }
+.agent__bullets { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+.agent__bullets li { display: grid; grid-template-columns: auto 1fr; gap: 12px; align-items: start; font-size: 15px; color: var(--ink); padding: 12px 0; border-top: 1px solid var(--line); }
+.agent__bullets li::before {
+  content: ""; width: 8px; height: 8px; border-radius: 50%;
+  background: var(--mint); margin-top: 8px;
+  box-shadow: 0 0 0 4px color-mix(in oklab, var(--mint) 20%, transparent);
+}
+.agent__bullets li b { font-weight: 500; }
+.agent__bullets li span { display: block; color: var(--ink-2); font-size: 13px; margin-top: 2px; }
+
+.agent__chat {
+  background: linear-gradient(180deg, color-mix(in oklab, var(--bg-2) 70%, var(--mint) 4%), var(--bg-2));
+  border: 1px solid var(--line-2);
+  border-radius: var(--radius-lg);
+  padding: 28px; position: relative; overflow: hidden;
+  display: flex; flex-direction: column;
+  min-height: 560px;
+  box-shadow: var(--shadow);
+}
+.agent__chat::before {
+  content: ""; position: absolute; top: -40%; right: -30%; width: 80%; height: 80%;
+  background: radial-gradient(circle, color-mix(in oklab, var(--mango) 25%, transparent), transparent 60%);
+  filter: blur(40px);
+  pointer-events: none;
+}
+.agent__head {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 20px;
+  padding-bottom: 18px; border-bottom: 1px solid var(--line);
+}
+.agent__avatar {
+  width: 38px; height: 38px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--mint), var(--mango));
+  display: grid; place-items: center;
+  font-family: var(--font-mono); font-weight: 600; color: #062018; font-size: 14px;
+}
+.agent__name { font-weight: 500; }
+.agent__status { font-family: var(--font-mono); font-size: 11px; color: var(--mint); display: flex; align-items: center; gap: 6px; margin-top: 2px; }
+.agent__status::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--mint); animation: blink 1.2s infinite; }
+.agent__chat-tag { margin-left: auto; font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; padding: 4px 10px; border-radius: 999px; background: color-mix(in oklab, var(--mint) 18%, transparent); color: var(--mint); letter-spacing: .06em; }
+
+.agent__feed { flex: 1; display: flex; flex-direction: column; gap: 14px; overflow: hidden; position: relative; }
+.agent__msg {
+  max-width: 88%; padding: 12px 14px; border-radius: 14px;
+  font-size: 14px; line-height: 1.4;
+  opacity: 0; transform: translateY(8px);
+  animation: agentIn .5s ease forwards;
+}
+.agent__msg--user {
+  background: color-mix(in oklab, var(--ink) 8%, transparent);
+  border-radius: 14px 14px 14px 2px;
+  font-family: var(--font-mono); font-size: 13px;
+}
+.agent__msg--bot {
+  background: color-mix(in oklab, var(--mint) 22%, transparent);
+  color: var(--mint);
+  border-radius: 14px 14px 2px 14px;
+  margin-left: auto;
+  box-shadow: 0 6px 18px -6px color-mix(in oklab, var(--mint) 40%, transparent);
+}
+.agent__msg--bot b { color: var(--ink); font-weight: 500; }
+.agent__msg-who { font-size: 10px; font-family: var(--font-mono); text-transform: uppercase; letter-spacing: .08em; color: var(--ink-2); margin-bottom: 6px; }
+.agent__msg-who--you { text-align: left; }
+.agent__msg-who--bot { text-align: right; }
+@keyframes agentIn { to { opacity: 1; transform: none; } }
+
+.agent__chip-row { display: flex; gap: 6px; flex-wrap: wrap; }
+.agent__chip {
+  font-family: var(--font-mono); font-size: 11px;
+  padding: 5px 10px; border-radius: 999px;
+  background: color-mix(in oklab, var(--bg) 50%, transparent);
+  border: 1px solid var(--line-2);
+  color: var(--ink-2);
+}
+.agent__quick-reply {
+  margin-top: auto; padding-top: 16px;
+  display: flex; gap: 8px; flex-wrap: wrap;
+  border-top: 1px solid var(--line);
+}
+.agent__quick-reply button {
+  font-family: var(--font-mono); font-size: 11px;
+  padding: 7px 12px; border-radius: 999px;
+  background: transparent; border: 1px solid var(--line-2);
+  color: var(--ink-2); transition: all .15s;
+}
+.agent__quick-reply button:hover { color: var(--mint); border-color: var(--mint); }
+
+/* ============ CLEANER LIST ============ */
+.cleaner { max-width: 1320px; margin: 0 auto; padding: 0 32px 80px; }
+.cleaner__wrap { display: grid; grid-template-columns: 1.15fr 1fr; gap: 48px; align-items: center; }
+.cleaner__phone {
+  width: 320px; margin: 0 auto;
+  border-radius: 42px; padding: 10px;
+  background: linear-gradient(180deg, #1a1a1a, #0a0a0a);
+  border: 1px solid #222;
+  box-shadow: 0 40px 80px -20px rgba(0,0,0,.6), 0 0 0 1px #000;
+  position: relative;
+}
+.cleaner__phone::before {
+  content: ""; position: absolute; top: 16px; left: 50%; transform: translateX(-50%);
+  width: 100px; height: 26px; background: #000; border-radius: 999px; z-index: 3;
+}
+.cleaner__screen {
+  border-radius: 32px; overflow: hidden;
+  background: var(--bg);
+  height: 640px; display: flex; flex-direction: column;
+  position: relative;
+}
+.cleaner__status {
+  padding: 14px 20px 6px; display: flex; justify-content: space-between;
+  font-family: var(--font-mono); font-size: 11px; color: var(--ink-2);
+}
+.cleaner__top {
+  padding: 24px 18px 14px;
+}
+.cleaner__hello { font-family: var(--font-mono); font-size: 11px; color: var(--ink-2); text-transform: uppercase; letter-spacing: .08em; }
+.cleaner__name { font-size: 22px; font-weight: 500; margin-top: 4px; letter-spacing: -0.02em; }
+.cleaner__progress {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 14px; padding: 12px 14px; border-radius: 12px;
+  background: color-mix(in oklab, var(--mint) 14%, transparent);
+  border: 1px solid color-mix(in oklab, var(--mint) 30%, transparent);
+  font-size: 13px;
+}
+.cleaner__progress b { color: var(--mint); font-weight: 500; }
+.cleaner__list { flex: 1; padding: 8px 14px 14px; display: flex; flex-direction: column; gap: 8px; overflow: hidden; }
+.cleaner__item {
+  display: grid; grid-template-columns: auto 1fr auto; gap: 12px; align-items: center;
+  padding: 14px 14px; border-radius: 14px;
+  background: var(--bg-2); border: 1px solid var(--line);
+  transition: transform .3s, border-color .3s;
+  position: relative; overflow: hidden;
+}
+.cleaner__item:hover { transform: translateX(4px); border-color: var(--line-2); }
+.cleaner__item::before {
+  content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+  background: var(--prio-color, var(--ink-2));
+}
+.cleaner__item--p1 { --prio-color: #ff6b6b; }
+.cleaner__item--p2 { --prio-color: var(--mango); }
+.cleaner__item--p3 { --prio-color: var(--mint); }
+.cleaner__prio {
+  font-family: var(--font-mono); font-size: 10px; font-weight: 600;
+  padding: 3px 6px; border-radius: 4px;
+  background: color-mix(in oklab, var(--prio-color) 20%, transparent);
+  color: var(--prio-color);
+}
+.cleaner__room { font-weight: 500; font-size: 15px; letter-spacing: -0.01em; }
+.cleaner__info { font-family: var(--font-mono); font-size: 10px; color: var(--ink-2); margin-top: 2px; display: flex; gap: 8px; flex-wrap: wrap; }
+.cleaner__info span { display: inline-flex; align-items: center; gap: 3px; }
+.cleaner__time { font-family: var(--font-mono); font-size: 11px; color: var(--ink-2); text-align: right; }
+.cleaner__time b { display: block; color: var(--ink); font-weight: 500; font-size: 13px; }
+.cleaner__done { color: var(--mint); font-size: 18px; }
+.cleaner__item--done { opacity: .5; }
+.cleaner__item--done .cleaner__room { text-decoration: line-through; }
+
+.cleaner__copy h2 { font-size: clamp(36px, 4vw, 58px); line-height: 1; letter-spacing: -0.03em; margin-bottom: 20px; }
+.cleaner__copy h2 em { color: var(--mint); }
+.cleaner__copy p { font-size: 17px; margin-bottom: 28px; max-width: 480px; }
+.cleaner__feat {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+}
+.cleaner__feat div {
+  padding: 18px; border-radius: 12px;
+  background: var(--bg-2); border: 1px solid var(--line);
+}
+.cleaner__feat b { display: block; font-size: 15px; font-weight: 500; margin-bottom: 4px; }
+.cleaner__feat span { color: var(--ink-2); font-size: 13px; }
+.cleaner__feat em { font-style: normal; color: var(--mango); font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: .06em; display: block; margin-bottom: 8px; }
+
+@media (max-width: 960px) {
+  .agent__wrap, .cleaner__wrap { grid-template-columns: 1fr; }
+  .cleaner__feat { grid-template-columns: 1fr; }
+  .agent__chat { min-height: 480px; }
+}
+
+/* ============ HOW IT WORKS ============ */
+.how { max-width: 1320px; margin: 0 auto; padding: 0 32px 80px; }
+.steps {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
+  list-style: none; padding: 0; margin: 0;
+  counter-reset: steps;
+}
+.step {
+  padding: 24px; border-radius: var(--radius);
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  display: flex; flex-direction: column; gap: 12px;
+  position: relative; overflow: hidden;
+  min-height: 320px;
+  transition: transform .3s;
+}
+.step:hover { transform: translateY(-4px); }
+.step__n { font-family: var(--font-mono); font-size: 12px; color: var(--mint); }
+.step h3 { font-size: 22px; }
+.step__viz { margin-top: auto; height: 110px; position: relative; }
+
+.pms { display:grid; grid-template-columns: repeat(2,1fr); gap: 6px; position: relative; }
+.pms span {
+  padding: 8px; border: 1px solid var(--line-2); border-radius: 6px;
+  font-family: var(--font-mono); font-size: 11px; text-align: center;
+  background: color-mix(in oklab, var(--bg) 50%, transparent);
+}
+.pms__conn {
+  position: absolute; left: 50%; top: -6px; bottom: -6px; width: 2px;
+  background: linear-gradient(var(--mint), transparent);
+  transform: translateX(-50%);
+  animation: pmsPulse 3s ease-in-out infinite;
+}
+@keyframes pmsPulse { 0%,100% { opacity: .3; } 50% { opacity: 1; } }
+
+.blueprint {
+  position: relative; width: 100%; height: 100%;
+  background: color-mix(in oklab, var(--mint) 4%, var(--bg));
+  border-radius: 8px; overflow: hidden;
+  border: 1px solid var(--line);
+}
+.bp-grid { position:absolute; inset:0;
+  background:
+    linear-gradient(var(--line) 1px, transparent 1px) 0 0/14px 14px,
+    linear-gradient(90deg, var(--line) 1px, transparent 1px) 0 0/14px 14px;
+}
+.bp-box {
+  position: absolute; left: var(--x); top: var(--y); width: var(--w); height: var(--h);
+  border: 1px dashed var(--mint);
+  background: color-mix(in oklab, var(--mint) 12%, transparent);
+  border-radius: 3px;
+  animation: bpIn .6s ease both;
+}
+.bp-box:nth-child(2) { animation-delay: .1s; }
+.bp-box:nth-child(3) { animation-delay: .2s; }
+.bp-box:nth-child(4) { animation-delay: .3s; }
+.bp-box:nth-child(5) { animation-delay: .4s; }
+@keyframes bpIn { from { opacity: 0; transform: scale(.9); } }
+
+.team { display:flex; gap: 0; }
+.team__av {
+  width: 48px; height: 48px; border-radius: 50%;
+  display:grid; place-items:center; font-weight: 600; font-size: 14px; color: #062018;
+  margin-left: -12px;
+  animation: avIn .6s var(--d) ease both;
+}
+.team__av:first-child { margin-left: 0; }
+@keyframes avIn { from { opacity: 0; transform: scale(.5); } }
+
+.op { position: relative; width: 100%; height: 100%; display: grid; place-items: center; }
+.op__dot { width: 12px; height: 12px; border-radius: 50%; background: var(--mint); z-index: 2; position: relative; }
+.op__pulse {
+  position: absolute; top:50%; left:50%; width: 12px; height: 12px; border-radius: 50%;
+  border: 1px solid var(--mint);
+  animation: ripple 2s ease-out infinite;
+}
+.op__pulse--2 { animation-delay: 1s; }
+@keyframes ripple {
+  0% { transform: translate(-50%,-50%) scale(1); opacity: 1; }
+  100% { transform: translate(-50%,-50%) scale(6); opacity: 0; }
+}
+
+/* ============ METRICS ============ */
+.metrics { padding: 80px 32px; max-width: 1320px; margin: 0 auto; }
+.metrics__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.kpi {
+  padding: 36px 28px; border-radius: var(--radius);
+  background: linear-gradient(180deg, color-mix(in oklab, var(--bg-2) 80%, transparent), var(--bg-2));
+  border: 1px solid var(--line);
+  position: relative; overflow: hidden;
+}
+.kpi::before {
+  content: ""; position: absolute; top: -50%; right: -30%; width: 150%; height: 150%;
+  background: radial-gradient(ellipse at top right, color-mix(in oklab, var(--mint) 14%, transparent), transparent 60%);
+  pointer-events: none;
+}
+.kpi:nth-child(2n)::before { background: radial-gradient(ellipse at top right, color-mix(in oklab, var(--mango) 14%, transparent), transparent 60%); }
+.kpi b {
+  font-size: clamp(56px, 5.5vw, 88px); font-weight: 400; letter-spacing: -0.04em; font-family: var(--font-serif); font-style: italic;
+  color: var(--mint); display: inline-block;
+}
+.kpi:nth-child(2n) b { color: var(--mango); }
+.kpi i { font-family: var(--font-mono); font-style: normal; font-size: 20px; color: var(--ink-2); margin-left: 4px; }
+.kpi span { display: block; margin-top: 12px; font-size: 14px; color: var(--ink-2); max-width: 220px; }
+
+/* ============ TESTIMONIALS ============ */
+.testi { max-width: 1320px; margin: 0 auto; padding: 0 32px 80px; }
+.testi__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.tcard {
+  margin: 0; padding: 28px; border-radius: var(--radius);
+  background: var(--bg-2); border: 1px solid var(--line);
+  display: flex; flex-direction: column; gap: 24px;
+  transition: transform .3s, border-color .3s;
+  min-height: 260px;
+}
+.tcard:hover { transform: translateY(-4px); border-color: color-mix(in oklab, var(--mint) 30%, var(--line-2)); }
+.tcard blockquote { margin: 0; font-size: 20px; line-height: 1.3; letter-spacing: -0.02em; flex: 1; font-family: var(--font-serif); }
+.tcard figcaption { display: flex; align-items: center; gap: 12px; }
+.tcard__av { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; font-weight: 600; color: #062018; font-size: 13px; }
+.tcard figcaption b { display: block; font-weight: 500; font-size: 14px; }
+.tcard figcaption span { font-size: 13px; color: var(--ink-2); }
+.tcard--mango:hover { border-color: color-mix(in oklab, var(--mango) 30%, var(--line-2)); }
+
+/* ============ PRICING ============ */
+.pricing { max-width: 1320px; margin: 0 auto; padding: 0 32px 80px; }
+.plans { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: stretch; }
+.plan {
+  padding: 32px; border-radius: var(--radius);
+  background: var(--bg-2); border: 1px solid var(--line);
+  display: flex; flex-direction: column; gap: 20px;
+  transition: transform .3s;
+}
+.plan:hover { transform: translateY(-4px); }
+.plan header h3 { font-size: 24px; }
+.plan header span { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; color: var(--ink-2); letter-spacing: .08em; }
+.plan__price b { font-size: 56px; font-family: var(--font-serif); font-style: italic; font-weight: 400; letter-spacing: -0.02em; }
+.plan__price em { font-family: var(--font-mono); font-style: normal; font-size: 13px; color: var(--ink-2); margin-left: 6px; }
+.plan ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; font-size: 14px; color: var(--ink-2); border-top: 1px solid var(--line); padding-top: 20px; flex: 1; }
+.plan ul li::before { content: "✓ "; color: var(--mint); font-family: var(--font-mono); margin-right: 6px; }
+.plan--featured {
+  background: linear-gradient(180deg, color-mix(in oklab, var(--mint) 10%, var(--bg-2)), var(--bg-2));
+  border-color: color-mix(in oklab, var(--mint) 40%, var(--line-2));
+  position: relative;
+}
+.plan--featured::before {
+  content: ""; position: absolute; inset: -1px; border-radius: inherit;
+  background: linear-gradient(135deg, color-mix(in oklab, var(--mint) 40%, transparent), transparent 60%);
+  z-index: -1; filter: blur(20px);
+}
+
+/* ============ FAQ ============ */
+.faq { max-width: 880px; margin: 0 auto; padding: 0 32px 80px; }
+.faq__list { display: flex; flex-direction: column; gap: 8px; }
+.faq__item {
+  background: var(--bg-2); border: 1px solid var(--line);
+  border-radius: var(--radius-sm); padding: 0;
+  overflow: hidden;
+}
+.faq__item summary {
+  padding: 20px 24px; cursor: pointer; list-style: none;
+  font-size: 18px; font-weight: 500; letter-spacing: -0.01em;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.faq__item summary::after { content: "+"; color: var(--mint); font-size: 24px; transition: transform .3s; }
+.faq__item[open] summary::after { transform: rotate(45deg); }
+.faq__item summary::-webkit-details-marker { display: none; }
+.faq__item p { padding: 0 24px 20px; color: var(--ink-2); }
+
+/* ============ CTA ============ */
+.cta { padding: 40px 32px 120px; max-width: 1320px; margin: 0 auto; }
+.cta__card {
+  padding: 80px 40px; border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, color-mix(in oklab, var(--mint) 22%, var(--bg-2)), color-mix(in oklab, var(--mango) 18%, var(--bg-2)));
+  border: 1px solid var(--line-2);
+  text-align: center;
+  position: relative; overflow: hidden;
+}
+.cta__card::before {
+  content: ""; position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 20% 30%, color-mix(in oklab, var(--mint) 40%, transparent), transparent 40%),
+    radial-gradient(circle at 80% 70%, color-mix(in oklab, var(--mango) 40%, transparent), transparent 40%);
+  filter: blur(40px); opacity: .6;
+  animation: ctaShift 10s ease-in-out infinite;
+}
+@keyframes ctaShift { 50% { transform: scale(1.1) rotate(8deg); } }
+.cta__card > * { position: relative; z-index: 1; }
+.cta__card h2 { font-size: clamp(40px, 5.5vw, 76px); line-height: 1; letter-spacing: -0.03em; }
+.cta__card h2 em { color: var(--mango); }
+.cta__card p { margin: 18px 0 32px; font-size: 18px; color: color-mix(in oklab, var(--ink) 90%, transparent); }
+.cta__row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+/* ============ FOOTER ============ */
+.foot {
+  border-top: 1px solid var(--line);
+  padding: 60px 32px 0;
+  background: var(--bg);
+  position: relative; overflow: hidden;
+}
+.foot__top {
+  display: grid; grid-template-columns: 1.1fr 2fr; gap: 40px;
+  max-width: 1320px; margin: 0 auto;
+}
+.foot__brand b { font-size: 18px; display: block; margin: 8px 0; }
+.foot__brand p { font-size: 14px; max-width: 260px; }
+.foot__cols { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
+.foot__cols h4 { font-size: 13px; font-family: var(--font-mono); text-transform: uppercase; color: var(--ink-2); letter-spacing: .06em; margin-bottom: 14px; }
+.foot__cols a { display: block; font-size: 14px; color: var(--ink); padding: 3px 0; opacity: .7; transition: opacity .2s, color .2s; }
+.foot__cols a:hover { opacity: 1; color: var(--mint); }
+.foot__social { display: flex; gap: 8px; margin-top: 12px; }
+.foot__social a {
+  width: 32px; height: 32px; border-radius: 50%;
+  display: grid; place-items: center;
+  border: 1px solid var(--line-2); font-size: 12px;
+  opacity: .7;
+}
+.foot__social a:hover { opacity: 1; border-color: var(--mint); color: var(--mint); }
+.foot__bot {
+  display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+  padding: 32px 0 24px;
+  margin-top: 48px;
+  border-top: 1px solid var(--line);
+  font-size: 13px; color: var(--ink-2);
+  max-width: 1320px; margin-left: auto; margin-right: auto;
+}
+.foot__bot a:hover { color: var(--mint); }
+
+.foot__mark {
+  font-size: clamp(80px, 20vw, 280px);
+  font-weight: 500; letter-spacing: -0.05em;
+  line-height: .85; margin: 0 -10px -30px;
+  background: linear-gradient(180deg, color-mix(in oklab, var(--mint) 40%, transparent), transparent);
+  -webkit-background-clip: text; background-clip: text;
+  color: transparent;
+  text-align: center;
+  user-select: none;
+}
+
+/* ============ REVEAL ============ */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s cubic-bezier(.2,.9,.2,1), transform .8s cubic-bezier(.2,.9,.2,1); }
+.reveal.is-in { opacity: 1; transform: none; }
+.reveal-word {
+  display: inline-block; opacity: 0;
+  transform: translateY(30px);
+  animation: wordIn 1s cubic-bezier(.2,.9,.2,1) forwards;
+}
+.reveal-word:nth-of-type(1) { animation-delay: .05s; }
+.reveal-word:nth-of-type(2) { animation-delay: .15s; }
+.reveal-word:nth-of-type(3) { animation-delay: .25s; }
+.reveal-word:nth-of-type(4) { animation-delay: .35s; }
+@keyframes wordIn { to { opacity: 1; transform: none; } }
+
+/* ============ TWEAKS PANEL ============ */
+.tweaks {
+  position: fixed; right: 20px; bottom: 20px; z-index: 100;
+  width: 280px;
+  background: var(--bg-2); border: 1px solid var(--line-2);
+  border-radius: var(--radius); box-shadow: var(--shadow);
+  padding: 16px; backdrop-filter: blur(16px);
+}
+.tweaks[hidden] { display: none; }
+.tweaks header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+.tweaks header b { font-size: 14px; }
+#tweaks-close { font-size: 14px; color: var(--ink-2); padding: 4px 8px; border-radius: 4px; }
+#tweaks-close:hover { background: var(--line); }
+.tweaks__row { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--line); }
+.tweaks__row:last-child { border-bottom: 0; }
+.tweaks__row label { font-size: 12px; color: var(--ink-2); font-family: var(--font-mono); text-transform: uppercase; letter-spacing: .06em; }
+.seg { display: flex; background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 2px; }
+.seg button { font-size: 11px; padding: 4px 8px; border-radius: 4px; color: var(--ink-2); transition: all .15s; }
+.seg button.is-active { background: var(--mint); color: #062018; }
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 960px) {
+  .hero { grid-template-columns: 1fr; padding: 40px 20px; min-height: auto; gap: 60px; }
+  .stage { height: 480px; order: -1; }
+  .stage__scene { transform: rotateX(4deg) rotateY(-8deg); }
+  .panel--main { width: 90%; height: 330px; }
+  .panel--ticket { width: 220px; right: 0; }
+  .panel--chat { width: 220px; left: 0; }
+  .panel--chart { display: none; }
+  .nav__menu { display: none; }
+  .nav { padding: 14px 20px; }
+  .nav__cta .btn--ghost { display: none; }
+  .section__head { padding: 0 20px; margin: 80px auto 40px; }
+  .features, .how, .metrics, .testi, .pricing, .faq, .cta { padding-left: 20px; padding-right: 20px; }
+  .features__grid { grid-template-columns: 1fr; }
+  .feature, .feature--wide { grid-column: span 1; min-height: 380px; flex-direction: column; }
+  .feature--wide .feature__body { border-left: 0; border-top: 1px solid var(--line); }
+  .steps { grid-template-columns: 1fr 1fr; }
+  .metrics__grid { grid-template-columns: 1fr 1fr; }
+  .testi__grid, .plans { grid-template-columns: 1fr; }
+  .foot__top { grid-template-columns: 1fr; }
+  .foot__cols { grid-template-columns: 1fr 1fr; }
+  .hero__title { font-size: clamp(40px, 11vw, 64px); }
+}
+@media (max-width: 560px) {
+  .steps { grid-template-columns: 1fr; }
+  .metrics__grid { grid-template-columns: 1fr; }
+  .foot__cols { grid-template-columns: 1fr 1fr; gap: 24px; }
+  .panel--ticket { width: 180px; }
+  .panel--chat { width: 180px; }
+  .cta__card { padding: 48px 20px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .001s !important; transition-duration: .001s !important; }
+}
+
+</style>
+
+<style id="print-overrides">
+@page { size: A4; margin: 10mm; }
+@media print {
+  html, body { background: #0b1410 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .field, .nav, .tweaks, .marquee { display: none !important; }
+  .hero { padding-top: 20px !important; min-height: auto !important; page-break-after: always; break-after: page; grid-template-columns: 1fr 1fr !important; gap: 20px !important; }
+  .stage { height: 460px !important; }
+  .stage__scene { transform: none !important; position: relative !important; }
+  .panel { animation: none !important; }
+  .panel--main { position: relative !important; transform: none !important; top: auto !important; left: auto !important; width: 100% !important; height: 360px !important; margin: 0 !important; }
+  .panel--ticket, .panel--chat, .panel--chart { display: none !important; }
+  .reveal, .reveal-word { opacity: 1 !important; transform: none !important; animation: none !important; }
+  .features, .agent, .cleaner, .how, .metrics, .testi, .pricing, .faq, .cta { page-break-inside: avoid; break-inside: avoid; page-break-before: always; break-before: page; padding-top: 0 !important; padding-bottom: 20px !important; }
+  .section__head { margin: 20px auto 20px !important; }
+  .features__grid, .steps, .metrics__grid, .testi__grid, .plans, .faq__list, .agent__wrap, .cleaner__wrap { page-break-inside: avoid; break-inside: avoid; }
+  .feature, .step, .kpi, .tcard, .plan, .faq__item { page-break-inside: avoid; break-inside: avoid; }
+  .cta__card { page-break-inside: avoid; break-inside: avoid; }
+  .foot { page-break-before: always; break-before: page; }
+  .foot__mark { font-size: 80px !important; margin: 20px 0 !important; }
+  * { animation: none !important; transition: none !important; }
+  .dot, .chat__typing span, .walker, .ticket__progress-fill, .op__pulse, .agent__status::before, .panel__pill::before { animation: none !important; }
+  .faq__item { padding: 12px 0 !important; border: 1px solid var(--line) !important; }
+  .faq__item p { padding: 0 24px 12px !important; }
+  .faq__item summary::after { display: none; }
+  details:not([open]) > *:not(summary) { display: block !important; }
+}
+</style>
+
+</head>
+<body data-theme="dark" data-hero="dashboard">
+
+<!-- Grain + gradient field -->
+<div class="field" aria-hidden="true">
+  <div class="field__blob field__blob--a"></div>
+  <div class="field__blob field__blob--b"></div>
+  <div class="field__blob field__blob--c"></div>
+  <div class="field__grid"></div>
+  <div class="field__noise"></div>
+</div>
+
+<!-- NAV -->
+<header class="nav" id="nav">
+  <a class="nav__brand" href="#top" aria-label="Mintmango home">
+    <span class="logo" aria-hidden="true">
+      <svg viewBox="0 0 32 32" width="28" height="28">
+        <defs>
+          <linearGradient id="lg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#8be8c3"/>
+            <stop offset="1" stop-color="#ffb058"/>
+          </linearGradient>
+        </defs>
+        <path d="M16 2 C22 6 28 10 28 18 C28 25 22 30 16 30 C10 30 4 25 4 18 C4 10 10 6 16 2 Z" fill="url(#lg)"/>
+        <path d="M10 20 C13 14 19 14 22 20" stroke="#0b1410" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+      </svg>
+    </span>
+    <span class="nav__word">mintmango</span>
+    <span class="nav__tag">es</span>
+  </a>
+  <nav class="nav__menu" aria-label="primary">
+    <a href="#producto">Product</a>
+    <a href="#agente">AI Agent</a>
+    <a href="#cleaner">Cleaner</a>
+    <a href="#como-funciona">How it works</a>
+    <a href="#metricas">Metrics</a>
+    <a href="#testimonios">Customers</a>
+    <a href="#precios">Pricing</a>
+  </nav>
+  <div class="nav__cta">
+    <button class="btn btn--ghost" id="btn-demo">Watch demo</button>
+    <button class="btn btn--primary">Start free <span aria-hidden="true">→</span></button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__inner">
+      <div class="hero__eyebrow reveal">
+        <span class="dot"></span>
+        <span>AI Agent · live in 180 hotels</span>
+      </div>
+      <h1 class="hero__title">
+        <span class="reveal-word">An</span>
+        <span class="reveal-word">AI</span>
+        <span class="reveal-word"><em>teammate</em></span><br/>
+        <span class="reveal-word">for your</span>
+        <span class="reveal-word">entire hotel.</span>
+      </h1>
+      <p class="hero__sub reveal">
+        Mintmango is the agent that always stays in the loop: it builds the roster,
+        splits tasks across cleaners, front desk, houseman, maintenance,
+        supervisor and admin — and answers questions like another employee.
+      </p>
+      <div class="hero__cta reveal">
+        <button class="btn btn--primary btn--lg">Start 14-day trial <span aria-hidden="true">→</span></button>
+        <button class="btn btn--link">
+          <span class="play" aria-hidden="true"></span>
+          Watch demo · 2 min
+        </button>
+      </div>
+      <div class="hero__trust reveal" aria-label="Hotels that trust Mintmango">
+        <span>Integrates with</span>
+        <ul>
+          <li>Cloudbeds</li><li>Mews</li><li>Opera</li><li>Stayntouch</li><li>Apaleo</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Animated dashboard stage -->
+    <div class="stage" aria-hidden="true">
+      <div class="stage__scene" id="stage-scene">
+        <!-- Main dashboard card -->
+        <div class="panel panel--main">
+          <div class="panel__bar">
+            <span class="panel__dot"></span><span class="panel__dot"></span><span class="panel__dot"></span>
+            <span class="panel__title">Operations · Floor 4</span>
+            <span class="panel__pill">LIVE</span>
+          </div>
+          <div class="panel__body">
+            <div class="room-grid">
+              <!-- rooms generated by JS -->
+            </div>
+            <div class="panel__meta">
+              <div class="meta">
+                <span class="meta__k">Occupancy</span>
+                <span class="meta__v"><b id="occ">86</b>%</span>
+                <div class="bar"><div class="bar__fill" style="width:86%"></div></div>
+              </div>
+              <div class="meta">
+                <span class="meta__k">Check-outs today</span>
+                <span class="meta__v"><b>42</b></span>
+                <div class="bar"><div class="bar__fill bar__fill--mango" style="width:62%"></div></div>
+              </div>
+              <div class="meta">
+                <span class="meta__k">Avg. turnaround</span>
+                <span class="meta__v"><b>27</b>min</span>
+                <div class="bar"><div class="bar__fill bar__fill--mint" style="width:78%"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ticket float card -->
+        <div class="panel panel--ticket">
+          <div class="ticket__head">
+            <span class="ticket__code">#MX-2041</span>
+            <span class="ticket__tag">Maintenance</span>
+          </div>
+          <div class="ticket__title">Air conditioning · Room 412</div>
+          <div class="ticket__row">
+            <span class="avatar" style="background:#ffb058">DR</span>
+            <span class="avatar" style="background:#8be8c3">MS</span>
+            <span class="ticket__eta">ETA 8 min</span>
+          </div>
+          <div class="ticket__progress">
+            <div class="ticket__progress-fill"></div>
+          </div>
+        </div>
+
+        <!-- Chat float card -->
+        <div class="panel panel--chat">
+          <div class="chat__line"><span class="chat__who">Guest · 1203</span></div>
+          <div class="chat__bubble">Could you bring two more towels? 🙏</div>
+          <div class="chat__line chat__line--bot"><span class="chat__who">Mintmango</span><span class="chat__bot-tag">auto</span></div>
+          <div class="chat__bubble chat__bubble--bot">Sent to housekeeping · ETA ~6 min.</div>
+          <div class="chat__typing"><span></span><span></span><span></span></div>
+        </div>
+
+        <!-- Chart float -->
+        <div class="panel panel--chart">
+          <div class="chart__head">
+            <span>Time/clean</span>
+            <span class="chart__delta">−18%</span>
+          </div>
+          <svg viewBox="0 0 220 80" class="chart__svg" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="chartg" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0" stop-color="#8be8c3" stop-opacity=".5"/>
+                <stop offset="1" stop-color="#8be8c3" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <path id="chart-area" d="M0,60 L30,55 L60,58 L90,45 L120,48 L150,30 L180,35 L220,22 L220,80 L0,80 Z" fill="url(#chartg)"/>
+            <path id="chart-line" d="M0,60 L30,55 L60,58 L90,45 L120,48 L150,30 L180,35 L220,22" fill="none" stroke="#8be8c3" stroke-width="2"/>
+          </svg>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Marquee -->
+  <section class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      <span>★ Real-time housekeeping</span>
+      <span>★ Smart tickets</span>
+      <span>★ Inventory by floor</span>
+      <span>★ Omnichannel guest chat</span>
+      <span>★ Optimized routes</span>
+      <span>★ PMS integrated</span>
+      <span>★ Real-time housekeeping</span>
+      <span>★ Smart tickets</span>
+      <span>★ Inventory by floor</span>
+      <span>★ Omnichannel guest chat</span>
+      <span>★ Optimized routes</span>
+      <span>★ PMS integrated</span>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features" id="producto">
+    <div class="section__head reveal">
+      <span class="kicker">Product</span>
+      <h2>One dashboard. <em>The whole operation.</em></h2>
+      <p>Mintmango replaces spreadsheets, WhatsApp groups, radios and paper boards. Your team sees the same thing, at the same time, from any device.</p>
+    </div>
+    <div class="features__grid">
+      <article class="feature feature--wide reveal">
+        <div class="feature__vis feature__vis--floor">
+          <div class="floor">
+            <div class="floor__axis"></div>
+            <!-- rooms floor-plan -->
+            <div class="fr fr--clean" style="--x:4%;--y:20%">401</div>
+            <div class="fr fr--dirty" style="--x:18%;--y:20%">402</div>
+            <div class="fr fr--inprog" style="--x:32%;--y:20%">403</div>
+            <div class="fr fr--clean" style="--x:46%;--y:20%">404</div>
+            <div class="fr fr--blocked" style="--x:60%;--y:20%">405</div>
+            <div class="fr fr--clean" style="--x:74%;--y:20%">406</div>
+            <div class="fr fr--dirty" style="--x:4%;--y:60%">407</div>
+            <div class="fr fr--clean" style="--x:18%;--y:60%">408</div>
+            <div class="fr fr--inprog" style="--x:32%;--y:60%">409</div>
+            <div class="fr fr--clean" style="--x:46%;--y:60%">410</div>
+            <div class="fr fr--dirty" style="--x:60%;--y:60%">411</div>
+            <div class="fr fr--clean" style="--x:74%;--y:60%">412</div>
+            <div class="walker" aria-hidden="true"></div>
+          </div>
+          <ul class="floor__legend">
+            <li><i class="sw sw--clean"></i>Clean</li>
+            <li><i class="sw sw--dirty"></i>Pending</li>
+            <li><i class="sw sw--inprog"></i>In progress</li>
+            <li><i class="sw sw--blocked"></i>Blocked</li>
+          </ul>
+        </div>
+        <div class="feature__body">
+          <h3>Live housekeeping</h3>
+          <p>A breathing map of your hotel. Every room changes state with a tap — routes recalculated by priority and proximity.</p>
+        </div>
+      </article>
+
+      <article class="feature reveal">
+        <div class="feature__vis feature__vis--tickets">
+          <div class="tk tk--1">
+            <span class="tk__tag">Plumbing</span>
+            <b>#MX-2041</b>
+            <span class="tk__eta">ETA 8m</span>
+          </div>
+          <div class="tk tk--2">
+            <span class="tk__tag tk__tag--mint">Cleaning</span>
+            <b>#HK-1888</b>
+            <span class="tk__eta">ETA 3m</span>
+          </div>
+          <div class="tk tk--3">
+            <span class="tk__tag tk__tag--mango">Amenities</span>
+            <b>#AM-0221</b>
+            <span class="tk__eta">ETA 12m</span>
+          </div>
+        </div>
+        <div class="feature__body">
+          <h3>Smart tickets</h3>
+          <p>Detect, prioritize, assign. SLAs by category, automatic escalation and per-shift traceability.</p>
+        </div>
+      </article>
+
+      <article class="feature reveal">
+        <div class="feature__vis feature__vis--inv">
+          <div class="inv-row"><span>White towels</span><b>248</b><div class="inv-bar" style="--w:82%"></div></div>
+          <div class="inv-row"><span>Spa amenities</span><b>112</b><div class="inv-bar inv-bar--mango" style="--w:34%"></div></div>
+          <div class="inv-row"><span>King sheets</span><b>86</b><div class="inv-bar" style="--w:61%"></div></div>
+          <div class="inv-row"><span>Courtesy coffee</span><b>9</b><div class="inv-bar inv-bar--low" style="--w:12%"></div></div>
+        </div>
+        <div class="feature__body">
+          <h3>Inventory by floor</h3>
+          <p>Never run an empty cart again. Replenishment suggested from occupancy and historical consumption.</p>
+        </div>
+      </article>
+
+      <article class="feature feature--wide reveal">
+        <div class="feature__vis feature__vis--guest">
+          <div class="g-ch">
+            <div class="g-msg g-msg--in">Hi, I lost the keycard for 812.</div>
+            <div class="g-msg g-msg--out">Re-issued · valid until 23:00 ✓</div>
+            <div class="g-msg g-msg--in">Thank you!</div>
+            <div class="g-msg g-msg--out">If you need anything else, we’re here 🥭</div>
+          </div>
+          <div class="g-side">
+            <div class="g-kpi"><span>Avg. response</span><b>1<em>m</em>42<em>s</em></b></div>
+            <div class="g-kpi"><span>CSAT</span><b>4.8<em>/5</em></b></div>
+            <div class="g-kpi"><span>Channels</span><b>6</b></div>
+          </div>
+        </div>
+        <div class="feature__body">
+          <h3>Guest, one single thread</h3>
+          <p>WhatsApp, email, SMS, web and front desk — one conversation per guest, with translation and assisted replies.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- AI AGENT -->
+  <section class="agent" id="agente">
+    <div class="agent__wrap">
+      <div class="agent__copy reveal">
+        <span class="kicker">AI Agent</span>
+        <h2>A <em>teammate</em> that never loses the thread.</h2>
+        <p>
+          Ask how many rooms are left to clean, report an issue by voice,
+          request tomorrow’s roster — done. Mintmango builds shifts,
+          splits tasks and closes tickets while you sleep.
+        </p>
+        <ul class="agent__bullets">
+          <li><div><b>Automatic rostering</b><span>Cleaners, front desk, houseman, maintenance, supervisor and admin — balanced by load and skill.</span></div></li>
+          <li><div><b>Report by chat or voice</b><span>“Shower in 812 is broken” → ticket created, assigned, with ETA.</span></div></li>
+          <li><div><b>Ask it anything</b><span>Pending rooms, Monday occupancy, VIP guest birthdays.</span></div></li>
+          <li><div><b>Learns your operation</b><span>Every shift sharpens the agent on your hotel’s patterns and timings.</span></div></li>
+        </ul>
+      </div>
+
+      <div class="agent__chat reveal">
+        <div class="agent__head">
+          <div class="agent__avatar">M</div>
+          <div>
+            <div class="agent__name">Mango · AI agent</div>
+            <div class="agent__status">Online · learning</div>
+          </div>
+          <span class="agent__chat-tag">LIVE</span>
+        </div>
+        <div class="agent__feed" id="agent-feed">
+          <!-- conversational demo, cycled by JS -->
+        </div>
+        <div class="agent__quick-reply">
+          <button>How many rooms left?</button>
+          <button>Tomorrow’s roster</button>
+          <button>Report issue</button>
+          <button>Occupancy del finde</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLEANER PRIORITY LIST -->
+  <section class="cleaner" id="cleaner">
+    <div class="cleaner__wrap">
+      <div class="cleaner__phone reveal" aria-hidden="true">
+        <div class="cleaner__screen">
+          <div class="cleaner__status">
+            <span>9:41</span>
+            <span>●●●●● 5G 86%</span>
+          </div>
+          <div class="cleaner__top">
+            <div class="cleaner__hello">Good shift,</div>
+            <div class="cleaner__name">Mariana · floor 8</div>
+            <div class="cleaner__progress">
+              <span>12 rooms today</span>
+              <b>4 / 12 done</b>
+            </div>
+          </div>
+          <div class="cleaner__list">
+            <div class="cleaner__item cleaner__item--p1">
+              <span class="cleaner__prio">P1</span>
+              <div>
+                <div class="cleaner__room">Room 812 · Check-in 13:00</div>
+                <div class="cleaner__info"><span>◉ VIP</span><span>✦ Down allergy</span><span>☎ Extra towels</span></div>
+              </div>
+              <div class="cleaner__time"><b>20m</b>ETA</div>
+            </div>
+            <div class="cleaner__item cleaner__item--p1">
+              <span class="cleaner__prio">P1</span>
+              <div>
+                <div class="cleaner__room">Room 814 · Check-out 11:30</div>
+                <div class="cleaner__info"><span>✦ King bed</span><span>☕ Coffee restock</span></div>
+              </div>
+              <div class="cleaner__time"><b>25m</b>ETA</div>
+            </div>
+            <div class="cleaner__item cleaner__item--p2">
+              <span class="cleaner__prio">P2</span>
+              <div>
+                <div class="cleaner__room">Room 806 · Stay-over</div>
+                <div class="cleaner__info"><span>✦ Towel restock</span></div>
+              </div>
+              <div class="cleaner__time"><b>15m</b>ETA</div>
+            </div>
+            <div class="cleaner__item cleaner__item--p2">
+              <span class="cleaner__prio">P2</span>
+              <div>
+                <div class="cleaner__room">Room 808 · Check-out 12:00</div>
+                <div class="cleaner__info"><span>✦ Double queen</span></div>
+              </div>
+              <div class="cleaner__time"><b>25m</b>ETA</div>
+            </div>
+            <div class="cleaner__item cleaner__item--p3 cleaner__item--done">
+              <span class="cleaner__prio">P3</span>
+              <div>
+                <div class="cleaner__room">Room 802 · Vacant</div>
+                <div class="cleaner__info"><span>✓ Done 09:12</span></div>
+              </div>
+              <div class="cleaner__done">✓</div>
+            </div>
+            <div class="cleaner__item cleaner__item--p3 cleaner__item--done">
+              <span class="cleaner__prio">P3</span>
+              <div>
+                <div class="cleaner__room">Room 804 · Vacant</div>
+                <div class="cleaner__info"><span>✓ Done 09:28</span></div>
+              </div>
+              <div class="cleaner__done">✓</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cleaner__copy reveal">
+        <span class="kicker">Cleaner app</span>
+        <h2>A <em>prioritized</em> list, not a chaotic spreadsheet.</h2>
+        <p>
+          The cleaner opens the app and sees their shift rooms sorted by urgency
+          — next check-ins first — with every critical detail at hand.
+          Less back-and-forth, more turnover.
+        </p>
+        <div class="cleaner__feat">
+          <div>
+            <em>Priority</em>
+            <b>P1/P2/P3</b>
+            <span>Re-ordered live by check-ins, VIPs and SLAs.</span>
+          </div>
+          <div>
+            <em>Context</em>
+            <b>Guest notes</b>
+            <span>Allergies, requests, preferences — visible before entering.</span>
+          </div>
+          <div>
+            <em>Offline</em>
+            <b>Always works</b>
+            <span>No signal on deep floors? It syncs on reconnect.</span>
+          </div>
+          <div>
+            <em>One tap</em>
+            <b>Done → next</b>
+            <span>Supervisor sees it instantly and recalculates the route.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how" id="como-funciona">
+    <div class="section__head reveal">
+      <span class="kicker">How it works</span>
+      <h2>Ready in <em>one shift</em>.</h2>
+      <p>No endless migrations, no consultants. Mintmango connects to your PMS, reads your floor plan and starts operating.</p>
+    </div>
+
+    <ol class="steps">
+      <li class="step reveal">
+        <span class="step__n">01</span>
+        <h3>Connect your PMS</h3>
+        <p>OAuth with Cloudbeds, Mews, Opera, Stayntouch or Apaleo. 3 minutes. Reads reservations, rooms and rates.</p>
+        <div class="step__viz">
+          <div class="pms">
+            <span>Cloudbeds</span><span>Mews</span><span>Opera</span><span>Stayntouch</span>
+            <div class="pms__conn"></div>
+          </div>
+        </div>
+      </li>
+      <li class="step reveal">
+        <span class="step__n">02</span>
+        <h3>Import your hotel</h3>
+        <p>Drag in the PDF floor plan or pick a template. Mintmango generates the auto-labeled floor-and-room grid.</p>
+        <div class="step__viz">
+          <div class="blueprint">
+            <div class="bp-grid"></div>
+            <div class="bp-box" style="--x:8%;--y:20%;--w:20%;--h:25%"></div>
+            <div class="bp-box" style="--x:32%;--y:20%;--w:20%;--h:25%"></div>
+            <div class="bp-box" style="--x:56%;--y:20%;--w:20%;--h:25%"></div>
+            <div class="bp-box" style="--x:8%;--y:55%;--w:68%;--h:18%"></div>
+          </div>
+        </div>
+      </li>
+      <li class="step reveal">
+        <span class="step__n">03</span>
+        <h3>Invite your team</h3>
+        <p>Pre-built roles: management, housekeeping, maintenance, F&amp;B, front desk. Native iOS/Android app with offline mode.</p>
+        <div class="step__viz">
+          <div class="team">
+            <div class="team__av" style="--d:0s;background:#8be8c3">MR</div>
+            <div class="team__av" style="--d:.15s;background:#ffb058">JL</div>
+            <div class="team__av" style="--d:.3s;background:#f8f2e6;color:#0b1410">AC</div>
+            <div class="team__av" style="--d:.45s;background:#0b1410;color:#8be8c3;border:1px solid #8be8c3">+14</div>
+          </div>
+        </div>
+      </li>
+      <li class="step reveal">
+        <span class="step__n">04</span>
+        <h3>Operate</h3>
+        <p>Everything in real time. Daily analytics, shift reports and SLA alerts in your inbox before coffee.</p>
+        <div class="step__viz">
+          <div class="op">
+            <div class="op__pulse"></div>
+            <div class="op__pulse op__pulse--2"></div>
+            <div class="op__dot"></div>
+          </div>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <!-- METRICS -->
+  <section class="metrics" id="metricas">
+    <div class="metrics__grid">
+      <div class="kpi reveal">
+        <b data-count="42">0</b><i>%</i>
+        <span>less room-turnaround time</span>
+      </div>
+      <div class="kpi reveal">
+        <b data-count="180">0</b>
+        <span>hotels running on Mintmango across 14 countries</span>
+      </div>
+      <div class="kpi reveal">
+        <b data-count="99" data-suffix=".9">0</b><i>%</i>
+        <span>uptime during peak season 2025</span>
+      </div>
+      <div class="kpi reveal">
+        <b data-count="4" data-suffix=".8">0</b><i>/5</i>
+        <span>average post-stay CSAT</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testi" id="testimonios">
+    <div class="section__head reveal">
+      <span class="kicker">Customers</span>
+      <h2>Operators who <em>sleep better</em>.</h2>
+    </div>
+    <div class="testi__grid">
+      <figure class="tcard reveal">
+        <blockquote>“We went from 11 WhatsApp groups to one dashboard. Average cleaning time dropped 38% in two months.”</blockquote>
+        <figcaption>
+          <span class="tcard__av" style="background:#8be8c3">LM</span>
+          <div><b>Lucía Méndez</b><span>Rooms Division · Casa Lima</span></div>
+        </figcaption>
+      </figure>
+      <figure class="tcard tcard--mango reveal">
+        <blockquote>“Onboarding was one afternoon shift. Next morning housekeeping was already using the app.”</blockquote>
+        <figcaption>
+          <span class="tcard__av" style="background:#ffb058">RS</span>
+          <div><b>Ricardo Solís</b><span>GM · Hotel Mar de Cortés</span></div>
+        </figcaption>
+      </figure>
+      <figure class="tcard reveal">
+        <blockquote>“The biggest surprise: guests thanking us for replies the AI sent while we were asleep.”</blockquote>
+        <figcaption>
+          <span class="tcard__av" style="background:#f8f2e6;color:#0b1410">AP</span>
+          <div><b>Ana Paredes</b><span>Guest Experience · Nómada Hotels</span></div>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing" id="precios">
+    <div class="section__head reveal">
+      <span class="kicker">Pricing</span>
+      <h2>Per room, <em>not per headache</em>.</h2>
+      <p>No setup, no lock-in. Cancel any time — though nobody does.</p>
+    </div>
+    <div class="plans">
+      <article class="plan reveal">
+        <header><h3>Casa</h3><span>Boutique hotels</span></header>
+        <div class="plan__price"><b>$4</b><em>/room · mo</em></div>
+        <ul>
+          <li>Up to 40 rooms</li>
+          <li>Housekeeping + tickets</li>
+          <li>Guest chat · 2 channels</li>
+          <li>Email support</li>
+        </ul>
+        <button class="btn btn--ghost btn--block">Get started</button>
+      </article>
+      <article class="plan plan--featured reveal">
+        <header><h3>Chain</h3><span>Most popular</span></header>
+        <div class="plan__price"><b>$7</b><em>/room · mo</em></div>
+        <ul>
+          <li>Unlimited rooms</li>
+          <li>Inventory + analytics</li>
+          <li>Omnichannel chat + AI</li>
+          <li>PMS integration · SSO</li>
+          <li>24/7 priority support</li>
+        </ul>
+        <button class="btn btn--primary btn--block">Try 14 days</button>
+      </article>
+      <article class="plan reveal">
+        <header><h3>Group</h3><span>100+ properties</span></header>
+        <div class="plan__price"><b>Custom</b><em></em></div>
+        <ul>
+          <li>Multi-brand · multi-country</li>
+          <li>Dedicated data warehouse</li>
+          <li>SLA &amp; compliance</li>
+          <li>Dedicated CSM</li>
+        </ul>
+        <button class="btn btn--ghost btn--block">Talk to sales</button>
+      </article>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq">
+    <div class="section__head reveal">
+      <span class="kicker">FAQ</span>
+      <h2><em>Reasonable</em> questions.</h2>
+    </div>
+    <div class="faq__list">
+      <details class="faq__item reveal" open>
+        <summary>Does it work without a PMS?</summary>
+        <p>Yes. Mintmango can be the source of truth or sync with your PMS. Migration is bidirectional.</p>
+      </details>
+      <details class="faq__item reveal" open>
+        <summary>What if there’s no wifi on the floors?</summary>
+        <p>The mobile app runs offline and syncs when it reconnects. Housekeeping never loses their list.</p>
+      </details>
+      <details class="faq__item reveal" open>
+        <summary>How long does implementation take?</summary>
+        <p>40 rooms: one shift. 400 rooms: 3–5 days with an assigned CSM.</p>
+      </details>
+      <details class="faq__item reveal" open>
+        <summary>Is our data ours?</summary>
+        <p>Always. Export everything to CSV or Parquet in one click. Zero lock-in.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="cta__card reveal">
+      <h2>Run Mintmango<br/>on your <em>next shift</em>.</h2>
+      <p>14 days free. No card. No consultant. No radios.</p>
+      <div class="cta__row">
+        <button class="btn btn--primary btn--lg">Start now <span aria-hidden="true">→</span></button>
+        <button class="btn btn--ghost btn--lg">Book a demo</button>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="foot__top">
+    <div class="foot__brand">
+      <span class="logo" aria-hidden="true">
+        <svg viewBox="0 0 32 32" width="24" height="24"><use href="#"/></svg>
+      </span>
+      <b>mintmango</b>
+      <p>Hotel logistics, without the friction.<br/>Made between Mexico City and Lisbon.</p>
+    </div>
+    <div class="foot__cols">
+      <div>
+        <h4>Product</h4>
+        <a href="#producto">Housekeeping</a>
+        <a href="#producto">Tickets</a>
+        <a href="#producto">Inventory</a>
+        <a href="#producto">Guest chat</a>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <a href="#">About</a>
+        <a href="#">Blog</a>
+        <a href="#">Careers</a>
+        <a href="#">Press</a>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <a href="#">Changelog</a>
+        <a href="#">Status</a>
+        <a href="#">Security</a>
+        <a href="#">API docs</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <a href="mailto:hello@mintmango.com">hello@mintmango.com</a>
+        <a href="#">+52 55 1234 5678</a>
+        <div class="foot__social">
+          <a aria-label="LinkedIn" href="#">in</a>
+          <a aria-label="X" href="#">✕</a>
+          <a aria-label="Instagram" href="#">ig</a>
+          <a aria-label="GitHub" href="#">gh</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="foot__bot">
+    <span>© 2026 Mintmango S.A. de C.V.</span>
+    <span>Made with <span style="color:#8be8c3">mint</span> and <span style="color:#ffb058">mango</span>.</span>
+    <span><a href="#">Privacy</a> · <a href="#">Terms</a> · <a href="#">Cookies</a></span>
+  </div>
+
+  <!-- Giant wordmark -->
+  <div class="foot__mark" aria-hidden="true">mintmango</div>
+</footer>
+
+<!-- TWEAKS PANEL -->
+<aside id="tweaks" class="tweaks" hidden>
+  <header>
+    <b>Tweaks</b>
+    <button id="tweaks-close" aria-label="Close">✕</button>
+  </header>
+  <div class="tweaks__row">
+    <label>Theme</label>
+    <div class="seg" data-key="theme">
+      <button data-v="dark">Dark</button>
+      <button data-v="light">Light</button>
+      <button data-v="mint">Mint</button>
+    </div>
+  </div>
+  <div class="tweaks__row">
+    <label>Intensity</label>
+    <div class="seg" data-key="intensity">
+      <button data-v="soft">Soft</button>
+      <button data-v="vivid">Vivid</button>
+      <button data-v="neon">Neon</button>
+    </div>
+  </div>
+  <div class="tweaks__row">
+    <label>Hero</label>
+    <div class="seg" data-key="hero">
+      <button data-v="dashboard">Dashboard</button>
+      <button data-v="abstract">Abstract</button>
+      <button data-v="typography">Typography</button>
+    </div>
+  </div>
+  <div class="tweaks__row">
+    <label>Animations</label>
+    <div class="seg" data-key="motion">
+      <button data-v="subtle">Subtle</button>
+      <button data-v="medium">Medium</button>
+      <button data-v="rich">Rich</button>
+    </div>
+  </div>
+  <div class="tweaks__row">
+    <label>Language</label>
+    <div class="seg" data-key="lang">
+      <button data-v="es">ES</button>
+      <button data-v="en">EN</button>
+    </div>
+  </div>
+</aside>
+
+<script>
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "theme": "dark",
+  "intensity": "neon",
+  "hero": "dashboard",
+  "motion": "rich",
+  "lang": "en"
+}/*EDITMODE-END*/;
+window.__TWEAKS__ = {...TWEAK_DEFAULTS};
+</script>
+<script>
+/* ============ Mintmango interactions ============ */
+(() => {
+  // --- AI agent chat demo ---
+  const feed = document.getElementById('agent-feed');
+  if (feed) {
+    const script = [
+      { who: 'user', text: 'How many rooms are left to clean on floor 8?' },
+      { who: 'bot',  text: '<b>8 rooms</b> left on floor 8. 2 urgent (check-in &lt; 1h) and 6 stay-over. Reassign to Carla?' },
+      { who: 'user', text: 'Yes, go ahead. And build tomorrow’s roster.' },
+      { who: 'bot',  text: 'Listo. Tomorrow’s roster: <b>6 cleaners</b>, <b>2 houseman</b>, <b>1 supervisor</b>, <b>3 recepción</b>. Balanceado por ocupación (87%).' },
+      { who: 'user', text: 'AC in 412 is broken.' },
+      { who: 'bot',  text: 'Ticket <b>#MX-2041</b> opened · maintenance · high priority. Diego is on his way, ETA 8 min.' }
+    ];
+    let i = 0;
+    const render = () => {
+      feed.innerHTML = '';
+      const show = script.slice(0, i + 1);
+      show.forEach((m, idx) => {
+        const who = document.createElement('div');
+        who.className = 'agent__msg-who agent__msg-who--' + (m.who === 'user' ? 'you' : 'bot');
+        who.textContent = m.who === 'user' ? 'You · front desk' : 'Mango';
+        const msg = document.createElement('div');
+        msg.className = 'agent__msg agent__msg--' + (m.who === 'user' ? 'user' : 'bot');
+        msg.innerHTML = m.text;
+        msg.style.animationDelay = (idx * 0.15) + 's';
+        feed.appendChild(who);
+        feed.appendChild(msg);
+      });
+    };
+    render();
+    setInterval(() => {
+      i = (i + 1) % script.length;
+      if (i === 0) feed.style.opacity = '0';
+      setTimeout(() => { feed.style.opacity = '1'; render(); }, i === 0 ? 300 : 0);
+    }, 2600);
+  }
+
+  // --- Room grid (hero) ---
+  const grid = document.querySelector('.room-grid');
+  if (grid) {
+    const states = ['is-clean','is-dirty','is-inprog',''];
+    const weights = [.45,.25,.15,.15];
+    const pick = () => {
+      const r = Math.random(); let acc = 0;
+      for (let i=0;i<weights.length;i++) { acc += weights[i]; if (r < acc) return states[i]; }
+      return '';
+    };
+    const rooms = [];
+    for (let i=0;i<32;i++) {
+      const el = document.createElement('div');
+      el.className = 'rm ' + pick();
+      const n = 400 + i + 1;
+      el.textContent = n;
+      grid.appendChild(el);
+      rooms.push(el);
+    }
+    // Animate state flips
+    setInterval(() => {
+      const el = rooms[Math.floor(Math.random()*rooms.length)];
+      el.className = 'rm ' + pick();
+    }, 1200);
+  }
+
+  // --- Nav shadow on scroll ---
+  const nav = document.getElementById('nav');
+  const onScroll = () => nav && nav.classList.toggle('is-scrolled', window.scrollY > 20);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // --- Reveal on scroll ---
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // --- KPI count-up ---
+  const kpiIo = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const b = e.target.querySelector('b[data-count]');
+      if (!b || b.dataset.done) return;
+      b.dataset.done = '1';
+      const target = parseFloat(b.dataset.count);
+      const suffix = b.dataset.suffix || '';
+      const dur = 1600;
+      const t0 = performance.now();
+      const tick = (t) => {
+        const p = Math.min(1, (t - t0) / dur);
+        const eased = 1 - Math.pow(1 - p, 3);
+        const val = Math.floor(target * eased);
+        b.textContent = val + (p === 1 ? suffix : '');
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+      kpiIo.unobserve(e.target);
+    });
+  }, { threshold: 0.4 });
+  document.querySelectorAll('.kpi').forEach(el => kpiIo.observe(el));
+
+  // --- Parallax on hero stage ---
+  const scene = document.getElementById('stage-scene');
+  if (scene && window.matchMedia('(min-width: 961px)').matches) {
+    const stage = scene.parentElement;
+    stage.addEventListener('mousemove', (e) => {
+      const r = stage.getBoundingClientRect();
+      const px = (e.clientX - r.left) / r.width - 0.5;
+      const py = (e.clientY - r.top) / r.height - 0.5;
+      scene.style.transform = `rotateX(${8 - py*8}deg) rotateY(${-14 + px*10}deg) rotateZ(1deg)`;
+    });
+    stage.addEventListener('mouseleave', () => {
+      scene.style.transform = '';
+    });
+  }
+
+  // --- Occupancy flicker ---
+  const occ = document.getElementById('occ');
+  if (occ) {
+    setInterval(() => {
+      const v = 82 + Math.floor(Math.random()*8);
+      occ.textContent = v;
+      const bar = document.querySelector('.panel__meta .bar__fill');
+      if (bar) bar.style.width = v + '%';
+    }, 2800);
+  }
+
+  // --- Smooth anchor scroll (already via CSS but offset for nav) ---
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', (e) => {
+      const id = a.getAttribute('href');
+      if (id.length < 2) return;
+      const t = document.querySelector(id);
+      if (!t) return;
+      e.preventDefault();
+      const y = t.getBoundingClientRect().top + window.scrollY - 70;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    });
+  });
+
+  // --- Demo button scrolls to dashboard preview ---
+  const btnDemo = document.getElementById('btn-demo');
+  if (btnDemo) btnDemo.addEventListener('click', () => {
+    document.getElementById('producto').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  // ============ TWEAKS ============
+  const panel = document.getElementById('tweaks');
+  const closeBtn = document.getElementById('tweaks-close');
+
+  function applyTweaks(t) {
+    document.body.setAttribute('data-theme', t.theme);
+    document.body.setAttribute('data-intensity', t.intensity);
+    document.body.setAttribute('data-hero', t.hero);
+    document.body.setAttribute('data-motion', t.motion);
+    // Update segmented controls
+    panel && panel.querySelectorAll('.seg').forEach(seg => {
+      const k = seg.dataset.key;
+      seg.querySelectorAll('button').forEach(b => b.classList.toggle('is-active', b.dataset.v === t[k]));
+    });
+    // Language stub: swap nav tag
+    const tag = document.querySelector('.nav__tag');
+    if (tag) tag.textContent = t.lang;
+  }
+  applyTweaks(window.__TWEAKS__);
+
+  panel && panel.querySelectorAll('.seg').forEach(seg => {
+    seg.addEventListener('click', (e) => {
+      const btn = e.target.closest('button[data-v]');
+      if (!btn) return;
+      const key = seg.dataset.key;
+      window.__TWEAKS__[key] = btn.dataset.v;
+      applyTweaks(window.__TWEAKS__);
+      window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { [key]: btn.dataset.v } }, '*');
+    });
+  });
+
+  window.addEventListener('message', (e) => {
+    const d = e.data || {};
+    if (d.type === '__activate_edit_mode') panel.hidden = false;
+    else if (d.type === '__deactivate_edit_mode') panel.hidden = true;
+  });
+  closeBtn && closeBtn.addEventListener('click', () => {
+    panel.hidden = true;
+    window.parent.postMessage({ type: '__deactivate_edit_mode' }, '*');
+  });
+
+  // Announce availability AFTER listener is registered
+  window.parent.postMessage({ type: '__edit_mode_available' }, '*');
+})();
+
+</script>
+
+<script>
+(async () => {
+  try { if (document.fonts && document.fonts.ready) await document.fonts.ready; } catch(e) {}
+  await new Promise(r => setTimeout(r, 600));
+  window.print();
+})();
+</script>
+
+</body>
+</html>
