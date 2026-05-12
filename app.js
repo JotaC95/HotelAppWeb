@@ -79,14 +79,22 @@ const i18n = {
     role_6_text: 'Focuses on departure and pre-arrival rooms. Runs the linen checklist per the exact bed configuration of each room (King, Queen, Single, Cot). Marks individual tasks as completed.',
     // IA
     ia_badge: '🤖 NemoClaw AI',
-    ia_title: 'The first AI assistant designed for hotel operations',
-    ia_sub: 'NemoClaw understands the complete context of your hotel — rooms, staff, incidents — and responds in natural language.',
-    ia_1_title: 'Roster generation',
-    ia_1_text: "Creates the weekly team schedule in seconds. Considers availability declared by each employee, days off, historical workload and hotel constraints. Includes the model's reasoning for each decision.",
-    ia_2_title: 'Operational chat',
-    ia_2_text: "Ask anything about the hotel's status in real time. The agent has access to the complete context: rooms, active staff and open incidents. Responds in seconds in natural language.",
-    ia_3_title: 'Voice commands',
-    ia_3_text: "Speak directly to NemoClaw. Built-in voice recognition for when your hands are busy. Transcribes and responds without touching the screen.",
+    ia_title: "Your hotel's AI companion — always by your side",
+    ia_sub: 'Ask anything. Check metrics. Set alerts. NemoClaw knows every room, every team member and every incident in real time.',
+    ia_companion_title: 'One companion for every role',
+    ia_companion_text: "Whether you're a supervisor monitoring team progress, reception waiting for a room, or an admin reviewing the day — NemoClaw is one message away, 24/7.",
+    ia_chip_1: 'Instant answers', ia_chip_2: 'Live metrics', ia_chip_3: 'Smart alerts', ia_chip_4: 'Voice',
+    ia_cta: 'Try NemoClaw →',
+    ia_online: 'Online · Real-time context',
+    ia_placeholder: 'Ask about rooms, metrics or alerts…',
+    ia_1_title: 'Instant answers',
+    ia_1_text: "Ask about any room, team member or situation in natural language. NemoClaw reads the live hotel state and responds in seconds — no dashboards to navigate.",
+    ia_2_title: 'Live metrics',
+    ia_2_text: 'Get on-demand KPIs: rooms cleaned, average cleaning time, team rankings, open incidents. Turn a single question into a full performance summary.',
+    ia_3_title: 'Smart alerts',
+    ia_3_text: '"Alert me if room 401 isn\'t done by 14:00." NemoClaw sets it, monitors it and sends you a push notification — without you having to watch the board.',
+    ia_4_title: 'Voice & hands-free',
+    ia_4_text: "Speak directly to NemoClaw when your hands are busy. It listens, understands the context and responds — no need to touch the screen.",
     // Tipos
     tipos_title: 'A system for every type of service',
     tipos_sub: 'HotelFlow understands the 8 most common housekeeping operations in the hotel sector.',
@@ -214,14 +222,22 @@ const i18n = {
     role_6_text: 'Se enfoca en habitaciones de salida y pre-llegada. Hace el checklist de ropa de cama según la configuración exacta de camas de cada habitación (King, Queen, Single, Cuna). Marca tareas individuales como completadas.',
     // IA
     ia_badge: '🤖 NemoClaw AI',
-    ia_title: 'El primer asistente de IA diseñado para operaciones hoteleras',
-    ia_sub: 'NemoClaw entiende el contexto completo de tu hotel — habitaciones, personal, incidencias — y responde en lenguaje natural.',
-    ia_1_title: 'Generación de rosters',
-    ia_1_text: 'Crea el turno semanal del equipo en segundos. Considera disponibilidad declarada por cada empleado, días libres, carga histórica y restricciones del hotel. Incluye el razonamiento del modelo para cada decisión.',
-    ia_2_title: 'Chat operacional',
-    ia_2_text: 'Pregunta cualquier cosa sobre el estado del hotel en tiempo real. El agente tiene acceso al contexto completo: habitaciones, staff activo e incidencias abiertas. Responde en segundos en lenguaje natural.',
-    ia_3_title: 'Comandos por voz',
-    ia_3_text: 'Habla directamente con NemoClaw. Reconocimiento de voz integrado para cuando tus manos están ocupadas. Transcribe y responde sin tocar la pantalla.',
+    ia_title: 'Tu compañero de IA — siempre a tu lado',
+    ia_sub: 'Pregunta lo que quieras. Consulta métricas. Configura alertas. NemoClaw conoce cada habitación, cada miembro del equipo y cada incidencia en tiempo real.',
+    ia_companion_title: 'Un compañero para cada rol',
+    ia_companion_text: 'Seas supervisor revisando el progreso del equipo, recepción esperando una habitación o admin revisando el día — NemoClaw está a un mensaje, las 24 horas.',
+    ia_chip_1: 'Respuestas al instante', ia_chip_2: 'Métricas en vivo', ia_chip_3: 'Alertas inteligentes', ia_chip_4: 'Voz',
+    ia_cta: 'Probar NemoClaw →',
+    ia_online: 'Online · Contexto en tiempo real',
+    ia_placeholder: 'Pregunta sobre habitaciones, métricas o alertas…',
+    ia_1_title: 'Respuestas al instante',
+    ia_1_text: 'Pregunta sobre cualquier habitación, miembro del equipo o situación en lenguaje natural. NemoClaw lee el estado del hotel en vivo y responde en segundos — sin navegar por dashboards.',
+    ia_2_title: 'Métricas en vivo',
+    ia_2_text: 'KPIs bajo demanda: habitaciones limpiadas, tiempo medio de limpieza, ranking del equipo, incidencias abiertas. Una sola pregunta, un resumen completo de rendimiento.',
+    ia_3_title: 'Alertas inteligentes',
+    ia_3_text: '"Avísame si la habitación 401 no está lista a las 14:00." NemoClaw la configura, la monitoriza y te manda una notificación push — sin que tengas que vigilar el tablero.',
+    ia_4_title: 'Voz y manos libres',
+    ia_4_text: 'Habla directamente con NemoClaw cuando tienes las manos ocupadas. Entiende el contexto y responde sin que tengas que tocar la pantalla.',
     // Tipos
     tipos_title: 'Un sistema para cada tipo de servicio',
     tipos_sub: 'HotelFlow entiende las 8 operaciones de housekeeping más comunes del sector hotelero.',
@@ -311,6 +327,9 @@ function applyLang(lang) {
   document.querySelectorAll('.lang-btn').forEach(btn => {
     btn.classList.toggle('is-active', btn.dataset.lang === lang);
   });
+
+  // Restart chat in new language if already running
+  if (window.__nemoRestartChat) window.__nemoRestartChat();
 
   // Update the form success message if visible
   const successEl = document.querySelector('.form-success');
@@ -450,6 +469,105 @@ function applyTheme(theme) {
       form.parentElement.appendChild(success);
     });
   }
+
+  // --- NemoClaw chat animation ---
+  const chatScript = {
+    en: [
+      { user: 'How many rooms are left on floor 3?',
+        bot:  '2 rooms pending on floor 3 — 302 (Pre-Arrival, guest at 15:00) and 306 (Stayover). María is 10 min away from 302.' },
+      { user: 'Alert me if room 302 isn\'t ready by 14:30',
+        bot:  '✅ Alert set for 14:30. I\'ll send you a push notification if room 302 is still pending.' },
+      { user: 'How\'s the team performing today?',
+        bot:  'Great progress! 18 rooms cleaned, avg 22 min each. Carlos leads with 6. 2 open incidents — both assigned.' },
+    ],
+    es: [
+      { user: '¿Cuántas habitaciones quedan en planta 3?',
+        bot:  'Quedan 2 habitaciones en planta 3 — la 302 (Pre-Arrival, llegada a las 15:00) y la 306 (Stayover). María está a 10 min de la 302.' },
+      { user: 'Avísame si la 302 no está lista a las 14:30',
+        bot:  '✅ Alerta configurada para las 14:30. Te enviaré una notificación si la habitación 302 sigue pendiente.' },
+      { user: '¿Cómo va el rendimiento del equipo hoy?',
+        bot:  '¡Muy bien! 18 habitaciones limpias, 22 min de media. Carlos lidera con 6. 2 incidencias abiertas — ambas asignadas.' },
+    ],
+  };
+
+  let chatTimer = null;
+
+  function runChat() {
+    const body = document.getElementById('nemo-chat-body');
+    const promptEl = document.getElementById('nemo-prompt');
+    if (!body) return;
+
+    clearTimeout(chatTimer);
+    body.innerHTML = '';
+    const script = chatScript[currentLang];
+    let idx = 0;
+
+    function step() {
+      if (idx >= script.length) {
+        // Pause then restart
+        chatTimer = setTimeout(() => { body.innerHTML = ''; idx = 0; step(); }, 3200);
+        return;
+      }
+      const { user, bot } = script[idx++];
+
+      // 1. Show user typing in input bar
+      if (promptEl) promptEl.textContent = '';
+      let charIdx = 0;
+      const typeInterval = setInterval(() => {
+        if (promptEl) promptEl.textContent = user.slice(0, ++charIdx);
+        if (charIdx >= user.length) clearInterval(typeInterval);
+      }, 32);
+
+      chatTimer = setTimeout(() => {
+        clearInterval(typeInterval);
+        if (promptEl) promptEl.textContent = i18n[currentLang].ia_placeholder || 'Ask…';
+
+        // 2. User message bubble
+        const userEl = document.createElement('div');
+        userEl.className = 'chat-msg chat-msg--user';
+        userEl.textContent = user;
+        body.appendChild(userEl);
+        requestAnimationFrame(() => requestAnimationFrame(() => userEl.classList.add('is-visible')));
+        body.scrollTop = body.scrollHeight;
+
+        // 3. Typing indicator
+        chatTimer = setTimeout(() => {
+          const typingEl = document.createElement('div');
+          typingEl.className = 'chat-typing';
+          typingEl.innerHTML = '<span></span><span></span><span></span>';
+          body.appendChild(typingEl);
+          body.scrollTop = body.scrollHeight;
+
+          // 4. Bot response
+          chatTimer = setTimeout(() => {
+            typingEl.remove();
+            const botEl = document.createElement('div');
+            botEl.className = 'chat-msg chat-msg--bot';
+            botEl.textContent = bot;
+            body.appendChild(botEl);
+            requestAnimationFrame(() => requestAnimationFrame(() => botEl.classList.add('is-visible')));
+            body.scrollTop = body.scrollHeight;
+
+            chatTimer = setTimeout(step, 2600);
+          }, 1500);
+        }, 700);
+      }, user.length * 32 + 200);
+    }
+
+    step();
+  }
+
+  // Expose restart function for language switches
+  window.__nemoRestartChat = runChat;
+
+  // Start chat when section enters viewport
+  const chatObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { runChat(); chatObserver.unobserve(e.target); }
+    });
+  }, { threshold: 0.3 });
+  const chatSection = document.getElementById('ia');
+  if (chatSection) chatObserver.observe(chatSection);
 
   // --- Animated room cards ---
   const roomCards = document.querySelectorAll('.room-card');
