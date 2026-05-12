@@ -1,13 +1,13 @@
 <!doctype html>
-<html lang="es">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-<title>HotelFlow — Gestión de housekeeping hotelero con IA</title>
-<meta name="description" content="App móvil para hoteles que conecta limpiadores, supervisores y recepción en tiempo real, con IA integrada para turnos y operaciones." />
+<title>HotelFlow — Hotel housekeeping management with AI</title>
+<meta name="description" content="Mobile app for hotels connecting cleaners, supervisors and reception in real time, with integrated AI for shifts and operations." />
 <meta name="theme-color" content="#4F46E5" />
-<meta property="og:title" content="HotelFlow — Gestión de housekeeping hotelero con IA" />
-<meta property="og:description" content="App móvil para hoteles que conecta limpiadores, supervisores y recepción en tiempo real, con IA integrada para turnos y operaciones." />
+<meta property="og:title" content="HotelFlow — Hotel housekeeping management with AI" />
+<meta property="og:description" content="Mobile app for hotels connecting cleaners, supervisors and reception in real time, with integrated AI for shifts and operations." />
 <meta property="og:type" content="website" />
 <meta name="robots" content="index,follow" />
 
@@ -23,8 +23,7 @@
   "name":"HotelFlow",
   "applicationCategory":"BusinessApplication",
   "operatingSystem":"iOS, Android",
-  "description":"App móvil para hoteles que conecta limpiadores, supervisores y recepción en tiempo real, con IA integrada.",
-  "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}
+  "description":"Mobile app for hotels connecting cleaners, supervisors and reception in real time, with integrated AI."
 }
 </script>
 </head>
@@ -40,17 +39,42 @@
     </svg>
     <span class="nav__name">HotelFlow</span>
   </a>
+
   <ul class="nav__menu">
-    <li><a href="#features">Features</a></li>
-    <li><a href="#roles">Roles</a></li>
-    <li><a href="#ia">IA</a></li>
-    <li><a href="#contacto">Contacto</a></li>
+    <li><a href="#features" data-i18n="nav_features">Features</a></li>
+    <li><a href="#roles" data-i18n="nav_roles">Roles</a></li>
+    <li><a href="#ia" data-i18n="nav_ia">AI</a></li>
+    <li><a href="#contacto" data-i18n="nav_contact">Contact</a></li>
   </ul>
-  <div class="nav__cta">
-    <button class="btn btn--ghost" id="btn-demo">Ver demo</button>
-    <a href="#contacto" class="btn btn--primary">Solicitar acceso</a>
+
+  <div class="nav__right">
+    <!-- Language switcher -->
+    <div class="lang-switcher" id="lang-switcher" aria-label="Language">
+      <button class="lang-btn is-active" data-lang="en">EN</button>
+      <span class="lang-sep" aria-hidden="true">|</span>
+      <button class="lang-btn" data-lang="es">ES</button>
+    </div>
+
+    <!-- Dark mode toggle -->
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+      <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/>
+        <line x1="4.93" y1="4.93" x2="7.76" y2="7.76"/><line x1="16.24" y1="16.24" x2="19.07" y2="19.07"/>
+        <line x1="2" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="22" y2="12"/>
+        <line x1="4.93" y1="19.07" x2="7.76" y2="16.24"/><line x1="16.24" y1="7.76" x2="19.07" y2="4.93"/>
+      </svg>
+      <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+      </svg>
+    </button>
+
+    <div class="nav__cta">
+      <button class="btn btn--ghost" id="btn-demo" data-i18n="nav_demo">View demo</button>
+      <a href="#contacto" class="btn btn--primary" data-i18n="nav_access">Request access</a>
+    </div>
   </div>
-  <button class="nav__hamburger" id="hamburger" aria-label="Abrir menú">
+
+  <button class="nav__hamburger" id="hamburger" aria-label="Open menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
@@ -58,13 +82,30 @@
 <!-- Mobile menu -->
 <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
   <ul>
-    <li><a href="#features">Features</a></li>
-    <li><a href="#roles">Roles</a></li>
-    <li><a href="#ia">IA</a></li>
-    <li><a href="#contacto">Contacto</a></li>
+    <li><a href="#features" data-i18n="nav_features">Features</a></li>
+    <li><a href="#roles" data-i18n="nav_roles">Roles</a></li>
+    <li><a href="#ia" data-i18n="nav_ia">AI</a></li>
+    <li><a href="#contacto" data-i18n="nav_contact">Contact</a></li>
   </ul>
+  <div class="mobile-menu__controls">
+    <div class="lang-switcher">
+      <button class="lang-btn is-active" data-lang="en">EN</button>
+      <span class="lang-sep" aria-hidden="true">|</span>
+      <button class="lang-btn" data-lang="es">ES</button>
+    </div>
+    <button class="theme-toggle" id="theme-toggle-mobile" aria-label="Toggle dark mode">
+      <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/>
+        <line x1="4.93" y1="4.93" x2="7.76" y2="7.76"/><line x1="16.24" y1="16.24" x2="19.07" y2="19.07"/>
+        <line x1="2" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="22" y2="12"/>
+      </svg>
+      <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+      </svg>
+    </button>
+  </div>
   <div class="mobile-menu__cta">
-    <a href="#contacto" class="btn btn--primary btn--block">Solicitar acceso</a>
+    <a href="#contacto" class="btn btn--primary btn--block" data-i18n="nav_access">Request access</a>
   </div>
 </div>
 
@@ -72,25 +113,25 @@
 <section class="hero" id="hero">
   <div class="hero__bg"></div>
   <div class="hero__content">
-    <span class="hero__badge">⚡ Powered by Gemini AI</span>
-    <h1 class="hero__title">El sistema operativo del housekeeping moderno</h1>
-    <p class="hero__sub">HotelFlow conecta a todo tu equipo en tiempo real — limpiadores, supervisores, recepción y mantenimiento — en una sola app móvil con inteligencia artificial integrada.</p>
+    <span class="hero__badge" data-i18n="hero_badge">⚡ Powered by Gemini AI</span>
+    <h1 class="hero__title" data-i18n="hero_title">The operating system of modern housekeeping</h1>
+    <p class="hero__sub" data-i18n="hero_sub">HotelFlow connects your entire team in real time — cleaners, supervisors, reception and maintenance — in one mobile app with built-in artificial intelligence.</p>
     <div class="hero__cta">
-      <a href="#contacto" class="btn btn--primary btn--lg">Solicitar demo</a>
-      <a href="#como-funciona" class="btn btn--outline btn--lg">Ver cómo funciona</a>
+      <a href="#contacto" class="btn btn--primary btn--lg" data-i18n="hero_cta_primary">Request demo</a>
+      <a href="#como-funciona" class="btn btn--outline btn--lg" data-i18n="hero_cta_secondary">See how it works</a>
     </div>
     <ul class="hero__trust">
       <li>
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1a4 4 0 0 0-4 4v1H3a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1h-1V5a4 4 0 0 0-4-4z" stroke="#22C55E" stroke-width="1.5"/></svg>
-        iOS &amp; Android
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6" stroke="#22C55E" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="#22C55E" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <span data-i18n="hero_trust_1">iOS &amp; Android</span>
       </li>
       <li>
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6" stroke="#22C55E" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="#22C55E" stroke-width="1.5" stroke-linecap="round"/></svg>
-        Sin instalación en servidor
+        <span data-i18n="hero_trust_2">No server installation</span>
       </li>
       <li>
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 9.5C2 7 4 5 6 4l2 4h3l1 3c-1 1.5-3 2.5-4 2.5C5 13.5 2 11.5 2 9.5z" stroke="#22C55E" stroke-width="1.5" stroke-linejoin="round"/></svg>
-        Funciona offline
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6" stroke="#22C55E" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="#22C55E" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <span data-i18n="hero_trust_3">Works offline</span>
       </li>
     </ul>
   </div>
@@ -100,46 +141,38 @@
       <div class="phone-notch"></div>
       <div class="phone-screen">
         <div class="app-header">
-          <span class="app-header__title">Tablero — Planta 3</span>
-          <span class="app-header__badge">En vivo</span>
+          <span class="app-header__title" data-i18n="app_header_title">Board — Floor 3</span>
+          <span class="app-header__badge"><span data-i18n="app_header_badge">Live</span></span>
         </div>
         <div class="app-tabs">
-          <span class="app-tab app-tab--active">Todas</span>
-          <span class="app-tab">Salidas</span>
-          <span class="app-tab">Pre-llegada</span>
+          <span class="app-tab app-tab--active" data-i18n="app_tab_all">All</span>
+          <span class="app-tab" data-i18n="app_tab_departures">Departures</span>
+          <span class="app-tab" data-i18n="app_tab_prearrival">Pre-arrival</span>
         </div>
         <div class="room-board">
           <div class="room-card room-card--departure">
-            <div class="room-card__num">301</div>
-            <div class="room-card__type">Departure</div>
-            <div class="room-card__status">Pendiente</div>
+            <div><div class="room-card__num">301</div><div class="room-card__type">Departure</div></div>
+            <div class="room-card__status" data-i18n="room_pending">Pending</div>
           </div>
           <div class="room-card room-card--prearrival">
-            <div class="room-card__num">302</div>
-            <div class="room-card__type">Pre-Arrival</div>
-            <div class="room-card__status">Asignada</div>
+            <div><div class="room-card__num">302</div><div class="room-card__type">Pre-Arrival</div></div>
+            <div class="room-card__status" data-i18n="room_assigned">Assigned</div>
           </div>
           <div class="room-card room-card--inprogress">
-            <div class="room-card__num">303</div>
-            <div class="room-card__type">Stayover</div>
-            <div class="room-card__status room-card__status--live">
-              <span class="live-dot"></span>En progreso
-            </div>
+            <div><div class="room-card__num">303</div><div class="room-card__type">Stayover</div></div>
+            <div class="room-card__status room-card__status--live"><span class="live-dot"></span><span data-i18n="room_inprogress">In progress</span></div>
           </div>
           <div class="room-card room-card--completed">
-            <div class="room-card__num">304</div>
-            <div class="room-card__type">Departure</div>
-            <div class="room-card__status">Completada ✓</div>
+            <div><div class="room-card__num">304</div><div class="room-card__type">Departure</div></div>
+            <div class="room-card__status" data-i18n="room_completed">Completed ✓</div>
           </div>
           <div class="room-card room-card--prearrival">
-            <div class="room-card__num">305</div>
-            <div class="room-card__type">Pre-Arrival</div>
-            <div class="room-card__status">Inspección</div>
+            <div><div class="room-card__num">305</div><div class="room-card__type">Pre-Arrival</div></div>
+            <div class="room-card__status" data-i18n="room_inspection">Inspection</div>
           </div>
           <div class="room-card room-card--stayover">
-            <div class="room-card__num">306</div>
-            <div class="room-card__type">Stayover</div>
-            <div class="room-card__status">Pendiente</div>
+            <div><div class="room-card__num">306</div><div class="room-card__type">Stayover</div></div>
+            <div class="room-card__status" data-i18n="room_pending">Pending</div>
           </div>
         </div>
         <div class="app-footer-bar">
@@ -151,8 +184,8 @@
       <div class="float-card">
         <div class="float-card__icon">🤖</div>
         <div>
-          <div class="float-card__label">NemoClaw IA</div>
-          <div class="float-card__val">Roster generado</div>
+          <div class="float-card__label" data-i18n="float_a_label">NemoClaw AI</div>
+          <div class="float-card__val" data-i18n="float_a_val">Roster generated</div>
         </div>
       </div>
     </div>
@@ -160,8 +193,8 @@
       <div class="float-card">
         <div class="float-card__icon">⚡</div>
         <div>
-          <div class="float-card__label">Check-in listo</div>
-          <div class="float-card__val">Hab. 304 libre</div>
+          <div class="float-card__label" data-i18n="float_b_label">Check-in ready</div>
+          <div class="float-card__val" data-i18n="float_b_val">Room 304 free</div>
         </div>
       </div>
     </div>
@@ -172,23 +205,23 @@
 <section class="section problema" id="problema">
   <div class="container">
     <div class="section__head reveal">
-      <h2>El caos del housekeeping tiene un coste real</h2>
+      <h2 data-i18n="prob_title">The chaos of housekeeping has a real cost</h2>
     </div>
     <div class="problema__grid">
       <div class="problema__card reveal">
         <div class="problema__icon">📟</div>
-        <h3>Coordinación manual</h3>
-        <p>Walkie-talkies, papel y llamadas constantes para saber qué habitación está lista. Sin sistema, todo depende de la memoria de una persona.</p>
+        <h3 data-i18n="prob_1_title">Manual coordination</h3>
+        <p data-i18n="prob_1_text">Walkie-talkies, paper and constant calls to know which room is ready. Without a system, everything depends on one person's memory.</p>
       </div>
       <div class="problema__card reveal">
         <div class="problema__icon">⏰</div>
-        <h3>Retrasos en check-in</h3>
-        <p>Sin visibilidad en tiempo real, recepción no sabe cuándo una habitación estará disponible. El huésped espera, la reputación sufre.</p>
+        <h3 data-i18n="prob_2_title">Check-in delays</h3>
+        <p data-i18n="prob_2_text">Without real-time visibility, reception doesn't know when a room will be available. The guest waits, the reputation suffers.</p>
       </div>
       <div class="problema__card reveal">
         <div class="problema__icon">📊</div>
-        <h3>Sin datos de rendimiento</h3>
-        <p>Imposible medir cuánto tarda cada equipo, cuántas habitaciones hicieron o dónde se pierden los suministros. Sin datos, no hay mejora posible.</p>
+        <h3 data-i18n="prob_3_title">No performance data</h3>
+        <p data-i18n="prob_3_text">Impossible to measure how long each team takes, how many rooms they cleaned or where supplies are lost. Without data, no improvement is possible.</p>
       </div>
     </div>
   </div>
@@ -198,43 +231,43 @@
 <section class="section how" id="como-funciona">
   <div class="container">
     <div class="section__head reveal">
-      <h2>Un flujo de trabajo claro para cada rol</h2>
-      <p>Cada miembro del equipo ve exactamente lo que necesita, en el momento exacto.</p>
+      <h2 data-i18n="how_title">A clear workflow for every role</h2>
+      <p data-i18n="how_sub">Every team member sees exactly what they need, at the exact right moment.</p>
     </div>
     <div class="steps">
       <div class="step reveal">
-        <div class="step__num">01</div>
+        <div class="step__num" data-i18n="step_1_num">01</div>
         <div class="step__icon">🌅</div>
-        <h3>El turno comienza</h3>
-        <p>El supervisor abre la sesión de limpieza. El sistema asigna habitaciones automáticamente por prioridad: salidas primero, luego pre-llegadas.</p>
+        <h3 data-i18n="step_1_title">The shift begins</h3>
+        <p data-i18n="step_1_text">The supervisor opens the cleaning session. The system automatically assigns rooms by priority: departures first, then pre-arrivals.</p>
       </div>
       <div class="step__connector" aria-hidden="true">→</div>
       <div class="step reveal">
-        <div class="step__num">02</div>
+        <div class="step__num" data-i18n="step_2_num">02</div>
         <div class="step__icon">📱</div>
-        <h3>El limpiador recibe su habitación</h3>
-        <p>En modo Zen: una sola tarjeta con el número de habitación, tipo de limpieza y un botón de inicio. Sin distracciones.</p>
+        <h3 data-i18n="step_2_title">The cleaner receives their room</h3>
+        <p data-i18n="step_2_text">Zen mode: a single card with the room number, cleaning type and a start button. No distractions.</p>
       </div>
       <div class="step__connector" aria-hidden="true">→</div>
       <div class="step reveal">
-        <div class="step__num">03</div>
+        <div class="step__num" data-i18n="step_3_num">03</div>
         <div class="step__icon">🔖</div>
-        <h3>Escanea la puerta con NFC</h3>
-        <p>Al llegar, escanea la etiqueta NFC en la puerta. El temporizador de limpieza arranca automáticamente.</p>
+        <h3 data-i18n="step_3_title">Scans the door with NFC</h3>
+        <p data-i18n="step_3_text">On arrival, they scan the NFC tag on the door. The cleaning timer starts automatically.</p>
       </div>
       <div class="step__connector" aria-hidden="true">→</div>
       <div class="step reveal">
-        <div class="step__num">04</div>
+        <div class="step__num" data-i18n="step_4_num">04</div>
         <div class="step__icon">✅</div>
-        <h3>El supervisor inspecciona</h3>
-        <p>Al terminar, si hay supervisores activos, la habitación pasa a estado Inspection. El supervisor hace el checklist en su teléfono y aprueba o rechaza.</p>
+        <h3 data-i18n="step_4_title">Supervisor inspects</h3>
+        <p data-i18n="step_4_text">When done, if supervisors are active, the room moves to Inspection. The supervisor runs the checklist on their phone and approves or rejects.</p>
       </div>
       <div class="step__connector" aria-hidden="true">→</div>
       <div class="step reveal">
-        <div class="step__num">05</div>
+        <div class="step__num" data-i18n="step_5_num">05</div>
         <div class="step__icon">🛎️</div>
-        <h3>Recepción ve el estado en vivo</h3>
-        <p>En cuanto se aprueba, recepción ve la habitación como Completed y puede asignar el check-in de inmediato.</p>
+        <h3 data-i18n="step_5_title">Reception sees status live</h3>
+        <p data-i18n="step_5_text">As soon as it's approved, reception sees the room as Completed and can assign the check-in immediately.</p>
       </div>
     </div>
   </div>
@@ -244,53 +277,53 @@
 <section class="section features" id="features">
   <div class="container">
     <div class="section__head reveal">
-      <h2>Todo lo que necesita tu operación</h2>
+      <h2 data-i18n="feat_title">Everything your operation needs</h2>
     </div>
     <div class="features__grid">
       <div class="feature-card reveal">
         <div class="feature-card__icon">🗂️</div>
-        <h3>Tablero en tiempo real</h3>
-        <p>Vista tipo Kanban de todas las habitaciones del hotel. Colores por tipo de limpieza: rojo (salida), violeta (pre-llegada), naranja (stayover), amarillo (semanal) y más. Estado visible para todo el equipo al instante.</p>
+        <h3 data-i18n="feat_1_title">Real-time board</h3>
+        <p data-i18n="feat_1_text">Kanban-style view of all hotel rooms. Colour-coded by cleaning type: red (departure), violet (pre-arrival), orange (stayover), yellow (weekly) and more. Status visible to the whole team instantly.</p>
       </div>
       <div class="feature-card reveal">
         <div class="feature-card__icon">🤖</div>
-        <h3>IA para gestión de turnos — NemoClaw</h3>
-        <p>El asistente de inteligencia artificial de HotelFlow. Genera el roster semanal del personal automáticamente, considerando disponibilidad, carga de trabajo y restricciones del equipo. Impulsado por Google Gemini.</p>
+        <h3 data-i18n="feat_2_title">AI shift management — NemoClaw</h3>
+        <p data-i18n="feat_2_text">HotelFlow's artificial intelligence assistant. Automatically generates the weekly staff roster, considering availability, workload and team constraints. Powered by Google Gemini.</p>
       </div>
       <div class="feature-card reveal">
         <div class="feature-card__icon">💬</div>
-        <h3>Chat operacional con IA</h3>
-        <p>Pregunta cualquier cosa sobre el estado del hotel en tiempo real. <em>"¿Cuántas habitaciones quedan por limpiar?"</em>, <em>"¿Qué incidentes están abiertos en planta 3?"</em> NemoClaw responde en segundos con contexto real del hotel.</p>
+        <h3 data-i18n="feat_3_title">Operational chat with AI</h3>
+        <p data-i18n-html="feat_3_text">Ask anything about the hotel's status in real time. <em>"How many rooms are left to clean?"</em>, <em>"What incidents are open on floor 3?"</em> NemoClaw answers in seconds with real hotel context.</p>
       </div>
       <div class="feature-card reveal">
         <div class="feature-card__icon">⚡</div>
-        <h3>Priorización automática</h3>
-        <p>El algoritmo ordena habitaciones por urgencia: hora de llegada del próximo huésped, tipo de limpieza, tiempo en cola y si hay huésped esperando. Cero decisiones manuales para el supervisor.</p>
+        <h3 data-i18n="feat_4_title">Automatic prioritisation</h3>
+        <p data-i18n="feat_4_text">The algorithm orders rooms by urgency: next guest arrival time, cleaning type, time in queue and whether a guest is waiting. Zero manual decisions for the supervisor.</p>
       </div>
       <div class="feature-card reveal">
         <div class="feature-card__icon">🔖</div>
-        <h3>NFC en puertas de habitación</h3>
-        <p>Los limpiadores escanean etiquetas NFC al entrar y salir. El cronómetro arranca y para automáticamente. Los datos de tiempo real alimentan las estadísticas del dashboard.</p>
+        <h3 data-i18n="feat_5_title">NFC on room doors</h3>
+        <p data-i18n="feat_5_text">Cleaners scan NFC tags when entering and leaving. The timer starts and stops automatically. Real-time data feeds dashboard statistics.</p>
       </div>
       <div class="feature-card reveal">
         <div class="feature-card__icon">📡</div>
-        <h3>Funciona sin internet</h3>
-        <p>Cuando no hay señal, las acciones se guardan en cola offline. Al recuperar conexión, todo se sincroniza en orden automáticamente. El equipo no se detiene aunque el WiFi falle.</p>
+        <h3 data-i18n="feat_6_title">Works without internet</h3>
+        <p data-i18n="feat_6_text">When there's no signal, actions are saved in an offline queue. When the connection is restored, everything syncs in order automatically. The team doesn't stop even if WiFi fails.</p>
       </div>
       <div class="feature-card reveal">
         <div class="feature-card__icon">🔐</div>
-        <h3>Login biométrico</h3>
-        <p>Face ID y Touch ID integrados. Los empleados entran con huella o reconocimiento facial. Sin contraseñas que olvidar en medio del turno.</p>
+        <h3 data-i18n="feat_7_title">Biometric login</h3>
+        <p data-i18n="feat_7_text">Face ID and Touch ID built in. Employees log in with fingerprint or facial recognition. No passwords to forget in the middle of a shift.</p>
       </div>
       <div class="feature-card reveal">
         <div class="feature-card__icon">⚠️</div>
-        <h3>Gestión de incidencias</h3>
-        <p>Cualquier rol puede reportar incidencias con foto, prioridad y rol destinatario. Las notificaciones push llegan al responsable en segundos con todo el contexto.</p>
+        <h3 data-i18n="feat_8_title">Incident management</h3>
+        <p data-i18n="feat_8_text">Any role can report incidents with photo, priority and target role. Push notifications reach the responsible person in seconds with full context.</p>
       </div>
       <div class="feature-card reveal">
         <div class="feature-card__icon">📈</div>
-        <h3>Reportes y analytics</h3>
-        <p>Dashboard con KPIs reales: habitaciones limpiadas hoy, tiempo promedio por tipo de limpieza, rendimiento por equipo, actividad semanal. Datos reales, no estimados.</p>
+        <h3 data-i18n="feat_9_title">Reports &amp; analytics</h3>
+        <p data-i18n="feat_9_text">Dashboard with real KPIs: rooms cleaned today, average time by cleaning type, team performance, weekly activity. Real data, not estimates.</p>
       </div>
     </div>
   </div>
@@ -300,39 +333,39 @@
 <section class="section roles" id="roles">
   <div class="container">
     <div class="section__head reveal">
-      <h2>Una app, seis experiencias distintas</h2>
-      <p>Cada rol ve solo lo que necesita. Sin ruido, sin confusión.</p>
+      <h2 data-i18n="roles_title">One app, six different experiences</h2>
+      <p data-i18n="roles_sub">Each role sees only what they need. No noise, no confusion.</p>
     </div>
     <div class="roles__grid">
       <div class="role-card reveal">
         <div class="role-card__badge">ADMIN</div>
-        <h3>Admin</h3>
-        <p>Visión completa del hotel. Gestiona habitaciones, personal, inventario, tipos de limpieza y analítica. Dashboard con 7 pestañas: Overview, Rooms, Staff, Stock, Types, Board y Live. FAB de acciones rápidas para añadir registros, abrir chat IA y crear alertas.</p>
+        <h3 data-i18n="role_1_title">Admin</h3>
+        <p data-i18n="role_1_text">Complete hotel overview. Manages rooms, staff, inventory, cleaning types and analytics. Dashboard with 7 tabs: Overview, Rooms, Staff, Stock, Types, Board and Live. Quick-action FAB to add records, open AI chat and create alerts.</p>
       </div>
       <div class="role-card reveal">
         <div class="role-card__badge role-card__badge--sup">SUPERVISOR</div>
-        <h3>Supervisor</h3>
-        <p>Abre y cierra turnos de limpieza. Inspecciona habitaciones terminadas con checklist visual. Ve el progreso en vivo de cada equipo. Recibe alertas de incidencias prioritarias. Puede rechazar una inspección y devolverla al limpiador.</p>
+        <h3 data-i18n="role_2_title">Supervisor</h3>
+        <p data-i18n="role_2_text">Opens and closes cleaning shifts. Inspects completed rooms with visual checklist. Sees each team's live progress. Receives priority incident alerts. Can reject an inspection and return it to the cleaner.</p>
       </div>
       <div class="role-card reveal">
         <div class="role-card__badge role-card__badge--clean">CLEANER</div>
-        <h3>Limpiador</h3>
-        <p>Modo Zen: una habitación a la vez. Desliza para empezar, reporta suministros usados, toma fotos de incidencias, solicita tiempo extra. Sin distracciones del resto del hotel. Cronómetro automático por NFC.</p>
+        <h3 data-i18n="role_3_title">Cleaner</h3>
+        <p data-i18n="role_3_text">Zen mode: one room at a time. Swipe to start, report supplies used, take incident photos, request extra time. No distractions from the rest of the hotel. Automatic timer via NFC.</p>
       </div>
       <div class="role-card reveal">
-        <div class="role-card__badge role-card__badge--recep">RECEPCIÓN</div>
-        <h3>Recepción</h3>
-        <p>Ve el estado en tiempo real de todas las habitaciones. Puede mover huéspedes entre habitaciones, gestionar check-in/check-out, actualizar estado del huésped y consultar el timeline visual de ocupación.</p>
+        <div class="role-card__badge role-card__badge--recep">RECEPTION</div>
+        <h3 data-i18n="role_4_title">Reception</h3>
+        <p data-i18n="role_4_text">Sees real-time status of all rooms. Can move guests between rooms, manage check-in/check-out, update guest status and consult the visual occupancy timeline.</p>
       </div>
       <div class="role-card reveal">
-        <div class="role-card__badge role-card__badge--maint">MANTENIMIENTO</div>
-        <h3>Mantenimiento</h3>
-        <p>Recibe órdenes de trabajo automáticamente al ser asignado en una incidencia. Ve habitaciones en estado Maintenance, actualiza el motivo, toma fotos del problema y cierra la orden cuando está resuelto.</p>
+        <div class="role-card__badge role-card__badge--maint">MAINTENANCE</div>
+        <h3 data-i18n="role_5_title">Maintenance</h3>
+        <p data-i18n="role_5_text">Receives work orders automatically when assigned to an incident. Sees rooms in Maintenance state, updates the reason, takes photos of the problem and closes the order when resolved.</p>
       </div>
       <div class="role-card reveal">
         <div class="role-card__badge role-card__badge--house">HOUSEMAN</div>
-        <h3>Houseman</h3>
-        <p>Se enfoca en habitaciones de salida y pre-llegada. Hace el checklist de ropa de cama según la configuración exacta de camas de cada habitación (King, Queen, Single, Cuna). Marca tareas individuales como completadas.</p>
+        <h3 data-i18n="role_6_title">Houseman</h3>
+        <p data-i18n="role_6_text">Focuses on departure and pre-arrival rooms. Runs the linen checklist per the exact bed configuration of each room (King, Queen, Single, Cot). Marks individual tasks as completed.</p>
       </div>
     </div>
   </div>
@@ -342,25 +375,25 @@
 <section class="ia" id="ia">
   <div class="container">
     <div class="ia__head reveal">
-      <span class="ia__badge">🤖 NemoClaw AI</span>
-      <h2>El primer asistente de IA diseñado para operaciones hoteleras</h2>
-      <p>NemoClaw entiende el contexto completo de tu hotel — habitaciones, personal, incidencias — y responde en lenguaje natural.</p>
+      <span class="ia__badge" data-i18n="ia_badge">🤖 NemoClaw AI</span>
+      <h2 data-i18n="ia_title">The first AI assistant designed for hotel operations</h2>
+      <p data-i18n="ia_sub">NemoClaw understands the complete context of your hotel — rooms, staff, incidents — and responds in natural language.</p>
     </div>
     <div class="ia__grid">
       <div class="ia__card reveal">
         <div class="ia__card-icon">📅</div>
-        <h3>Generación de rosters</h3>
-        <p>Crea el turno semanal del equipo en segundos. Considera disponibilidad declarada por cada empleado, días libres, carga histórica y restricciones del hotel. Incluye el razonamiento del modelo para cada decisión.</p>
+        <h3 data-i18n="ia_1_title">Roster generation</h3>
+        <p data-i18n="ia_1_text">Creates the weekly team schedule in seconds. Considers availability declared by each employee, days off, historical workload and hotel constraints. Includes the model's reasoning for each decision.</p>
       </div>
       <div class="ia__card reveal">
         <div class="ia__card-icon">💬</div>
-        <h3>Chat operacional</h3>
-        <p>Pregunta cualquier cosa sobre el estado del hotel en tiempo real. El agente tiene acceso al contexto completo: habitaciones, staff activo e incidencias abiertas. Responde en segundos en lenguaje natural.</p>
+        <h3 data-i18n="ia_2_title">Operational chat</h3>
+        <p data-i18n="ia_2_text">Ask anything about the hotel's status in real time. The agent has access to the complete context: rooms, active staff and open incidents. Responds in seconds in natural language.</p>
       </div>
       <div class="ia__card reveal">
         <div class="ia__card-icon">🎙️</div>
-        <h3>Comandos por voz</h3>
-        <p>Habla directamente con NemoClaw. Reconocimiento de voz integrado para cuando tus manos están ocupadas. Transcribe y responde sin tocar la pantalla.</p>
+        <h3 data-i18n="ia_3_title">Voice commands</h3>
+        <p data-i18n="ia_3_text">Speak directly to NemoClaw. Built-in voice recognition for when your hands are busy. Transcribes and responds without touching the screen.</p>
       </div>
     </div>
   </div>
@@ -370,65 +403,41 @@
 <section class="section tipos" id="tipos">
   <div class="container">
     <div class="section__head reveal">
-      <h2>Un sistema para cada tipo de servicio</h2>
-      <p>HotelFlow entiende las 8 operaciones de housekeeping más comunes del sector hotelero.</p>
+      <h2 data-i18n="tipos_title">A system for every type of service</h2>
+      <p data-i18n="tipos_sub">HotelFlow understands the 8 most common housekeeping operations in the hotel sector.</p>
     </div>
     <div class="tipos__grid">
       <div class="tipo-badge reveal" style="--tipo-bg:#FEE2E2;--tipo-border:#EF4444;--tipo-text:#991B1B">
         <span class="tipo-badge__dot" style="background:#EF4444"></span>
-        <div>
-          <strong>Departure</strong>
-          <span>Habitación de salida — máxima prioridad</span>
-        </div>
+        <div><strong data-i18n="tipo_1_name">Departure</strong><span data-i18n="tipo_1_desc">Checkout room — top priority</span></div>
       </div>
       <div class="tipo-badge reveal" style="--tipo-bg:#EDE9FE;--tipo-border:#7C3AED;--tipo-text:#4C1D95">
         <span class="tipo-badge__dot" style="background:#7C3AED"></span>
-        <div>
-          <strong>Pre-Arrival</strong>
-          <span>Huésped llega hoy — lista para check-in</span>
-        </div>
+        <div><strong data-i18n="tipo_2_name">Pre-Arrival</strong><span data-i18n="tipo_2_desc">Guest arriving today — ready for check-in</span></div>
       </div>
       <div class="tipo-badge reveal" style="--tipo-bg:#FFEDD5;--tipo-border:#F97316;--tipo-text:#9A3412">
         <span class="tipo-badge__dot" style="background:#F97316"></span>
-        <div>
-          <strong>Stayover</strong>
-          <span>Huésped continúa — limpieza de mantenimiento</span>
-        </div>
+        <div><strong data-i18n="tipo_3_name">Stayover</strong><span data-i18n="tipo_3_desc">Guest continuing — maintenance cleaning</span></div>
       </div>
       <div class="tipo-badge reveal" style="--tipo-bg:#FEF9C3;--tipo-border:#EAB308;--tipo-text:#713F12">
         <span class="tipo-badge__dot" style="background:#EAB308"></span>
-        <div>
-          <strong>Weekly Clean</strong>
-          <span>Limpieza semanal profunda</span>
-        </div>
+        <div><strong data-i18n="tipo_4_name">Weekly Clean</strong><span data-i18n="tipo_4_desc">Weekly deep clean</span></div>
       </div>
       <div class="tipo-badge reveal" style="--tipo-bg:#ECFCCB;--tipo-border:#84CC16;--tipo-text:#365314">
         <span class="tipo-badge__dot" style="background:#84CC16"></span>
-        <div>
-          <strong>Rubbish</strong>
-          <span>Recogida rápida de basura</span>
-        </div>
+        <div><strong data-i18n="tipo_5_name">Rubbish</strong><span data-i18n="tipo_5_desc">Quick rubbish collection</span></div>
       </div>
       <div class="tipo-badge reveal" style="--tipo-bg:#FCE7F3;--tipo-border:#EC4899;--tipo-text:#831843">
         <span class="tipo-badge__dot" style="background:#EC4899"></span>
-        <div>
-          <strong>Day Use</strong>
-          <span>Uso por horas</span>
-        </div>
+        <div><strong data-i18n="tipo_6_name">Day Use</strong><span data-i18n="tipo_6_desc">Hourly use</span></div>
       </div>
       <div class="tipo-badge reveal" style="--tipo-bg:#DBEAFE;--tipo-border:#3B82F6;--tipo-text:#1E3A8A">
         <span class="tipo-badge__dot" style="background:#3B82F6"></span>
-        <div>
-          <strong>Holdover</strong>
-          <span>Huésped se queda más tiempo</span>
-        </div>
+        <div><strong data-i18n="tipo_7_name">Holdover</strong><span data-i18n="tipo_7_desc">Guest staying longer</span></div>
       </div>
       <div class="tipo-badge reveal" style="--tipo-bg:#CCFBF1;--tipo-border:#14B8A6;--tipo-text:#134E4A">
         <span class="tipo-badge__dot" style="background:#14B8A6"></span>
-        <div>
-          <strong>Turnover</strong>
-          <span>Cambio rápido entre huéspedes</span>
-        </div>
+        <div><strong data-i18n="tipo_8_name">Turnover</strong><span data-i18n="tipo_8_desc">Quick changeover between guests</span></div>
       </div>
     </div>
   </div>
@@ -438,37 +447,37 @@
 <section class="section stack" id="stack">
   <div class="container">
     <div class="section__head reveal">
-      <h2>Construido con tecnología moderna y probada</h2>
+      <h2 data-i18n="stack_title">Built with modern, proven technology</h2>
     </div>
     <div class="stack__grid">
       <div class="stack__col reveal">
         <div class="stack__col-head">
           <span class="stack__col-icon">📱</span>
-          <h3>App Móvil</h3>
+          <h3 data-i18n="stack_mobile_title">Mobile App</h3>
         </div>
         <ul class="stack__list">
-          <li>React Native + Expo (iOS y Android nativos)</li>
-          <li>TypeScript — sin código sin tipado</li>
-          <li>Biometría nativa (Face ID / Touch ID)</li>
-          <li>NFC nativo con react-native-nfc-manager</li>
-          <li>Push notifications vía Expo</li>
-          <li>Almacenamiento cifrado con SecureStore</li>
-          <li>Funciona offline con cola de sincronización automática</li>
+          <li data-i18n="stack_mobile_1">React Native + Expo (native iOS &amp; Android)</li>
+          <li data-i18n="stack_mobile_2">TypeScript — no untyped code</li>
+          <li data-i18n="stack_mobile_3">Native biometrics (Face ID / Touch ID)</li>
+          <li data-i18n="stack_mobile_4">Native NFC with react-native-nfc-manager</li>
+          <li data-i18n="stack_mobile_5">Push notifications via Expo</li>
+          <li data-i18n="stack_mobile_6">Encrypted storage with SecureStore</li>
+          <li data-i18n="stack_mobile_7">Works offline with automatic sync queue</li>
         </ul>
       </div>
       <div class="stack__col reveal">
         <div class="stack__col-head">
           <span class="stack__col-icon">⚙️</span>
-          <h3>Backend</h3>
+          <h3 data-i18n="stack_backend_title">Backend</h3>
         </div>
         <ul class="stack__list">
-          <li>Django REST Framework (Python 3.11+)</li>
-          <li>Autenticación por token (DRF TokenAuthentication)</li>
-          <li>API REST versionada <code>/api/v1/</code></li>
-          <li>Tareas asíncronas con Celery + Redis</li>
-          <li>Compatible con PostgreSQL en producción</li>
-          <li>IA externa vía Google Gemini API</li>
-          <li>Listo para integración con PMS/RMS</li>
+          <li data-i18n="stack_backend_1">Django REST Framework (Python 3.11+)</li>
+          <li data-i18n="stack_backend_2">Token authentication (DRF TokenAuthentication)</li>
+          <li>Versioned REST API <code>/api/v1/</code></li>
+          <li data-i18n="stack_backend_4">Async tasks with Celery + Redis</li>
+          <li data-i18n="stack_backend_5">PostgreSQL compatible in production</li>
+          <li data-i18n="stack_backend_6">External AI via Google Gemini API</li>
+          <li data-i18n="stack_backend_7">Ready for PMS/RMS integration</li>
         </ul>
       </div>
     </div>
@@ -480,24 +489,24 @@
   <div class="container">
     <div class="cta-section__inner">
       <div class="cta-section__text reveal">
-        <h2>¿Listo para transformar la operación de tu hotel?</h2>
-        <p>HotelFlow está disponible para iOS y Android. Solicita acceso anticipado y te contactamos en menos de 24 horas.</p>
+        <h2 data-i18n="cta_title">Ready to transform your hotel's operation?</h2>
+        <p data-i18n="cta_sub">HotelFlow is available for iOS and Android. Request early access and we'll contact you in under 24 hours.</p>
       </div>
       <form class="cta-form reveal" id="cta-form" novalidate>
         <div class="form-group">
-          <label for="f-name">Nombre</label>
-          <input type="text" id="f-name" name="nombre" placeholder="Tu nombre" required />
+          <label for="f-name" data-i18n="form_name_label">Name</label>
+          <input type="text" id="f-name" name="nombre" data-i18n-ph="form_name_placeholder" placeholder="Your name" required />
         </div>
         <div class="form-group">
-          <label for="f-email">Email</label>
-          <input type="email" id="f-email" name="email" placeholder="tu@hotel.com" required />
+          <label for="f-email" data-i18n="form_email_label">Email</label>
+          <input type="email" id="f-email" name="email" data-i18n-ph="form_email_placeholder" placeholder="you@hotel.com" required />
         </div>
         <div class="form-group">
-          <label for="f-hotel">Hotel / Nº de habitaciones</label>
-          <input type="text" id="f-hotel" name="hotel" placeholder="Hotel Mediterráneo · 120 hab." required />
+          <label for="f-hotel" data-i18n="form_hotel_label">Hotel / Number of rooms</label>
+          <input type="text" id="f-hotel" name="hotel" data-i18n-ph="form_hotel_placeholder" placeholder="Hotel Mediterranean · 120 rooms" required />
         </div>
-        <button type="submit" class="btn btn--white btn--block btn--lg">Solicitar acceso</button>
-        <p class="cta-form__note">Sin compromiso · Te respondemos en menos de 24h</p>
+        <button type="submit" class="btn btn--white btn--block btn--lg" data-i18n="form_btn">Request access</button>
+        <p class="cta-form__note" data-i18n="form_note">No commitment · We reply in under 24h</p>
       </form>
     </div>
   </div>
@@ -514,9 +523,9 @@
             <path d="M8 22V14l8-6 8 6v8" stroke="#fff" stroke-width="2" stroke-linejoin="round"/>
             <rect x="13" y="16" width="6" height="6" rx="1" fill="#fff" opacity=".9"/>
           </svg>
-          <span class="nav__name">HotelFlow</span>
+          <span class="nav__name footer__brand-name">HotelFlow</span>
         </a>
-        <p>El sistema operativo del housekeeping moderno.</p>
+        <p data-i18n="footer_tagline">The operating system of modern housekeeping.</p>
         <div class="footer__stores">
           <span class="store-badge">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
@@ -529,15 +538,15 @@
         </div>
       </div>
       <nav class="footer__nav" aria-label="Footer navigation">
-        <a href="#features">Features</a>
-        <a href="#roles">Roles</a>
-        <a href="#ia">IA</a>
-        <a href="#contacto">Contacto</a>
-        <a href="#">Política de privacidad</a>
+        <a href="#features" data-i18n="nav_features">Features</a>
+        <a href="#roles" data-i18n="nav_roles">Roles</a>
+        <a href="#ia" data-i18n="nav_ia">AI</a>
+        <a href="#contacto" data-i18n="nav_contact">Contact</a>
+        <a href="#" data-i18n="footer_privacy">Privacy policy</a>
       </nav>
       <div class="footer__info">
-        <p>Disponible en iOS y Android</p>
-        <p class="footer__copy">© 2026 HotelFlow. Todos los derechos reservados.</p>
+        <p data-i18n="footer_available">Available on iOS and Android</p>
+        <p class="footer__copy" data-i18n="footer_copy">© 2026 HotelFlow. All rights reserved.</p>
       </div>
     </div>
   </div>
