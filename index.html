@@ -374,28 +374,73 @@
 <!-- ========== IA ========== -->
 <section class="ia" id="ia">
   <div class="container">
+
+    <!-- Header -->
     <div class="ia__head reveal">
       <span class="ia__badge" data-i18n="ia_badge">🤖 NemoClaw AI</span>
-      <h2 data-i18n="ia_title">The first AI assistant designed for hotel operations</h2>
-      <p data-i18n="ia_sub">NemoClaw understands the complete context of your hotel — rooms, staff, incidents — and responds in natural language.</p>
+      <h2 data-i18n="ia_title">Your hotel's AI companion — always by your side</h2>
+      <p data-i18n="ia_sub">Ask anything. Check metrics. Set alerts. NemoClaw knows every room, every team member and every incident in real time.</p>
     </div>
-    <div class="ia__grid">
-      <div class="ia__card reveal">
-        <div class="ia__card-icon">📅</div>
-        <h3 data-i18n="ia_1_title">Roster generation</h3>
-        <p data-i18n="ia_1_text">Creates the weekly team schedule in seconds. Considers availability declared by each employee, days off, historical workload and hotel constraints. Includes the model's reasoning for each decision.</p>
+
+    <!-- Main: left text + right chat -->
+    <div class="ia__main">
+      <div class="ia__left reveal">
+        <h3 data-i18n="ia_companion_title">One companion for every role</h3>
+        <p data-i18n="ia_companion_text">Whether you're a supervisor monitoring team progress, reception waiting for a room, or an admin reviewing the day — NemoClaw is one message away, 24/7.</p>
+        <div class="ia__chips">
+          <span class="ia__chip">💬 <span data-i18n="ia_chip_1">Instant answers</span></span>
+          <span class="ia__chip">📊 <span data-i18n="ia_chip_2">Live metrics</span></span>
+          <span class="ia__chip">🔔 <span data-i18n="ia_chip_3">Smart alerts</span></span>
+          <span class="ia__chip">🎙️ <span data-i18n="ia_chip_4">Voice</span></span>
+        </div>
+        <a href="#contacto" class="btn ia__cta-btn" data-i18n="ia_cta">Try NemoClaw →</a>
       </div>
+
+      <div class="ia__right reveal">
+        <!-- Chat mockup -->
+        <div class="nemo-chat">
+          <div class="nemo-chat__header">
+            <div class="nemo-chat__avatar">🤖</div>
+            <div class="nemo-chat__info">
+              <div class="nemo-chat__name">NemoClaw</div>
+              <div class="nemo-chat__status"><span class="live-dot"></span><span data-i18n="ia_online">Online · Real-time context</span></div>
+            </div>
+          </div>
+          <div class="nemo-chat__body" id="nemo-chat-body"></div>
+          <div class="nemo-chat__footer">
+            <div class="nemo-chat__input-row">
+              <span class="nemo-chat__prompt" id="nemo-prompt" data-i18n="ia_placeholder">Ask about rooms, metrics or alerts…</span>
+              <button class="nemo-chat__send" aria-label="Send" tabindex="-1">↑</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4 capability cards -->
+    <div class="ia__grid ia__grid--4">
       <div class="ia__card reveal">
         <div class="ia__card-icon">💬</div>
-        <h3 data-i18n="ia_2_title">Operational chat</h3>
-        <p data-i18n="ia_2_text">Ask anything about the hotel's status in real time. The agent has access to the complete context: rooms, active staff and open incidents. Responds in seconds in natural language.</p>
+        <h3 data-i18n="ia_1_title">Instant answers</h3>
+        <p data-i18n="ia_1_text">Ask about any room, team member or situation in natural language. NemoClaw reads the live hotel state and responds in seconds — no dashboards to navigate.</p>
+      </div>
+      <div class="ia__card reveal">
+        <div class="ia__card-icon">📊</div>
+        <h3 data-i18n="ia_2_title">Live metrics</h3>
+        <p data-i18n="ia_2_text">Get on-demand KPIs: rooms cleaned, average cleaning time, team rankings, open incidents. Turn a single question into a full performance summary.</p>
+      </div>
+      <div class="ia__card reveal">
+        <div class="ia__card-icon">🔔</div>
+        <h3 data-i18n="ia_3_title">Smart alerts</h3>
+        <p data-i18n="ia_3_text">"Alert me if room 401 isn't done by 14:00." NemoClaw sets it, monitors it and sends you a push notification — without you having to watch the board.</p>
       </div>
       <div class="ia__card reveal">
         <div class="ia__card-icon">🎙️</div>
-        <h3 data-i18n="ia_3_title">Voice commands</h3>
-        <p data-i18n="ia_3_text">Speak directly to NemoClaw. Built-in voice recognition for when your hands are busy. Transcribes and responds without touching the screen.</p>
+        <h3 data-i18n="ia_4_title">Voice & hands-free</h3>
+        <p data-i18n="ia_4_text">Speak directly to NemoClaw when your hands are busy. It listens, understands the context and responds — no need to touch the screen.</p>
       </div>
     </div>
+
   </div>
 </section>
 
