@@ -137,48 +137,19 @@
   </div>
 
   <div class="hero__visual">
-    <div class="phone-frame">
-      <div class="phone-notch"></div>
-      <div class="phone-screen">
-        <div class="app-header">
-          <span class="app-header__title" data-i18n="app_header_title">Board — Floor 3</span>
-          <span class="app-header__badge"><span data-i18n="app_header_badge">Live</span></span>
-        </div>
-        <div class="app-tabs">
-          <span class="app-tab app-tab--active" data-i18n="app_tab_all">All</span>
-          <span class="app-tab" data-i18n="app_tab_departures">Departures</span>
-          <span class="app-tab" data-i18n="app_tab_prearrival">Pre-arrival</span>
-        </div>
-        <div class="room-board">
-          <div class="room-card room-card--departure">
-            <div><div class="room-card__num">301</div><div class="room-card__type">Departure</div></div>
-            <div class="room-card__status" data-i18n="room_pending">Pending</div>
-          </div>
-          <div class="room-card room-card--prearrival">
-            <div><div class="room-card__num">302</div><div class="room-card__type">Pre-Arrival</div></div>
-            <div class="room-card__status" data-i18n="room_assigned">Assigned</div>
-          </div>
-          <div class="room-card room-card--inprogress">
-            <div><div class="room-card__num">303</div><div class="room-card__type">Stayover</div></div>
-            <div class="room-card__status room-card__status--live"><span class="live-dot"></span><span data-i18n="room_inprogress">In progress</span></div>
-          </div>
-          <div class="room-card room-card--completed">
-            <div><div class="room-card__num">304</div><div class="room-card__type">Departure</div></div>
-            <div class="room-card__status" data-i18n="room_completed">Completed ✓</div>
-          </div>
-          <div class="room-card room-card--prearrival">
-            <div><div class="room-card__num">305</div><div class="room-card__type">Pre-Arrival</div></div>
-            <div class="room-card__status" data-i18n="room_inspection">Inspection</div>
-          </div>
-          <div class="room-card room-card--stayover">
-            <div><div class="room-card__num">306</div><div class="room-card__type">Stayover</div></div>
-            <div class="room-card__status" data-i18n="room_pending">Pending</div>
-          </div>
-        </div>
-        <div class="app-footer-bar">
-          <span>🏠</span><span>📋</span><span>👤</span><span>💬</span>
-        </div>
-      </div>
+    <div class="hero__phones-stack">
+      <img class="hero__phone-side hero__phone-side--left"
+           src="images/screenshots/supervisor-live.png"
+           alt="Supervisor live view showing all rooms colour-coded by status"
+           loading="eager">
+      <img class="hero__phone-main"
+           src="images/screenshots/cleaner-01.png"
+           alt="Cleaner zen mode — one room at a time"
+           loading="eager">
+      <img class="hero__phone-side hero__phone-side--right"
+           src="images/screenshots/nemoclaw-mobile.png"
+           alt="NemoClaw AI assistant ready to answer hotel questions"
+           loading="eager">
     </div>
     <div class="hero__float hero__float--a reveal">
       <div class="float-card">
@@ -371,6 +342,91 @@
   </div>
 </section>
 
+<!-- ========== SCREENSHOTS ========== -->
+<section class="section screenshots" id="screenshots">
+  <div class="container">
+    <div class="section__head reveal">
+      <h2 data-i18n="ss_title">The real app — no filters</h2>
+      <p data-i18n="ss_sub">Every screenshot is from the live HotelFlow application. No mockups, no illustrations.</p>
+    </div>
+
+    <div class="ss-tabs reveal">
+      <button class="ss-tab is-active" data-role="cleaner" data-i18n="ss_tab_cleaner">Cleaner</button>
+      <button class="ss-tab" data-role="supervisor" data-i18n="ss_tab_supervisor">Supervisor</button>
+      <button class="ss-tab" data-role="reception" data-i18n="ss_tab_reception">Reception</button>
+      <button class="ss-tab" data-role="houseman" data-i18n="ss_tab_houseman">Houseman</button>
+      <button class="ss-tab" data-role="maintenance" data-i18n="ss_tab_maintenance">Maintenance</button>
+    </div>
+
+    <div class="ss-gallery">
+
+      <!-- Cleaner -->
+      <div class="ss-panel is-active" data-role="cleaner">
+        <div class="ss-phones">
+          <img class="ss-phone" src="images/screenshots/cleaner-01.png" alt="Cleaner queue with Up Next room card and team progress" loading="lazy">
+          <img class="ss-phone ss-phone--elevated" src="images/screenshots/cleaner-03.png" alt="Global alert modal for reporting issues to any department" loading="lazy">
+          <img class="ss-phone" src="images/screenshots/nemoclaw-mobile.png" alt="NemoClaw AI assistant chat on mobile" loading="lazy">
+        </div>
+        <div class="ss-desc">
+          <h3 data-i18n="ss_cleaner_title">Zen mode — one room at a time</h3>
+          <p data-i18n="ss_cleaner_text">The cleaner sees their next room, team progress, and can report issues or chat with NemoClaw in one tap.</p>
+        </div>
+      </div>
+
+      <!-- Supervisor -->
+      <div class="ss-panel" data-role="supervisor">
+        <div class="ss-phones">
+          <img class="ss-phone" src="images/screenshots/supervisor-overview.png" alt="Supervisor overview dashboard with Ready, Inspect and Cleaners counts" loading="lazy">
+          <img class="ss-phone ss-phone--elevated" src="images/screenshots/supervisor-live.png" alt="Live room grid colour-coded by status across two teams" loading="lazy">
+          <img class="ss-phone" src="images/screenshots/supervisor-inspect.png" alt="Pending inspections list with approve and reject actions" loading="lazy">
+        </div>
+        <div class="ss-desc">
+          <h3 data-i18n="ss_supervisor_title">Complete visibility across the floor</h3>
+          <p data-i18n="ss_supervisor_text">The live room grid, inspection queue and team tracker — everything a supervisor needs to stay ahead of every shift.</p>
+        </div>
+      </div>
+
+      <!-- Reception -->
+      <div class="ss-panel" data-role="reception">
+        <div class="ss-browsers">
+          <img class="ss-browser" src="images/screenshots/reception-board.png" alt="Reception web board showing all rooms grouped by cleaning team" loading="lazy">
+          <img class="ss-browser" src="images/screenshots/reception-live-nemo.png" alt="Reception live dashboard with NemoClaw AI panel open" loading="lazy">
+        </div>
+        <div class="ss-desc">
+          <h3 data-i18n="ss_reception_title">Powerful web dashboard for reception</h3>
+          <p data-i18n="ss_reception_text">The web app gives reception and admin a bird's-eye view: rooms, teams, live board — and the NemoClaw AI panel always on hand for instant answers.</p>
+        </div>
+      </div>
+
+      <!-- Houseman -->
+      <div class="ss-panel" data-role="houseman">
+        <div class="ss-phones">
+          <img class="ss-phone" src="images/screenshots/houseman-requests.png" alt="Houseman general requests list from room attendants" loading="lazy">
+          <img class="ss-phone ss-phone--elevated" src="images/screenshots/houseman-linen.png" alt="Daily linen requirements calculator showing King/Queen/Single sheets and towels" loading="lazy">
+          <img class="ss-phone" src="images/screenshots/houseman-prep.png" alt="Prep list with swipe-to-mark-ready interactions" loading="lazy">
+        </div>
+        <div class="ss-desc">
+          <h3 data-i18n="ss_houseman_title">Linen, prep and supply requests</h3>
+          <p data-i18n="ss_houseman_text">From general requests to automatic linen calculations — the houseman has everything needed to support the cleaning teams across all groups.</p>
+        </div>
+      </div>
+
+      <!-- Maintenance -->
+      <div class="ss-panel" data-role="maintenance">
+        <div class="ss-phones ss-phones--centered">
+          <img class="ss-phone" src="images/screenshots/maintenance-open.png" alt="Maintenance open work orders with priority and guest impact flags" loading="lazy">
+          <img class="ss-phone ss-phone--elevated" src="images/screenshots/maintenance-blocked.png" alt="Blocked rooms list with reason and return to service button" loading="lazy">
+        </div>
+        <div class="ss-desc">
+          <h3 data-i18n="ss_maintenance_title">Work orders &amp; blocked rooms</h3>
+          <p data-i18n="ss_maintenance_text">Maintenance receives alerts the moment an incident is reported. Manage work orders, set priority levels and control which rooms are blocked from service.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- ========== IA ========== -->
 <section class="ia" id="ia">
   <div class="container">
@@ -488,46 +544,6 @@
   </div>
 </section>
 
-<!-- ========== STACK ========== -->
-<section class="section stack" id="stack">
-  <div class="container">
-    <div class="section__head reveal">
-      <h2 data-i18n="stack_title">Built with modern, proven technology</h2>
-    </div>
-    <div class="stack__grid">
-      <div class="stack__col reveal">
-        <div class="stack__col-head">
-          <span class="stack__col-icon">📱</span>
-          <h3 data-i18n="stack_mobile_title">Mobile App</h3>
-        </div>
-        <ul class="stack__list">
-          <li data-i18n="stack_mobile_1">React Native + Expo (native iOS &amp; Android)</li>
-          <li data-i18n="stack_mobile_2">TypeScript — no untyped code</li>
-          <li data-i18n="stack_mobile_3">Native biometrics (Face ID / Touch ID)</li>
-          <li data-i18n="stack_mobile_4">Native NFC with react-native-nfc-manager</li>
-          <li data-i18n="stack_mobile_5">Push notifications via Expo</li>
-          <li data-i18n="stack_mobile_6">Encrypted storage with SecureStore</li>
-          <li data-i18n="stack_mobile_7">Works offline with automatic sync queue</li>
-        </ul>
-      </div>
-      <div class="stack__col reveal">
-        <div class="stack__col-head">
-          <span class="stack__col-icon">⚙️</span>
-          <h3 data-i18n="stack_backend_title">Backend</h3>
-        </div>
-        <ul class="stack__list">
-          <li data-i18n="stack_backend_1">Django REST Framework (Python 3.11+)</li>
-          <li data-i18n="stack_backend_2">Token authentication (DRF TokenAuthentication)</li>
-          <li>Versioned REST API <code>/api/v1/</code></li>
-          <li data-i18n="stack_backend_4">Async tasks with Celery + Redis</li>
-          <li data-i18n="stack_backend_5">PostgreSQL compatible in production</li>
-          <li data-i18n="stack_backend_6">External AI via Google Gemini API</li>
-          <li data-i18n="stack_backend_7">Ready for PMS/RMS integration</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- ========== CTA FINAL ========== -->
 <section class="cta-section" id="contacto">

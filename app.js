@@ -106,22 +106,22 @@ const i18n = {
     tipo_6_name: 'Day Use', tipo_6_desc: 'Hourly use',
     tipo_7_name: 'Holdover', tipo_7_desc: 'Guest staying longer',
     tipo_8_name: 'Turnover', tipo_8_desc: 'Quick changeover between guests',
-    // Stack
-    stack_title: 'Built with modern, proven technology',
-    stack_mobile_title: 'Mobile App', stack_backend_title: 'Backend',
-    stack_mobile_1: 'React Native + Expo (native iOS & Android)',
-    stack_mobile_2: 'TypeScript — no untyped code',
-    stack_mobile_3: 'Native biometrics (Face ID / Touch ID)',
-    stack_mobile_4: 'Native NFC with react-native-nfc-manager',
-    stack_mobile_5: 'Push notifications via Expo',
-    stack_mobile_6: 'Encrypted storage with SecureStore',
-    stack_mobile_7: 'Works offline with automatic sync queue',
-    stack_backend_1: 'Django REST Framework (Python 3.11+)',
-    stack_backend_2: 'Token authentication (DRF TokenAuthentication)',
-    stack_backend_4: 'Async tasks with Celery + Redis',
-    stack_backend_5: 'PostgreSQL compatible in production',
-    stack_backend_6: 'External AI via Google Gemini API',
-    stack_backend_7: 'Ready for PMS/RMS integration',
+
+    // Screenshots section
+    ss_title: 'The real app — no filters',
+    ss_sub: 'Every screenshot is from the live HotelFlow application. No mockups, no illustrations.',
+    ss_tab_cleaner: 'Cleaner', ss_tab_supervisor: 'Supervisor', ss_tab_reception: 'Reception',
+    ss_tab_houseman: 'Houseman', ss_tab_maintenance: 'Maintenance',
+    ss_cleaner_title: 'Zen mode — one room at a time',
+    ss_cleaner_text: 'The cleaner sees their next room, team progress, and can report issues or chat with NemoClaw in one tap.',
+    ss_supervisor_title: 'Complete visibility across the floor',
+    ss_supervisor_text: 'The live room grid, inspection queue and team tracker — everything a supervisor needs to stay ahead of every shift.',
+    ss_reception_title: 'Powerful web dashboard for reception',
+    ss_reception_text: "The web app gives reception and admin a bird's-eye view: rooms, teams, live board — and the NemoClaw AI panel always on hand for instant answers.",
+    ss_houseman_title: 'Linen, prep and supply requests',
+    ss_houseman_text: 'From general requests to automatic linen calculations — the houseman has everything needed to support the cleaning teams across all groups.',
+    ss_maintenance_title: 'Work orders & blocked rooms',
+    ss_maintenance_text: 'Maintenance receives alerts the moment an incident is reported. Manage work orders, set priority levels and control which rooms are blocked from service.',
     // CTA & form
     cta_title: "Ready to transform your hotel's operation?",
     cta_sub: "HotelFlow is available for iOS and Android. Request early access and we'll contact you in under 24 hours.",
@@ -249,22 +249,22 @@ const i18n = {
     tipo_6_name: 'Day Use', tipo_6_desc: 'Uso por horas',
     tipo_7_name: 'Holdover', tipo_7_desc: 'Huésped se queda más tiempo',
     tipo_8_name: 'Turnover', tipo_8_desc: 'Cambio rápido entre huéspedes',
-    // Stack
-    stack_title: 'Construido con tecnología moderna y probada',
-    stack_mobile_title: 'App Móvil', stack_backend_title: 'Backend',
-    stack_mobile_1: 'React Native + Expo (iOS y Android nativos)',
-    stack_mobile_2: 'TypeScript — sin código sin tipado',
-    stack_mobile_3: 'Biometría nativa (Face ID / Touch ID)',
-    stack_mobile_4: 'NFC nativo con react-native-nfc-manager',
-    stack_mobile_5: 'Push notifications vía Expo',
-    stack_mobile_6: 'Almacenamiento cifrado con SecureStore',
-    stack_mobile_7: 'Funciona offline con cola de sincronización automática',
-    stack_backend_1: 'Django REST Framework (Python 3.11+)',
-    stack_backend_2: 'Autenticación por token (DRF TokenAuthentication)',
-    stack_backend_4: 'Tareas asíncronas con Celery + Redis',
-    stack_backend_5: 'Compatible con PostgreSQL en producción',
-    stack_backend_6: 'IA externa vía Google Gemini API',
-    stack_backend_7: 'Listo para integración con PMS/RMS',
+
+    // Screenshots section
+    ss_title: 'La app real — sin filtros',
+    ss_sub: 'Cada captura proviene de la aplicación HotelFlow en vivo. Sin maquetas, sin ilustraciones.',
+    ss_tab_cleaner: 'Limpiador', ss_tab_supervisor: 'Supervisor', ss_tab_reception: 'Recepción',
+    ss_tab_houseman: 'Houseman', ss_tab_maintenance: 'Mantenimiento',
+    ss_cleaner_title: 'Modo Zen — una habitación a la vez',
+    ss_cleaner_text: 'El limpiador ve su próxima habitación, el progreso del equipo y puede reportar incidencias o chatear con NemoClaw con un toque.',
+    ss_supervisor_title: 'Visibilidad total del turno',
+    ss_supervisor_text: 'El tablero de habitaciones en vivo, la cola de inspecciones y el rastreador del equipo — todo lo que el supervisor necesita para anticiparse.',
+    ss_reception_title: 'Dashboard web para recepción',
+    ss_reception_text: 'La app web da a recepción y administración una vista panorámica: habitaciones, equipos, tablero en vivo — y el panel de IA NemoClaw siempre a mano.',
+    ss_houseman_title: 'Ropa de cama, preparación y solicitudes',
+    ss_houseman_text: 'Desde solicitudes generales hasta cálculos de lencería automáticos — el houseman tiene todo lo necesario para apoyar a los equipos de limpieza.',
+    ss_maintenance_title: 'Órdenes de trabajo y habitaciones bloqueadas',
+    ss_maintenance_text: 'Mantenimiento recibe alertas en el momento en que se reporta una incidencia. Gestiona órdenes, establece prioridades y controla qué habitaciones están fuera de servicio.',
     // CTA & form
     cta_title: '¿Listo para transformar la operación de tu hotel?',
     cta_sub: 'HotelFlow está disponible para iOS y Android. Solicita acceso anticipado y te contactamos en menos de 24 horas.',
@@ -568,6 +568,17 @@ function applyTheme(theme) {
   }, { threshold: 0.3 });
   const chatSection = document.getElementById('ia');
   if (chatSection) chatObserver.observe(chatSection);
+
+  // --- Screenshots tabs ---
+  const ssTabs = document.querySelectorAll('.ss-tab');
+  const ssPanels = document.querySelectorAll('.ss-panel');
+  ssTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const role = tab.dataset.role;
+      ssTabs.forEach(t => t.classList.toggle('is-active', t.dataset.role === role));
+      ssPanels.forEach(p => p.classList.toggle('is-active', p.dataset.role === role));
+    });
+  });
 
   // --- Animated room cards ---
   const roomCards = document.querySelectorAll('.room-card');
