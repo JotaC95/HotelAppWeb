@@ -5,7 +5,6 @@ const i18n = {
     nav_features: 'Features', nav_roles: 'Roles', nav_ia: 'AI',
     nav_contact: 'Contact', nav_demo: 'View demo', nav_access: 'Request access',
     // Hero
-    hero_badge: '⚡ Powered by Gemini AI',
     hero_title: 'The operating system of modern housekeeping',
     hero_sub: 'HotelFlow connects your entire team in real time — cleaners, supervisors, reception and maintenance — in one mobile app with built-in artificial intelligence.',
     hero_cta_primary: 'Request demo',
@@ -17,7 +16,7 @@ const i18n = {
     app_header_title: 'Board — Floor 3',
     app_header_badge: 'Live',
     app_tab_all: 'All', app_tab_departures: 'Departures', app_tab_prearrival: 'Pre-arrival',
-    float_a_label: 'NemoClaw AI', float_a_val: 'Roster generated',
+    float_a_label: 'AI Agent', float_a_val: 'Roster generated',
     float_b_label: 'Check-in ready', float_b_val: 'Room 304 free',
     room_pending: 'Pending', room_assigned: 'Assigned',
     room_inprogress: 'In progress', room_completed: 'Completed ✓', room_inspection: 'Inspection',
@@ -46,10 +45,10 @@ const i18n = {
     feat_title: 'Everything your operation needs',
     feat_1_title: 'Real-time board',
     feat_1_text: 'Kanban-style view of all hotel rooms. Colour-coded by cleaning type: red (departure), violet (pre-arrival), orange (stayover), yellow (weekly) and more. Status visible to the whole team instantly.',
-    feat_2_title: 'AI shift management — NemoClaw',
-    feat_2_text: "HotelFlow's artificial intelligence assistant. Automatically generates the weekly staff roster, considering availability, workload and team constraints. Powered by Google Gemini.",
+    feat_2_title: 'Personal AI Assistant',
+    feat_2_text: 'An AI agent that acts as your personal assistant. Ask questions about room status and clients, and let it support your daily tasks with real-time information.',
     feat_3_title: 'Operational chat with AI',
-    feat_3_text: 'Ask anything about the hotel\'s status in real time. <em>"How many rooms are left to clean?"</em>, <em>"What incidents are open on floor 3?"</em> NemoClaw answers in seconds with real hotel context.',
+    feat_3_text: 'Ask anything about the hotel\'s status in real time. <em>"How many rooms are left to clean?"</em>, <em>"What incidents are open on floor 3?"</em> The AI agent answers in seconds with real hotel context.',
     feat_4_title: 'Automatic prioritisation',
     feat_4_text: 'The algorithm orders rooms by urgency: next guest arrival time, cleaning type, time in queue and whether a guest is waiting. Zero manual decisions for the supervisor.',
     feat_5_title: 'NFC on room doors',
@@ -78,23 +77,23 @@ const i18n = {
     role_6_title: 'Houseman',
     role_6_text: 'Focuses on departure and pre-arrival rooms. Runs the linen checklist per the exact bed configuration of each room (King, Queen, Single, Cot). Marks individual tasks as completed.',
     // IA
-    ia_badge: '🤖 NemoClaw AI',
+    ia_badge: '🤖 AI Agent',
     ia_title: "Your hotel's AI companion — always by your side",
-    ia_sub: 'Ask anything. Check metrics. Set alerts. NemoClaw knows every room, every team member and every incident in real time.',
+    ia_sub: 'Ask anything. Check metrics. Set alerts. The AI agent knows every room, every team member and every incident in real time.',
     ia_companion_title: 'One companion for every role',
-    ia_companion_text: "Whether you're a supervisor monitoring team progress, reception waiting for a room, or an admin reviewing the day — NemoClaw is one message away, 24/7.",
+    ia_companion_text: "Whether you're a supervisor monitoring team progress, reception waiting for a room, or an admin reviewing the day — the AI agent is one message away, 24/7.",
     ia_chip_1: 'Instant answers', ia_chip_2: 'Live metrics', ia_chip_3: 'Smart alerts', ia_chip_4: 'Voice',
-    ia_cta: 'Try NemoClaw →',
+    ia_cta: 'Try the AI Agent →',
     ia_online: 'Online · Real-time context',
     ia_placeholder: 'Ask about rooms, metrics or alerts…',
     ia_1_title: 'Instant answers',
-    ia_1_text: "Ask about any room, team member or situation in natural language. NemoClaw reads the live hotel state and responds in seconds — no dashboards to navigate.",
+    ia_1_text: "Ask about any room, team member or situation in natural language. The AI agent reads the live hotel state and responds in seconds — no dashboards to navigate.",
     ia_2_title: 'Live metrics',
     ia_2_text: 'Get on-demand KPIs: rooms cleaned, average cleaning time, team rankings, open incidents. Turn a single question into a full performance summary.',
     ia_3_title: 'Smart alerts',
-    ia_3_text: '"Alert me if room 401 isn\'t done by 14:00." NemoClaw sets it, monitors it and sends you a push notification — without you having to watch the board.',
+    ia_3_text: '"Alert me if room 401 isn\'t done by 14:00." The AI agent sets it, monitors it and sends you a push notification — without you having to watch the board.',
     ia_4_title: 'Voice & hands-free',
-    ia_4_text: "Speak directly to NemoClaw when your hands are busy. It listens, understands the context and responds — no need to touch the screen.",
+    ia_4_text: "Speak directly to the AI agent when your hands are busy. It listens, understands the context and responds — no need to touch the screen.",
     // Tipos
     tipos_title: 'A system for every type of service',
     tipos_sub: 'HotelFlow understands the 8 most common housekeeping operations in the hotel sector.',
@@ -113,11 +112,11 @@ const i18n = {
     ss_tab_cleaner: 'Cleaner', ss_tab_supervisor: 'Supervisor', ss_tab_reception: 'Reception',
     ss_tab_houseman: 'Houseman', ss_tab_maintenance: 'Maintenance',
     ss_cleaner_title: 'Zen mode — one room at a time',
-    ss_cleaner_text: 'The cleaner sees their next room, team progress, and can report issues or chat with NemoClaw in one tap.',
+    ss_cleaner_text: 'The cleaner sees their next room, team progress, and can report issues or chat with the AI agent in one tap.',
     ss_supervisor_title: 'Complete visibility across the floor',
     ss_supervisor_text: 'The live room grid, inspection queue and team tracker — everything a supervisor needs to stay ahead of every shift.',
     ss_reception_title: 'Powerful web dashboard for reception',
-    ss_reception_text: "The web app gives reception and admin a bird's-eye view: rooms, teams, live board — and the NemoClaw AI panel always on hand for instant answers.",
+    ss_reception_text: "The web app gives reception and admin a bird's-eye view: rooms, teams, live board — and the AI agent panel always on hand for instant answers.",
     ss_houseman_title: 'Linen, prep and supply requests',
     ss_houseman_text: 'From general requests to automatic linen calculations — the houseman has everything needed to support the cleaning teams across all groups.',
     ss_maintenance_title: 'Work orders & blocked rooms',
@@ -148,7 +147,6 @@ const i18n = {
     nav_features: 'Features', nav_roles: 'Roles', nav_ia: 'IA',
     nav_contact: 'Contacto', nav_demo: 'Ver demo', nav_access: 'Solicitar acceso',
     // Hero
-    hero_badge: '⚡ Powered by Gemini AI',
     hero_title: 'El sistema operativo del housekeeping moderno',
     hero_sub: 'HotelFlow conecta a todo tu equipo en tiempo real — limpiadores, supervisores, recepción y mantenimiento — en una sola app móvil con inteligencia artificial integrada.',
     hero_cta_primary: 'Solicitar demo',
@@ -160,7 +158,7 @@ const i18n = {
     app_header_title: 'Tablero — Planta 3',
     app_header_badge: 'En vivo',
     app_tab_all: 'Todas', app_tab_departures: 'Salidas', app_tab_prearrival: 'Pre-llegada',
-    float_a_label: 'NemoClaw IA', float_a_val: 'Roster generado',
+    float_a_label: 'Agente AI', float_a_val: 'Roster generado',
     float_b_label: 'Check-in listo', float_b_val: 'Hab. 304 libre',
     room_pending: 'Pendiente', room_assigned: 'Asignada',
     room_inprogress: 'En progreso', room_completed: 'Completada ✓', room_inspection: 'Inspección',
@@ -189,10 +187,10 @@ const i18n = {
     feat_title: 'Todo lo que necesita tu operación',
     feat_1_title: 'Tablero en tiempo real',
     feat_1_text: 'Vista tipo Kanban de todas las habitaciones del hotel. Colores por tipo de limpieza: rojo (salida), violeta (pre-llegada), naranja (stayover), amarillo (semanal) y más. Estado visible para todo el equipo al instante.',
-    feat_2_title: 'IA para gestión de turnos — NemoClaw',
-    feat_2_text: 'El asistente de inteligencia artificial de HotelFlow. Genera el roster semanal del personal automáticamente, considerando disponibilidad, carga de trabajo y restricciones del equipo. Impulsado por Google Gemini.',
+    feat_2_title: 'Asistente personal de IA',
+    feat_2_text: 'Un agente con IA que actúa como tu asistente personal. Permite hacer preguntas del estado de las habitaciones y de los clientes, apoyando a cada rol para facilitar sus tareas con la información que necesitan.',
     feat_3_title: 'Chat operacional con IA',
-    feat_3_text: 'Pregunta cualquier cosa sobre el estado del hotel en tiempo real. <em>"¿Cuántas habitaciones quedan por limpiar?"</em>, <em>"¿Qué incidentes están abiertos en planta 3?"</em> NemoClaw responde en segundos con contexto real del hotel.',
+    feat_3_text: 'Pregunta cualquier cosa sobre el estado del hotel en tiempo real. <em>"¿Cuántas habitaciones quedan por limpiar?"</em>, <em>"¿Qué incidentes están abiertos en planta 3?"</em> El agente AI responde en segundos con contexto real del hotel.',
     feat_4_title: 'Priorización automática',
     feat_4_text: 'El algoritmo ordena habitaciones por urgencia: hora de llegada del próximo huésped, tipo de limpieza, tiempo en cola y si hay huésped esperando. Cero decisiones manuales para el supervisor.',
     feat_5_title: 'NFC en puertas de habitación',
@@ -221,23 +219,23 @@ const i18n = {
     role_6_title: 'Houseman',
     role_6_text: 'Se enfoca en habitaciones de salida y pre-llegada. Hace el checklist de ropa de cama según la configuración exacta de camas de cada habitación (King, Queen, Single, Cuna). Marca tareas individuales como completadas.',
     // IA
-    ia_badge: '🤖 NemoClaw AI',
+    ia_badge: '🤖 Agente AI',
     ia_title: 'Tu compañero de IA — siempre a tu lado',
-    ia_sub: 'Pregunta lo que quieras. Consulta métricas. Configura alertas. NemoClaw conoce cada habitación, cada miembro del equipo y cada incidencia en tiempo real.',
+    ia_sub: 'Pregunta lo que quieras. Consulta métricas. Configura alertas. El agente AI conoce cada habitación, cada miembro del equipo y cada incidencia en tiempo real.',
     ia_companion_title: 'Un compañero para cada rol',
-    ia_companion_text: 'Seas supervisor revisando el progreso del equipo, recepción esperando una habitación o admin revisando el día — NemoClaw está a un mensaje, las 24 horas.',
+    ia_companion_text: 'Seas supervisor revisando el progreso del equipo, recepción esperando una habitación o admin revisando el día — el agente AI está a un mensaje, las 24 horas.',
     ia_chip_1: 'Respuestas al instante', ia_chip_2: 'Métricas en vivo', ia_chip_3: 'Alertas inteligentes', ia_chip_4: 'Voz',
-    ia_cta: 'Probar NemoClaw →',
+    ia_cta: 'Probar agente AI →',
     ia_online: 'Online · Contexto en tiempo real',
     ia_placeholder: 'Pregunta sobre habitaciones, métricas o alertas…',
     ia_1_title: 'Respuestas al instante',
-    ia_1_text: 'Pregunta sobre cualquier habitación, miembro del equipo o situación en lenguaje natural. NemoClaw lee el estado del hotel en vivo y responde en segundos — sin navegar por dashboards.',
+    ia_1_text: 'Pregunta sobre cualquier habitación, miembro del equipo o situación en lenguaje natural. El agente AI lee el estado del hotel en vivo y responde en segundos — sin navegar por dashboards.',
     ia_2_title: 'Métricas en vivo',
     ia_2_text: 'KPIs bajo demanda: habitaciones limpiadas, tiempo medio de limpieza, ranking del equipo, incidencias abiertas. Una sola pregunta, un resumen completo de rendimiento.',
     ia_3_title: 'Alertas inteligentes',
-    ia_3_text: '"Avísame si la habitación 401 no está lista a las 14:00." NemoClaw la configura, la monitoriza y te manda una notificación push — sin que tengas que vigilar el tablero.',
+    ia_3_text: '"Avísame si la habitación 401 no está lista a las 14:00." El agente AI la configura, la monitoriza y te manda una notificación push — sin que tengas que vigilar el tablero.',
     ia_4_title: 'Voz y manos libres',
-    ia_4_text: 'Habla directamente con NemoClaw cuando tienes las manos ocupadas. Entiende el contexto y responde sin que tengas que tocar la pantalla.',
+    ia_4_text: 'Habla directamente con el agente AI cuando tienes las manos ocupadas. Entiende el contexto y responde sin que tengas que tocar la pantalla.',
     // Tipos
     tipos_title: 'Un sistema para cada tipo de servicio',
     tipos_sub: 'HotelFlow entiende las 8 operaciones de housekeeping más comunes del sector hotelero.',
@@ -256,11 +254,11 @@ const i18n = {
     ss_tab_cleaner: 'Limpiador', ss_tab_supervisor: 'Supervisor', ss_tab_reception: 'Recepción',
     ss_tab_houseman: 'Houseman', ss_tab_maintenance: 'Mantenimiento',
     ss_cleaner_title: 'Modo Zen — una habitación a la vez',
-    ss_cleaner_text: 'El limpiador ve su próxima habitación, el progreso del equipo y puede reportar incidencias o chatear con NemoClaw con un toque.',
+    ss_cleaner_text: 'El limpiador ve su próxima habitación, el progreso del equipo y puede reportar incidencias o chatear con el agente AI con un toque.',
     ss_supervisor_title: 'Visibilidad total del turno',
     ss_supervisor_text: 'El tablero de habitaciones en vivo, la cola de inspecciones y el rastreador del equipo — todo lo que el supervisor necesita para anticiparse.',
     ss_reception_title: 'Dashboard web para recepción',
-    ss_reception_text: 'La app web da a recepción y administración una vista panorámica: habitaciones, equipos, tablero en vivo — y el panel de IA NemoClaw siempre a mano.',
+    ss_reception_text: 'La app web da a recepción y administración una vista panorámica: habitaciones, equipos, tablero en vivo — y el panel de agente AI siempre a mano.',
     ss_houseman_title: 'Ropa de cama, preparación y solicitudes',
     ss_houseman_text: 'Desde solicitudes generales hasta cálculos de lencería automáticos — el houseman tiene todo lo necesario para apoyar a los equipos de limpieza.',
     ss_maintenance_title: 'Órdenes de trabajo y habitaciones bloqueadas',
@@ -329,7 +327,7 @@ function applyLang(lang) {
   });
 
   // Restart chat in new language if already running
-  if (window.__nemoRestartChat) window.__nemoRestartChat();
+  if (window.__aiRestartChat) window.__aiRestartChat();
 
   // Update the form success message if visible
   const successEl = document.querySelector('.form-success');
@@ -470,7 +468,7 @@ function applyTheme(theme) {
     });
   }
 
-  // --- NemoClaw chat animation ---
+  // --- AI Agent chat animation ---
   const chatScript = {
     en: [
       { user: 'How many rooms are left on floor 3?',
@@ -493,8 +491,8 @@ function applyTheme(theme) {
   let chatTimer = null;
 
   function runChat() {
-    const body = document.getElementById('nemo-chat-body');
-    const promptEl = document.getElementById('nemo-prompt');
+    const body = document.getElementById('ai-chat-body');
+    const promptEl = document.getElementById('ai-prompt');
     if (!body) return;
 
     clearTimeout(chatTimer);
@@ -558,7 +556,7 @@ function applyTheme(theme) {
   }
 
   // Expose restart function for language switches
-  window.__nemoRestartChat = runChat;
+  window.__aiRestartChat = runChat;
 
   // Start chat when section enters viewport
   const chatObserver = new IntersectionObserver(entries => {
