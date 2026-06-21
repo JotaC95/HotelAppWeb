@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-<title>HotelFlow — Hotel housekeeping management with AI</title>
+<title>HotelFlow - Hotel housekeeping management with AI</title>
 <meta name="description" content="Mobile app for hotels connecting cleaners, supervisors and reception in real time, with integrated AI for shifts and operations." />
 <meta name="theme-color" content="#4F46E5" />
-<meta property="og:title" content="HotelFlow — Hotel housekeeping management with AI" />
+<meta property="og:title" content="HotelFlow - Hotel housekeeping management with AI" />
 <meta property="og:description" content="Mobile app for hotels connecting cleaners, supervisors and reception in real time, with integrated AI for shifts and operations." />
 <meta property="og:type" content="website" />
 <meta name="robots" content="index,follow" />
@@ -39,7 +39,10 @@
 </head>
 <body>
 
-<!-- ========== NAVBAR ========== -->
+<!-- ========== ANNOUNCEMENT BAR ========== -->
+<div class="announcement-bar" data-i18n-html="ea_banner">
+  🚀 Early Adopter Program open for local properties: Only 3 spots left! <a href="#early-adopter">Learn More</a>
+</div><!-- ========== NAVBAR ========== -->
 <nav class="nav" id="nav">
   <a href="#" class="nav__brand">
     <svg class="nav__logo" width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
@@ -124,9 +127,12 @@
   <div class="hero__bg"></div>
   <div class="hero__content">
     <h1 class="hero__title" data-i18n="hero_title">The operating system of modern housekeeping</h1>
-    <p class="hero__sub" data-i18n="hero_sub">HotelFlow connects your entire team in real time — cleaners, supervisors, reception and maintenance — in one mobile app with built-in artificial intelligence.</p>
+    <p class="hero__sub" data-i18n="hero_sub">HotelFlow connects your entire team in real time - cleaners, supervisors, reception and maintenance - in one mobile app with built-in artificial intelligence.</p>
     <div class="hero__cta">
-      <a href="#contacto" class="btn btn--primary btn--lg" data-i18n="hero_cta_primary">Request demo</a>
+      <div class="hero__cta-col">
+        <a href="#contacto" class="btn btn--primary btn--lg" data-i18n="hero_cta_primary">Apply for Early Adopter</a>
+        <p class="hero__spots" data-i18n="hero_cta_spots">Only 3 local spots available</p>
+      </div>
       <a href="#como-funciona" class="btn btn--outline btn--lg" data-i18n="hero_cta_secondary">See how it works</a>
     </div>
     <ul class="hero__trust">
@@ -153,7 +159,7 @@
            loading="eager">
       <img class="hero__phone-main"
            src="images/screenshots/cleaner-01.png"
-           alt="Cleaner zen mode — one room at a time"
+           alt="Cleaner zen mode - one room at a time"
            loading="eager">
       <img class="hero__phone-side hero__phone-side--right"
            src="images/screenshots/ai-agent-mobile.png"
@@ -267,7 +273,7 @@
       </div>
       <div class="feature-card reveal">
         <div class="feature-card__icon">🤖</div>
-        <h3 data-i18n="feat_2_title">AI shift management — AI agent</h3>
+        <h3 data-i18n="feat_2_title">AI shift management - AI agent</h3>
         <p data-i18n="feat_2_text">HotelFlow's artificial intelligence assistant. Automatically generates the weekly staff roster, considering availability, workload and team constraints. Powered by Google Gemini.</p>
       </div>
       <div class="feature-card reveal">
@@ -355,7 +361,7 @@
 <section class="section screenshots" id="screenshots">
   <div class="container">
     <div class="section__head reveal">
-      <h2 data-i18n="ss_title">The real app — no filters</h2>
+      <h2 data-i18n="ss_title">The real app - no filters</h2>
       <p data-i18n="ss_sub">Every screenshot is from the live HotelFlow application. No mockups, no illustrations.</p>
     </div>
 
@@ -377,7 +383,7 @@
           <img class="ss-phone" src="images/screenshots/ai-agent-mobile.png" alt="AI assistant chat on mobile" loading="lazy">
         </div>
         <div class="ss-desc">
-          <h3 data-i18n="ss_cleaner_title">Zen mode — one room at a time</h3>
+          <h3 data-i18n="ss_cleaner_title">Zen mode - one room at a time</h3>
           <p data-i18n="ss_cleaner_text">The cleaner sees their next room, team progress, and can report issues or chat with the AI agent in one tap.</p>
         </div>
       </div>
@@ -391,7 +397,7 @@
         </div>
         <div class="ss-desc">
           <h3 data-i18n="ss_supervisor_title">Complete visibility across the floor</h3>
-          <p data-i18n="ss_supervisor_text">The live room grid, inspection queue and team tracker — everything a supervisor needs to stay ahead of every shift.</p>
+          <p data-i18n="ss_supervisor_text">The live room grid, inspection queue and team tracker - everything a supervisor needs to stay ahead of every shift.</p>
         </div>
       </div>
 
@@ -403,7 +409,7 @@
         </div>
         <div class="ss-desc">
           <h3 data-i18n="ss_reception_title">Powerful web dashboard for reception</h3>
-          <p data-i18n="ss_reception_text">The web app gives reception and admin a bird's-eye view: rooms, teams, live board — and the AI agent panel always on hand for instant answers.</p>
+          <p data-i18n="ss_reception_text">The web app gives reception and admin a bird's-eye view: rooms, teams, live board - and the AI agent panel always on hand for instant answers.</p>
         </div>
       </div>
 
@@ -416,7 +422,7 @@
         </div>
         <div class="ss-desc">
           <h3 data-i18n="ss_houseman_title">Linen, prep and supply requests</h3>
-          <p data-i18n="ss_houseman_text">From general requests to automatic linen calculations — the houseman has everything needed to support the cleaning teams across all groups.</p>
+          <p data-i18n="ss_houseman_text">From general requests to automatic linen calculations - the houseman has everything needed to support the cleaning teams across all groups.</p>
         </div>
       </div>
 
@@ -443,7 +449,7 @@
     <!-- Header -->
     <div class="ia__head reveal">
       <span class="ia__badge" data-i18n="ia_badge">🤖 AI Agent</span>
-      <h2 data-i18n="ia_title">Your hotel's AI companion — always by your side</h2>
+      <h2 data-i18n="ia_title">Your hotel's AI companion - always by your side</h2>
       <p data-i18n="ia_sub">Ask anything. Check metrics. Set alerts. The AI agent knows every room, every team member and every incident in real time.</p>
     </div>
 
@@ -451,7 +457,7 @@
     <div class="ia__main">
       <div class="ia__left reveal">
         <h3 data-i18n="ia_companion_title">One companion for every role</h3>
-        <p data-i18n="ia_companion_text">Whether you're a supervisor monitoring team progress, reception waiting for a room, or an admin reviewing the day — the AI agent is one message away, 24/7.</p>
+        <p data-i18n="ia_companion_text">Whether you're a supervisor monitoring team progress, reception waiting for a room, or an admin reviewing the day - the AI agent is one message away, 24/7.</p>
         <div class="ia__chips">
           <span class="ia__chip">💬 <span data-i18n="ia_chip_1">Instant answers</span></span>
           <span class="ia__chip">📊 <span data-i18n="ia_chip_2">Live metrics</span></span>
@@ -487,7 +493,7 @@
       <div class="ia__card reveal">
         <div class="ia__card-icon">💬</div>
         <h3 data-i18n="ia_1_title">Instant answers</h3>
-        <p data-i18n="ia_1_text">Ask about any room, team member or situation in natural language. The AI agent reads the live hotel state and responds in seconds — no dashboards to navigate.</p>
+        <p data-i18n="ia_1_text">Ask about any room, team member or situation in natural language. The AI agent reads the live hotel state and responds in seconds - no dashboards to navigate.</p>
       </div>
       <div class="ia__card reveal">
         <div class="ia__card-icon">📊</div>
@@ -497,12 +503,12 @@
       <div class="ia__card reveal">
         <div class="ia__card-icon">🔔</div>
         <h3 data-i18n="ia_3_title">Smart alerts</h3>
-        <p data-i18n="ia_3_text">"Alert me if room 401 isn't done by 14:00." The AI agent sets it, monitors it and sends you a push notification — without you having to watch the board.</p>
+        <p data-i18n="ia_3_text">"Alert me if room 401 isn't done by 14:00." The AI agent sets it, monitors it and sends you a push notification - without you having to watch the board.</p>
       </div>
       <div class="ia__card reveal">
         <div class="ia__card-icon">🎙️</div>
         <h3 data-i18n="ia_4_title">Voice & hands-free</h3>
-        <p data-i18n="ia_4_text">Speak directly to the AI agent when your hands are busy. It listens, understands the context and responds — no need to touch the screen.</p>
+        <p data-i18n="ia_4_text">Speak directly to the AI agent when your hands are busy. It listens, understands the context and responds - no need to touch the screen.</p>
       </div>
     </div>
 
@@ -519,15 +525,15 @@
     <div class="tipos__grid">
       <div class="tipo-badge reveal" style="--tipo-bg:#FEE2E2;--tipo-border:#EF4444;--tipo-text:#991B1B">
         <span class="tipo-badge__dot" style="background:#EF4444"></span>
-        <div><strong data-i18n="tipo_1_name">Departure</strong><span data-i18n="tipo_1_desc">Checkout room — top priority</span></div>
+        <div><strong data-i18n="tipo_1_name">Departure</strong><span data-i18n="tipo_1_desc">Checkout room - top priority</span></div>
       </div>
       <div class="tipo-badge reveal" style="--tipo-bg:#EDE9FE;--tipo-border:#7C3AED;--tipo-text:#4C1D95">
         <span class="tipo-badge__dot" style="background:#7C3AED"></span>
-        <div><strong data-i18n="tipo_2_name">Pre-Arrival</strong><span data-i18n="tipo_2_desc">Guest arriving today — ready for check-in</span></div>
+        <div><strong data-i18n="tipo_2_name">Pre-Arrival</strong><span data-i18n="tipo_2_desc">Guest arriving today - ready for check-in</span></div>
       </div>
       <div class="tipo-badge reveal" style="--tipo-bg:#FFEDD5;--tipo-border:#F97316;--tipo-text:#9A3412">
         <span class="tipo-badge__dot" style="background:#F97316"></span>
-        <div><strong data-i18n="tipo_3_name">Stayover</strong><span data-i18n="tipo_3_desc">Guest continuing — maintenance cleaning</span></div>
+        <div><strong data-i18n="tipo_3_name">Stayover</strong><span data-i18n="tipo_3_desc">Guest continuing - maintenance cleaning</span></div>
       </div>
       <div class="tipo-badge reveal" style="--tipo-bg:#FEF9C3;--tipo-border:#EAB308;--tipo-text:#713F12">
         <span class="tipo-badge__dot" style="background:#EAB308"></span>
@@ -553,6 +559,36 @@
   </div>
 </section>
 
+
+<!-- ========== EARLY ADOPTER ========== -->
+<section class="section early-adopter" id="early-adopter">
+  <div class="container">
+    <div class="ea-box reveal">
+      <div class="ea-box__content">
+        <div class="ea-box__badge">BETA</div>
+        <h2 data-i18n="ea_section_title">Join the Early Adopter Program</h2>
+        <p data-i18n="ea_section_sub">We are looking for 3 local partners to launch with. Exclusive benefits:</p>
+        <div class="ea-grid">
+          <div class="ea-card">
+            <div class="ea-card__icon">🎁</div>
+            <h3 data-i18n="ea_ben_1_title">1 Month Free</h3>
+            <p data-i18n="ea_ben_1_text">Full hands-on onboarding for your entire staff.</p>
+          </div>
+          <div class="ea-card">
+            <div class="ea-card__icon">⚙️</div>
+            <h3 data-i18n="ea_ben_2_title">1 Custom Feature</h3>
+            <p data-i18n="ea_ben_2_text">Built exclusively for your specific workflow at zero cost.</p>
+          </div>
+          <div class="ea-card">
+            <div class="ea-card__icon">🤝</div>
+            <h3 data-i18n="ea_ben_3_title">Direct Support</h3>
+            <p data-i18n="ea_ben_3_text">Direct line to our founding team.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- ========== CTA FINAL ========== -->
 <section class="cta-section" id="contacto">
