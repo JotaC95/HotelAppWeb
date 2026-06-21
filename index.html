@@ -41,7 +41,7 @@
 
 <!-- ========== ANNOUNCEMENT BAR ========== -->
 <div class="announcement-bar" data-i18n-html="ea_banner">
-  🚀 Early Adopter Program open for local properties: Only 3 spots left! <a href="#early-adopter">Learn More</a>
+  Early Adopter Program open for local properties: Only 3 spots left! <a href="#early-adopter">Learn More</a>
 </div><!-- ========== NAVBAR ========== -->
 <nav class="nav" id="nav">
   <a href="#" class="nav__brand">
@@ -126,7 +126,7 @@
 <section class="hero" id="hero">
   <div class="hero__bg"></div>
   <div class="hero__content">
-    <h1 class="hero__title" data-i18n="hero_title">The operating system of modern housekeeping</h1>
+    <h1 class="hero__title" data-i18n-html="hero_title">The operating system of <span class="gradient-text">modern housekeeping</span></h1>
     <p class="hero__sub" data-i18n="hero_sub">HotelFlow connects your entire team in real time - cleaners, supervisors, reception and maintenance - in one mobile app with built-in artificial intelligence.</p>
     <div class="hero__cta">
       <div class="hero__cta-col">
@@ -168,7 +168,12 @@
     </div>
     <div class="hero__float hero__float--a reveal">
       <div class="float-card">
-        <div class="float-card__icon">🤖</div>
+        <div class="float-card__icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09Z"/>
+            <path d="M18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456Z"/>
+          </svg>
+        </div>
         <div>
           <div class="float-card__label" data-i18n="float_a_label">AI Agent</div>
           <div class="float-card__val" data-i18n="float_a_val">Roster generated</div>
@@ -177,7 +182,11 @@
     </div>
     <div class="hero__float hero__float--b reveal">
       <div class="float-card">
-        <div class="float-card__icon">⚡</div>
+        <div class="float-card__icon float-card__icon--success">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="m5 12 5 5L20 7"/>
+          </svg>
+        </div>
         <div>
           <div class="float-card__label" data-i18n="float_b_label">Check-in ready</div>
           <div class="float-card__val" data-i18n="float_b_val">Room 304 free</div>
@@ -227,28 +236,44 @@
         <h3 data-i18n="step_1_title">The shift begins</h3>
         <p data-i18n="step_1_text">The supervisor opens the cleaning session. The system automatically assigns rooms by priority: departures first, then pre-arrivals.</p>
       </div>
-      <div class="step__connector" aria-hidden="true">→</div>
+      <div class="step__connector" aria-hidden="true">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </div>
       <div class="step reveal">
         <div class="step__num" data-i18n="step_2_num">02</div>
         <div class="step__icon">📱</div>
         <h3 data-i18n="step_2_title">The cleaner receives their room</h3>
         <p data-i18n="step_2_text">Zen mode: a single card with the room number, cleaning type and a start button. No distractions.</p>
       </div>
-      <div class="step__connector" aria-hidden="true">→</div>
+      <div class="step__connector" aria-hidden="true">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </div>
       <div class="step reveal">
         <div class="step__num" data-i18n="step_3_num">03</div>
         <div class="step__icon">🔖</div>
         <h3 data-i18n="step_3_title">Scans the door with NFC</h3>
         <p data-i18n="step_3_text">On arrival, they scan the NFC tag on the door. The cleaning timer starts automatically.</p>
       </div>
-      <div class="step__connector" aria-hidden="true">→</div>
+      <div class="step__connector" aria-hidden="true">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </div>
       <div class="step reveal">
         <div class="step__num" data-i18n="step_4_num">04</div>
         <div class="step__icon">✅</div>
         <h3 data-i18n="step_4_title">Supervisor inspects</h3>
         <p data-i18n="step_4_text">When done, if supervisors are active, the room moves to Inspection. The supervisor runs the checklist on their phone and approves or rejects.</p>
       </div>
-      <div class="step__connector" aria-hidden="true">→</div>
+      <div class="step__connector" aria-hidden="true">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </div>
       <div class="step reveal">
         <div class="step__num" data-i18n="step_5_num">05</div>
         <div class="step__icon">🛎️</div>
@@ -448,7 +473,13 @@
 
     <!-- Header -->
     <div class="ia__head reveal">
-      <span class="ia__badge" data-i18n="ia_badge">🤖 AI Agent</span>
+      <span class="ia__badge">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09Z"/>
+          <path d="M18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456Z"/>
+        </svg>
+        <span data-i18n="ia_badge">AI Agent</span>
+      </span>
       <h2 data-i18n="ia_title">Your hotel's AI companion - always by your side</h2>
       <p data-i18n="ia_sub">Ask anything. Check metrics. Set alerts. The AI agent knows every room, every team member and every incident in real time.</p>
     </div>
@@ -471,7 +502,12 @@
         <!-- Chat mockup -->
         <div class="ai-chat">
           <div class="ai-chat__header">
-            <div class="ai-chat__avatar">🤖</div>
+            <div class="ai-chat__avatar">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.92)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09Z"/>
+              <path d="M18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456Z"/>
+            </svg>
+          </div>
             <div class="ai-chat__info">
               <div class="ai-chat__name">AI Agent</div>
               <div class="ai-chat__status"><span class="live-dot"></span><span data-i18n="ia_online">Online · Real-time context</span></div>

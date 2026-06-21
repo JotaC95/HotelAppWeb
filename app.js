@@ -5,9 +5,9 @@ const i18n = {
     nav_features: 'Features', nav_roles: 'Roles', nav_ia: 'AI',
     nav_contact: 'Contact', nav_demo: 'View demo', nav_access: 'Request access',
     // Hero
-    hero_title: 'The operating system of modern housekeeping',
+    hero_title: 'The operating system of <span class="gradient-text">modern housekeeping</span>',
     hero_sub: 'HotelFlow connects your entire team in real time - cleaners, supervisors, reception and maintenance - in one mobile app with built-in artificial intelligence.',
-    ea_banner: '🚀 Early Adopter Program open for local properties: Only 3 spots left! <a href="#early-adopter">Learn More</a>',
+    ea_banner: 'Early Adopter Program open for local properties: Only 3 spots left! <a href="#early-adopter">Learn More</a>',
     hero_cta_primary: 'Apply for Early Adopter',
     hero_cta_spots: 'Only 3 local spots available',
     hero_cta_secondary: 'See how it works',
@@ -79,7 +79,7 @@ const i18n = {
     role_6_title: 'Houseman',
     role_6_text: 'Focuses on departure and pre-arrival rooms. Runs the linen checklist per the exact bed configuration of each room (King, Queen, Single, Cot). Marks individual tasks as completed.',
     // IA
-    ia_badge: '🤖 AI Agent',
+    ia_badge: 'AI Agent',
     ia_title: "Your hotel's AI companion - always by your side",
     ia_sub: 'Ask anything. Check metrics. Set alerts. The AI agent knows every room, every team member and every incident in real time.',
     ia_companion_title: 'One companion for every role',
@@ -157,9 +157,9 @@ const i18n = {
     nav_features: 'Features', nav_roles: 'Roles', nav_ia: 'IA',
     nav_contact: 'Contacto', nav_demo: 'Ver demo', nav_access: 'Solicitar acceso',
     // Hero
-    hero_title: 'El sistema operativo del housekeeping moderno',
+    hero_title: 'El sistema operativo del <span class="gradient-text">housekeeping moderno</span>',
     hero_sub: 'HotelFlow conecta a todo tu equipo en tiempo real - limpiadores, supervisores, recepción y mantenimiento - en una sola app móvil con inteligencia artificial integrada.',
-    ea_banner: '🚀 Programa Early Adopter abierto para hoteles locales: ¡Solo 3 plazas! <a href="#early-adopter">Saber más</a>',
+    ea_banner: 'Programa Early Adopter abierto para hoteles locales: ¡Solo 3 plazas! <a href="#early-adopter">Saber más</a>',
     hero_cta_primary: 'Aplicar al Early Adopter',
     hero_cta_spots: 'Solo 3 plazas locales disponibles',
     hero_cta_secondary: 'Ver cómo funciona',
@@ -231,7 +231,7 @@ const i18n = {
     role_6_title: 'Houseman',
     role_6_text: 'Se enfoca en habitaciones de salida y pre-llegada. Hace el checklist de ropa de cama según la configuración exacta de camas de cada habitación (King, Queen, Single, Cuna). Marca tareas individuales como completadas.',
     // IA
-    ia_badge: '🤖 Agente AI',
+    ia_badge: 'Agente AI',
     ia_title: 'Tu compañero de IA - siempre a tu lado',
     ia_sub: 'Pregunta lo que quieras. Consulta métricas. Configura alertas. El agente AI conoce cada habitación, cada miembro del equipo y cada incidencia en tiempo real.',
     ia_companion_title: 'Un compañero para cada rol',
