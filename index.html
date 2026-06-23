@@ -41,7 +41,7 @@
 
 <!-- ========== ANNOUNCEMENT BAR ========== -->
 <div class="announcement-bar" data-i18n-html="ea_banner">
-  Early Adopter Program open for local properties: Only 3 spots left! <a href="#early-adopter">Learn More</a>
+  Early Adopter Program open for local properties: Only 3 spots left! <a href="#contacto">Learn More</a>
 </div><!-- ========== NAVBAR ========== -->
 <nav class="nav" id="nav">
   <a href="#" class="nav__brand">
@@ -596,60 +596,67 @@
 </section>
 
 
-<!-- ========== EARLY ADOPTER ========== -->
-<section class="section early-adopter" id="early-adopter">
+<!-- ========== EARLY ADOPTER & CONTACTO ========== -->
+<section class="section early-adopter" id="contacto">
   <div class="container">
     <div class="ea-box reveal">
-      <div class="ea-box__content">
-        <div class="ea-box__badge">BETA</div>
-        <h2 data-i18n="ea_section_title">Join the Early Adopter Program</h2>
-        <p data-i18n="ea_section_sub">We are looking for 3 local partners to launch with. Exclusive benefits:</p>
-        <div class="ea-grid">
-          <div class="ea-card">
-            <div class="ea-card__icon">🎁</div>
-            <h3 data-i18n="ea_ben_1_title">1 Month Free</h3>
-            <p data-i18n="ea_ben_1_text">Full hands-on onboarding for your entire staff.</p>
+      <div class="ea-split">
+        <!-- Left: Info -->
+        <div class="ea-info">
+          <div class="ea-box__badge">BETA</div>
+          <h2 data-i18n="ea_section_title">Join the Early Adopter Program</h2>
+          <p data-i18n="ea_section_sub">We are looking for 3 local partners to launch with. Secure your spot now to get these exclusive benefits:</p>
+          <div class="ea-grid ea-grid--vertical">
+            <div class="ea-card">
+              <div class="ea-card__icon">🎁</div>
+              <div class="ea-card__content">
+                <h3 data-i18n="ea_ben_1_title">1 Month Free</h3>
+                <p data-i18n="ea_ben_1_text">Full hands-on onboarding for your entire staff.</p>
+              </div>
+            </div>
+            <div class="ea-card">
+              <div class="ea-card__icon">⚙️</div>
+              <div class="ea-card__content">
+                <h3 data-i18n="ea_ben_2_title">1 Custom Feature</h3>
+                <p data-i18n="ea_ben_2_text">Built exclusively for your specific workflow at zero cost.</p>
+              </div>
+            </div>
+            <div class="ea-card">
+              <div class="ea-card__icon">🤝</div>
+              <div class="ea-card__content">
+                <h3 data-i18n="ea_ben_3_title">Direct Support</h3>
+                <p data-i18n="ea_ben_3_text">Direct line to our founding team.</p>
+              </div>
+            </div>
           </div>
-          <div class="ea-card">
-            <div class="ea-card__icon">⚙️</div>
-            <h3 data-i18n="ea_ben_2_title">1 Custom Feature</h3>
-            <p data-i18n="ea_ben_2_text">Built exclusively for your specific workflow at zero cost.</p>
+        </div>
+        
+        <!-- Right: Form -->
+        <div class="ea-form-wrapper">
+          <div class="ea-form-header">
+            <h3 data-i18n="ea_form_title">Claim your spot</h3>
+            <div class="ea-spots-left">
+              <span class="live-dot"></span><span data-i18n="ea_spots_left">Only 3 spots left</span>
+            </div>
           </div>
-          <div class="ea-card">
-            <div class="ea-card__icon">🤝</div>
-            <h3 data-i18n="ea_ben_3_title">Direct Support</h3>
-            <p data-i18n="ea_ben_3_text">Direct line to our founding team.</p>
-          </div>
+          <form class="cta-form ea-form" id="cta-form" novalidate>
+            <div class="form-group">
+              <label for="f-name" data-i18n="form_name_label">Name</label>
+              <input type="text" id="f-name" name="nombre" data-i18n-ph="form_name_placeholder" placeholder="Your name" required />
+            </div>
+            <div class="form-group">
+              <label for="f-email" data-i18n="form_email_label">Email</label>
+              <input type="email" id="f-email" name="email" data-i18n-ph="form_email_placeholder" placeholder="you@hotel.com" required />
+            </div>
+            <div class="form-group">
+              <label for="f-hotel" data-i18n="form_hotel_label">Hotel / Number of rooms</label>
+              <input type="text" id="f-hotel" name="hotel" data-i18n-ph="form_hotel_placeholder" placeholder="Hotel Mediterranean · 120 rooms" required />
+            </div>
+            <button type="submit" class="btn btn--primary btn--block btn--lg" data-i18n="form_btn">Apply for Early Adopter</button>
+            <p class="cta-form__note" data-i18n="form_note">No commitment · We reply in under 24h</p>
+          </form>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- ========== CTA FINAL ========== -->
-<section class="cta-section" id="contacto">
-  <div class="container">
-    <div class="cta-section__inner">
-      <div class="cta-section__text reveal">
-        <h2 data-i18n="cta_title">Ready to transform your hotel's operation?</h2>
-        <p data-i18n="cta_sub">HotelFlow is available for iOS and Android. Request early access and we'll contact you in under 24 hours.</p>
-      </div>
-      <form class="cta-form reveal" id="cta-form" novalidate>
-        <div class="form-group">
-          <label for="f-name" data-i18n="form_name_label">Name</label>
-          <input type="text" id="f-name" name="nombre" data-i18n-ph="form_name_placeholder" placeholder="Your name" required />
-        </div>
-        <div class="form-group">
-          <label for="f-email" data-i18n="form_email_label">Email</label>
-          <input type="email" id="f-email" name="email" data-i18n-ph="form_email_placeholder" placeholder="you@hotel.com" required />
-        </div>
-        <div class="form-group">
-          <label for="f-hotel" data-i18n="form_hotel_label">Hotel / Number of rooms</label>
-          <input type="text" id="f-hotel" name="hotel" data-i18n-ph="form_hotel_placeholder" placeholder="Hotel Mediterranean · 120 rooms" required />
-        </div>
-        <button type="submit" class="btn btn--white btn--block btn--lg" data-i18n="form_btn">Request access</button>
-        <p class="cta-form__note" data-i18n="form_note">No commitment · We reply in under 24h</p>
-      </form>
     </div>
   </div>
 </section>
